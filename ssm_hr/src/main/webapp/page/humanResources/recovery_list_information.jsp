@@ -1,0 +1,311 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet"
+			href="css/table.css" type="text/css">
+		<script type="text/javascript"
+			src="javascript/comm/comm.js">
+		</script>
+		<script language="javascript"
+			src="javascript/winopen/winopenm.js">
+		</script>
+	</head>
+	<body>
+
+		<form method="post" action="update_recovery_list_information">
+				<input type="hidden" name ="humanid" value="${hf.humanid}"/>
+			<table width="100%">
+				<tr>
+					<td>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案恢复 </font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<input type="submit" value="恢复" class="BUTTON_STYLE1"/>
+						<input type="button" value="返回" class="BUTTON_STYLE1"
+							onclick="history.back()">
+					</td>
+				</tr>
+			</table>
+			<table width="100%" border="1" cellpadding=3 cellspacing=1
+				bordercolorlight=#848284 bordercolordark=#eeeeee
+				class="TABLE_STYLE1">
+				<tr>
+					<td class="TD_STYLE1" width="10%">
+						档案编号
+					</td>
+					<td colspan="6" class="TD_STYLE2">
+						${hf.humanid}
+					</td>
+					<td rowspan="6" width="13%" style="text-align: center;">
+						
+							<img src="images/${hf.humanpicture}"  style="width:120px;height:150px;"/>
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1" width="10%">
+						I级机构
+					</td>
+					<td width="13%" class="TD_STYLE2">
+						${hf.firstkindname }
+					</td>
+					<td width="10%" class="TD_STYLE1">
+						II级机构
+					</td>
+					<td width="13%" class="TD_STYLE2">
+						${hf.secondkindname }
+					</td>
+					<td width="10%" class="TD_STYLE1">
+						III级机构
+					</td>
+					<td class="TD_STYLE2" colspan="2" width="2%">
+						${hf.thirdkindname }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						职位分类
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanmajorkindname }
+					</td>
+					<td class="TD_STYLE1">
+						职位名称
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanmajorname }
+					</td>
+					<td class="TD_STYLE1">
+						职称
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						${hf.humanprodesignation }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						姓名
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanname }
+					</td>
+					<td class="TD_STYLE1">
+						性别
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humansex}
+					</td>
+					<td class="TD_STYLE1">
+						EMAIL
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						${hf.humanemail }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						电话
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humantelephone}
+					</td>
+					<td class="TD_STYLE1">
+						QQ
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanqq }
+					</td>
+					<td class="TD_STYLE1">
+						手机
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						${hf.humanmobilephone }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						住址
+					</td>
+					<td colspan="3" class="TD_STYLE2">
+						${hf.humanaddress }
+					</td>
+					<td class="TD_STYLE1">
+						邮编
+					</td>
+					<td colspan="2" class="TD_STYLE2">
+						${hf.humanpostcode }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						国籍
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humannationality }
+					</td>
+					<td class="TD_STYLE1">
+						出生地
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanbirthplace }
+					</td>
+					<td class="TD_STYLE1">
+						生日
+					</td>
+					<td width="13%" class="TD_STYLE2">
+						${hf.humanbirthday }
+					</td>
+					<td width="10%" class="TD_STYLE1">
+						民族
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanrace }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						宗教信仰
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanreligion }
+					</td>
+					<td class="TD_STYLE1">
+						政治面貌
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanparty }
+					</td>
+					<td class="TD_STYLE1">
+						身份证号码
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanidcard }
+					</td>
+					<td class="TD_STYLE1">
+						社会保障号码
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humansocietysecurityid }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						年龄
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanage }
+					</td>
+					<td class="TD_STYLE1">
+						学历
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humaneducateddegree }
+					</td>
+					<td class="TD_STYLE1">
+						教育年限
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humaneducatedyears }
+					</td>
+					<td class="TD_STYLE1">
+						学历专业
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humaneducatedmajor }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						薪酬标准
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humaneducatedmajor }
+					</td>
+					<td class="TD_STYLE1">
+						开户行
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanbank }
+					</td>
+					<td class="TD_STYLE1">
+						帐号
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanaccount }
+					</td>
+					<td class="TD_STYLE1">
+						复核人
+					</td>
+					<td class="TD_STYLE2">
+						${hf.checker }
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						复核时间
+					</td>
+					<td class="TD_STYLE2">
+						${hf.checktime }
+					</td>
+					<td class="TD_STYLE1">
+						${hf.humanspeciality }
+					</td>
+					<td class="TD_STYLE2">
+						数据库
+					</td>
+					<td class="TD_STYLE1">
+						爱好
+					</td>
+					<td class="TD_STYLE2">
+						${hf.humanhobby }
+					</td>
+					<td class="TD_STYLE1">
+						&nbsp;
+					</td>
+					<td class="TD_STYLE2">
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						档案附件
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<a href="#"></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						个人履历
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<textarea name="item.humanHistroyRecords" rows="4"
+							class="TEXTAREA_STYLE1" readonly="readonly">${hf.humanhistroyrecords }</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						家庭关系信息
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<textarea name="item.humanFamilyMembership" rows="4"
+							class="TEXTAREA_STYLE1" readonly="readonly">${hf.humanfamilymembership }</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="TD_STYLE1">
+						备注
+					</td>
+					<td colspan="7" class="TD_STYLE2">
+						<textarea name="item.remark" rows="4" class="TEXTAREA_STYLE1" readonly="readonly">${hf.remark }</textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-3.1.xsd
+						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+	<!-- 扫包 -->				
+	<context:component-scan base-package="com.hr"></context:component-scan>	
+	<!-- springmvc注解 -->
+	<mvc:annotation-driven/>				
+	<!-- 外部文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"  value="${sjh.driver}"></property>
+		<property name="url"  value="${sjh.mysqlurl}"></property>
+		<property name="username"  value="${sjh.user}"></property>
+		<property name="password"  value="${sjh.pwd}"></property>
+	</bean>
+	<!-- 注入sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:sqlmap-config.xml"></property>
+		<!---->
+		<property name="mapperLocations">
+            <list>
+                <value>classpath:com/hr/mapper/*.xml</value>
+            </list>
+        </property>  
+	</bean>	
+	<!-- 配置发现扫描后的mapper接口都帮我生成对应的实现类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 注入工厂 -->
+		<property name="sqlSessionFactoryBeanName">
+			<idref bean="sqlSessionFactory"/>
+		</property>
+		<!-- 注入要一次性代理的接口所在的包 -->
+		<property name="basePackage" value="com.hr.mapper"></property>
+	</bean>
+	<!-- 定义一个事务通知 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 给通知取个名字 同时将事务进行过滤-->
+	<tx:advice  id="myadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+			<tx:method name="remove*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="change*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 定义一个切面 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.hr.service.impl.*.*(..))" id="mypointcut"/>
+		<aop:advisor advice-ref="myadvice" pointcut-ref="mypointcut"/>
+	</aop:config>			
+</beans>

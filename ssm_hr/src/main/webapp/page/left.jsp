@@ -686,7 +686,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="engageresume.do?operate=locate&method=check" target="mainFrame">简历筛选</a>
+													<a href="recruit/resume/resume-choose.jsp" target="mainFrame">简历筛选</a>
 												</td>
 											</tr>
 											<tr>

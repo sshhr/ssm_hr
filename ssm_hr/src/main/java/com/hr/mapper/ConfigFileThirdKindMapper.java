@@ -16,5 +16,5 @@ public interface ConfigFileThirdKindMapper {
 	public void insertConfigFileThirdKind(ConfigFileThirdKind s);
 	public void updateConfigFileThirdKind(Map map);
 	public void deleteConfigFileThirdKindById(String ftkId);
-	
+	public List<ConfigFileThirdKind> findConfigFileThirdKindByFirstIdAndSecondId(Map map);
 }

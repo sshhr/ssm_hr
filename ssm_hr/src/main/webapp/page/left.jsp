@@ -631,7 +631,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="major_release.jsp"
+													<a href="/ssm_hr/position/first.do"
 														target="mainFrame">职位发布登记</a>
 												</td>
 											</tr>
@@ -640,7 +640,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="engagemajorrelease.do?operate=toEdit"
+													<a href="recruit/position/position_release_change.jsp"
 														target="mainFrame">职位发布变更</a>
 												</td>
 											</tr>
@@ -649,7 +649,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="engagemajorrelease.do?operate=list"
+													<a href="recruit/position/position_release_search.jsp"
 														target="mainFrame">职位发布查询</a>
 												</td>
 											</tr>
@@ -678,7 +678,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engageresume.do?operate=toAdd" target="mainFrame">简历登记</a>
+													<a href="recruit/resume/register.jsp" target="mainFrame">简历登记</a>
 												</td>
 											</tr>
 											<tr>
@@ -694,7 +694,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="engageresume.do?operate=locate&method=query" target="mainFrame">有效简历查询</a>
+													<a href="recruit/resume/valid-resume.jsp" target="mainFrame">有效简历查询</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -722,7 +722,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engageresume.do?operate=locate&method=interview" target="mainFrame">面试结果登记</a>
+													<a href="recruit/interview/interview-resume.jsp" target="mainFrame">面试结果登记</a>
 												</td>
 											</tr>
 											<tr>
@@ -730,7 +730,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="engageinterview.do?operate=list" target="mainFrame">面试筛选</a>
+													<a href="recruit/interview/sift-list.jsp" target="mainFrame">面试筛选</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -854,7 +854,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engageresume.do?operate=passList&method=register&passStatus=0" target="mainFrame">录用申请</a>
+													<a href="recruit/employ/register_list.jsp" target="mainFrame">录用申请</a>
 												</td>
 											</tr>
 											<tr>
@@ -862,7 +862,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engageresume.do?operate=passList&method=check&passStatus=1" target="mainFrame">录用审批</a>
+													<a href="recruit/employ/check_list.jsp" target="mainFrame">录用审批</a>
 												</td>
 											</tr>
 											<tr>
@@ -870,7 +870,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engageresume.do?operate=passList&method=query&passStatus=2" target="mainFrame">录用查询</a>
+													<a href="recruit/employ/list.jsp" target="mainFrame">录用查询</a>
 												</td>
 											</tr>
 										</table> </span>

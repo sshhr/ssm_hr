@@ -99,4 +99,12 @@
         DELETE FROM CONFIG_FILE_SECOND_KIND WHERE FSK_ID = #{fskId}
     </delete>
     
+    
+    <!-- 根据firstid查询数据 -->
+    <select id="findConfigFileSecondKindByFirstId" resultMap="configFileSecondKindMap" parameterType="String">
+        SELECT
+        <include refid="allColumns" />
+        FROM CONFIG_FILE_SECOND_KIND WHERE first_kind_id = #{firstId}
+    </select>
+    
 </mapper>

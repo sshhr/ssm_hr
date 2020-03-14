@@ -11,4 +11,5 @@ public interface ConfigFileSecondKindService {
 	public void saveConfigFileSecondKind(ConfigFileSecondKind s);
 	public void changeConfigFileSecondKind(Map map);
 	public void removeConfigFileSecondKindById(String id);
+	public List<ConfigFileSecondKind> findConfigFileSecondKindByFirstId(String fid);
 }

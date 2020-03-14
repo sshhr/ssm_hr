@@ -11,4 +11,5 @@ public interface ConfigFileThirdKindService {
 	public void saveConfigFileThirdKind(ConfigFileThirdKind s);
 	public void changeConfigFileThirdKind(Map map);
 	public void removeConfigFileThirdKindById(String id);
+	public List<ConfigFileThirdKind> findConfigFileThirdKindByFirstIdAndSecondId(Map map);
 }

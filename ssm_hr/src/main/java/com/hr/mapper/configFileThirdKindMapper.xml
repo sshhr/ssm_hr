@@ -111,4 +111,11 @@
         DELETE FROM CONFIG_FILE_THIRD_KIND WHERE FTK_ID = #{ftkId}
     </delete>
     
+    
+    <!-- 根据firstId,secondId查询数据 -->
+    <select id="findConfigFileThirdKindByFirstIdAndSecondId" resultMap="configFileThirdKindMap" parameterType="map">
+        SELECT
+        <include refid="allColumns" />
+        FROM CONFIG_FILE_THIRD_KIND WHERE first_kind_id=#{fid} and second_kind_id=#{sid} 
+    </select>
 </mapper>

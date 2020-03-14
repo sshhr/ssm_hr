@@ -16,5 +16,5 @@ public interface ConfigFileSecondKindMapper {
 	public void insertConfigFileSecondKind(ConfigFileSecondKind s);
 	public void updateConfigFileSecondKind(Map map);
 	public void deleteConfigFileSecondKindById(String fskId);
-	
+	public List<ConfigFileSecondKind> findConfigFileSecondKindByFirstId(String fid);
 }

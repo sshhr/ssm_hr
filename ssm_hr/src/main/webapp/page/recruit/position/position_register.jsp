@@ -8,28 +8,28 @@
     <title>My JSP 'index.jsp' starting page</title>
 	 
 		 <link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="../page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css" type="text/css">
+			href="../page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="../page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="../page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/time.js">
+			src="../page/javascript/comm/time.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="../page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="../page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="../page/javascript/locate.js">
 		</script>
-		<script type="text/javascript" src="javascript/jquery.messager.js"></script>
+		<script type="text/javascript" src="../page/javascript/jquery.messager.js"></script>
  		<script type="text/javascript">
  			window.onload=check;
 		function tick() {
@@ -120,7 +120,7 @@
 			//获取下拉框里的文本内容
 			var firstName = $("#first_" + fid).html();
 			$("#fisrtKindName").val(firstName);
- 			
+ 			alert(firstName);
  			//清空下拉框
  			thirdSelect.empty();
  			secondSelect.empty();
@@ -128,20 +128,24 @@
  			thirdSelect.append("<option value=''>--请选择--</option>");
  			secondSelect.append("<option value=''>--请选择--</option>");
  			if(fid != 0){
- 				$.ajax({
- 					url:'querySecondByFid?fid='+fid,
- 					type:'get',
- 					success:function(data){
- 						for(var i=0;i<data.length;i++){
- 							var eachsecond = data[i];
- 							secondSelect.append("<option id='second_"+eachsecond.secondkindid+"' value="+eachsecond.secondkindid+">"+eachsecond.secondkindname+"</option>");
+ 				$.post("/ssm_hr/position/second.do",
+ 						{
+ 						fid:fid,
+ 						},
+ 						function(data){
+ 							var obj=JSON.parse(data);
+ 							alert(obj);
+ 							for(var i=0;i<obj.length;i++){
+ 	 							var eachsecond = obj[i];
+ 	 							secondSelect.append("<option id='second_"+eachsecond.secondKindId+"' value="+eachsecond.secondKindId+">"+eachsecond.secondKindName+"</option>");
+ 	 						}
  						}
- 					}
- 				});
+ 				);
  			}
  		}
  		
  		function queryThirdyBySid(){
+ 			var fid = $("#firstKindId").val();
  			var sid = $("#secondKindId").val();
  			var thirdSelect = $("#thirdKindId");
  			var secondName = $("#second_"+sid).html();
@@ -151,16 +155,20 @@
  			//添加下拉框
  			thirdSelect.append("<option value=''>--请选择--</option>");
  			if(sid != 0){
- 				$.ajax({
- 					url:'queryThirdyBySid?sid='+sid,
- 					type:'get',
- 					success:function(data){
- 						for(var i=0;i<data.length;i++){
- 							var eachThird = data[i];
- 							thirdSelect.append("<option id='third_"+eachThird.thirdkindid+"' value="+eachThird.thirdkindid+">"+eachThird.thirdkindname+"</option>");
+ 				$.post("/ssm_hr/position/third.do",
+ 						{
+ 						fid:fid,
+ 						sid:sid,
+ 						},
+ 						function(data){
+ 							var obj=JSON.parse(data);
+ 							alert(obj);
+ 							for(var i=0;i<obj.length;i++){
+ 	 							var eachThird = obj[i];
+ 	 							thirdSelect.append("<option id='third_"+eachThird.thirdKindId+"' value="+eachThird.thirdKindId+">"+eachThird.thirdKindName+"</option>");
+ 	 						}
  						}
- 					}
- 				});
+ 				);
  			}
  		}
 
@@ -231,7 +239,7 @@
 						<select name="firstkindid" id="firstKindId"  class="SELECT_STYLE1" onchange="querysecondByFid()"> 
 						<option value="">--请选择--</option>
 						<c:forEach items="${flist}" var="f">
-							<option id="first_${f.firstkindid }" value="${f.firstkindid }">${f.firstkindname }</option>
+							<option id="first_${f.firstKindId }" value="${f.firstKindId }">${f.firstKindName }</option>
 						</c:forEach>
 					 </select>
 					</td>
@@ -270,7 +278,7 @@
 						<select name="majorkindid" id="majorKindId" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
 							<option value="">--请选择--</option> 
 							<c:forEach items="${mlist}" var="m">
-								<option value="${m.majorkindid }" id="majork_${m.majorkindid }">${m.majorkindname }</option>
+								<option value="${m.majorKindId }" id="majork_${m.majorKindId }">${m.majorKindName }</option>
 							</c:forEach>
 						</select>
 					</td>

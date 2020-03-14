@@ -41,6 +41,11 @@ public class ConfigFileThirdKindServiceImpl implements ConfigFileThirdKindServic
 	public void removeConfigFileThirdKindById(String id) {
 		configFileThirdKindMapper.deleteConfigFileThirdKindById(id);
 	}
+
+	@Override
+	public List<ConfigFileThirdKind> findConfigFileThirdKindByFirstIdAndSecondId(Map map) {
+		return configFileThirdKindMapper.findConfigFileThirdKindByFirstIdAndSecondId(map);
+	}
 	
 	
 

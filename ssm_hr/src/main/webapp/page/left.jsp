@@ -631,7 +631,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/position/position_register.jsp"
+													<a href="/ssm_hr/position/first.do"
 														target="mainFrame">职位发布登记</a>
 												</td>
 											</tr>

@@ -41,6 +41,11 @@ public class ConfigFileSecondKindServiceImpl implements ConfigFileSecondKindServ
 	public void removeConfigFileSecondKindById(String id) {
 		configFileSecondKindMapper.deleteConfigFileSecondKindById(id);
 	}
+
+	@Override
+	public List<ConfigFileSecondKind> findConfigFileSecondKindByFirstId(String fid) {
+		return configFileSecondKindMapper.findConfigFileSecondKindByFirstId(fid);
+	}
 	
 	
 

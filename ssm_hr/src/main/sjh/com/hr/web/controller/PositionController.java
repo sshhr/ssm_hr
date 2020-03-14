@@ -18,9 +18,11 @@ import com.hr.mapper.ConfigFileThirdKindMapper;
 import com.hr.pojo.ConfigFileFirstKind;
 import com.hr.pojo.ConfigFileSecondKind;
 import com.hr.pojo.ConfigFileThirdKind;
+import com.hr.pojo.ConfigMajorKind;
 import com.hr.service.ConfigFileFirstKindService;
 import com.hr.service.ConfigFileSecondKindService;
 import com.hr.service.ConfigFileThirdKindService;
+import com.hr.service.ConfigMajorKindService;
 
 import net.sf.json.JSONArray;
 
@@ -33,11 +35,15 @@ public class PositionController {
 	ConfigFileSecondKindService  secondService;
 	@Autowired
 	ConfigFileThirdKindService thirdService;
+	@Autowired
+	ConfigMajorKindService majorKindService;
 	
 	@RequestMapping("first.do")
 	public String positionRegisterFirst(Model model){
 		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
+		List<ConfigMajorKind> mlist = majorKindService.findConfigMajorKindAll();
 		model.addAttribute("flist",list);
+		model.addAttribute("mlist",mlist);
 		return "forward:/page/recruit/position/position_register.jsp";
 	}
 	

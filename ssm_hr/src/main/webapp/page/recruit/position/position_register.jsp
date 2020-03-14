@@ -278,7 +278,7 @@
 						<select name="majorkindid" id="majorKindId" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
 							<option value="">--请选择--</option> 
 							<c:forEach items="${mlist}" var="m">
-								<option value="${m.majorkindid }" id="majork_${m.majorkindid }">${m.majorkindname }</option>
+								<option value="${m.majorKindId }" id="majork_${m.majorKindId }">${m.majorKindName }</option>
 							</c:forEach>
 						</select>
 					</td>

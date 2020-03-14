@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,15 @@ import com.hr.mapper.ConfigFileThirdKindMapper;
 import com.hr.pojo.ConfigFileFirstKind;
 import com.hr.pojo.ConfigFileSecondKind;
 import com.hr.pojo.ConfigFileThirdKind;
+import com.hr.pojo.ConfigMajor;
 import com.hr.pojo.ConfigMajorKind;
+import com.hr.pojo.EngageMajorRelease;
 import com.hr.service.ConfigFileFirstKindService;
 import com.hr.service.ConfigFileSecondKindService;
 import com.hr.service.ConfigFileThirdKindService;
 import com.hr.service.ConfigMajorKindService;
+import com.hr.service.ConfigMajorService;
+import com.hr.service.EngageMajorReleaseService;
 
 import net.sf.json.JSONArray;
 
@@ -37,7 +42,12 @@ public class PositionController {
 	ConfigFileThirdKindService thirdService;
 	@Autowired
 	ConfigMajorKindService majorKindService;
+	@Autowired
+	ConfigMajorService majorService;
+	@Autowired
+	EngageMajorReleaseService majorReleaseService;
 	
+	//第一次进职位登记 获取信息
 	@RequestMapping("first.do")
 	public String positionRegisterFirst(Model model){
 		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
@@ -50,7 +60,6 @@ public class PositionController {
 	@RequestMapping(value="second.do",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String positionRegisterSecond(String fid){
-		System.out.println(fid);
 		List<ConfigFileSecondKind> list = secondService.findConfigFileSecondKindByFirstId(fid);
 		JSONArray jsonarr = JSONArray.fromObject(list);
 		return jsonarr.toString();
@@ -59,7 +68,6 @@ public class PositionController {
 	@RequestMapping(value="third.do",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String positionRegisterThird(String fid,String sid){
-		System.out.println(fid+"===="+sid);
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("fid", fid);
 		map.put("sid", sid);
@@ -68,4 +76,19 @@ public class PositionController {
 		return jsonarr.toString();
 	}
 	
+	@RequestMapping(value="ByIdQueryMajor.do",produces = "text/html;charset=UTF-8")
+	@ResponseBody
+	public String byIdQueryMajor(String mid){
+		List<ConfigMajor> list = majorService.findConfigMajorByMajorKindId(mid);
+		JSONArray jsonarr = JSONArray.fromObject(list);
+		return jsonarr.toString();
+	}
+	
+	
+	@RequestMapping("savepositionRegister.do")
+	public String savepositionRegister(@ModelAttribute EngageMajorRelease majorRelease){
+		System.out.println(majorRelease);
+		majorReleaseService.saveEngageMajorRelease(majorRelease);
+		return "redirect:position_register.jsp";
+	}
 }

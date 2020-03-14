@@ -16,5 +16,5 @@ public interface ConfigMajorMapper {
 	public void insertConfigMajor(ConfigMajor s);
 	public void updateConfigMajor(Map map);
 	public void deleteConfigMajorById(String makId);
-	
+	public List<ConfigMajor> findConfigMajorByMajorKindId(String mkid);
 }

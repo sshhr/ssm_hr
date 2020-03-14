@@ -94,4 +94,11 @@
         DELETE FROM CONFIG_MAJOR WHERE MAK_ID = #{makId}
     </delete>
     
+    <!-- 根据主键查询数据 -->
+    <select id="findConfigMajorByMajorKindId" resultMap="configMajorMap" parameterType="String">
+        SELECT
+        <include refid="allColumns" />
+        FROM CONFIG_MAJOR WHERE major_kind_id=#{mkid}
+    </select>
+    
 </mapper>

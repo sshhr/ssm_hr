@@ -8,29 +8,29 @@
     <title>My JSP 'position-change.jsp' starting page</title>
     
 	 <link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 	   <script type="text/javascript"
-			src="javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 		</script>
 			<script type="text/javascript"
-			src="javascript/comm/time.js">
+			src="/ssm_hr/page/javascript/comm/time.js">
 			</script>
 	 	<script type="text/javascript">
  			window.onload=check;
@@ -81,8 +81,8 @@
  	</script>
 </head>
 	<body>
-		<form id="recruitAction!applyPosition" name="humanfileForm" action="updateMajorRelease" method="post">
-			<input type="hidden" name ="mreid" value="${mr.mreid }"/>
+		<form id="recruitAction!applyPosition" name="humanfileForm" action="/ssm_hr/position/updateMajorRelease.do" method="post">
+			<input type="hidden" name ="mreId" value="${mr.mreId }"/>
 			<table width="100%">
 				<tr>
 					<td>
@@ -105,35 +105,37 @@
 						I级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-					<input type="hidden" name ="firstkindname" value="${mr.firstkindname }"/>
-					<input type="hidden" name="firstkindid" value="${mr.firstkindid }"/>
-					${mr.firstkindname }
+					<input type="hidden" name ="firstKindName" value="${mr.firstKindName }"/>
+					<input type="hidden" name="firstKindId" value="${mr.firstKindId }"/>
+					${mr.firstKindName }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-					<input type="hidden" name="secondkindname" value="${mr.secondkindname }"/>
-					<input type="hidden" name="secondkindid" value="${mr.secondkindid }"/>
-					${mr.secondkindname }
+					<input type="hidden" name="secondKindName" value="${mr.secondKindName }"/>
+					<input type="hidden" name="secondKindId" value="${mr.secondKindId }"/>
+					${mr.secondKindName }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2"  >
-					<input type="hidden" name="thirdkindname" value="${mr.thirdkindname }"/>
-					<input type="hidden" name="thirdkindid" value="${mr.thirdkindid }"/>
-						${mr.thirdkindname }
+					<input type="hidden" name="thirdKindName" value="${mr.thirdKindName }"/>
+					<input type="hidden" name="thirdKindId" value="${mr.thirdKindId }"/>
+						${mr.thirdKindName }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-				 	<select name="engagetype" id="engageType" class="SELECT_STYLE1">
-				 			<c:if test="${mr.engagetype == '校园招聘'}">
+				 	<select name="engageType" id="engageType" class="SELECT_STYLE1">
+				 			<c:if test="${mr.engageType == '校园招聘'}">
 				 				<option value="校园招聘" selected="selected" >校园招聘</option>  
+				 				<option value="社会招聘">社会招聘</option>
 				 			</c:if>
-				 			<c:if test="${mr.engagetype == '社会招聘'}">
+				 			<c:if test="${mr.engageType == '社会招聘'}">
+				 				<option value="校园招聘" >校园招聘</option>  
 				 				<option value="社会招聘" selected="selected" >社会招聘</option>
 				 			</c:if>
 					 </select>
@@ -144,23 +146,23 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-					<input type="hidden" name="majorkindname" value="${mr.majorkindname }"/>
-					<input type="hidden" name="majorkindid" value="${mr.majorkindid }"/>
-						${mr.majorkindname }
+					<input type="hidden" name="majorKindName" value="${mr.majorKindName }"/>
+					<input type="hidden" name="majorKindId" value="${mr.majorKindId }"/>
+						${mr.majorKindName }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-					<input type="hidden" name="majorname" value="${mr.majorname }"/> 
-					<input type="hidden" name="majorid" value="${mr.majorid }"/>
-						${mr.majorname }
+					<input type="hidden" name="majorName" value="${mr.majorName }"/> 
+					<input type="hidden" name="majorId" value="${mr.majorId }"/>
+						${mr.majorName }
 					</td>
 					<td class="TD_STYLE1">
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="humanamount" value="${mr.humanamount }" class="INPUT_STYLE2">
+						 <input type="text" name="humanAmount" value="${mr.humanAmount }" class="INPUT_STYLE2">
 						</td>
 					<td class="TD_STYLE1">
 						截止日期
@@ -197,7 +199,7 @@
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="majordescribe" rows="4" cols="100%" class="TEXTAREA_STYLE1"  >${mr.majordescribe }</textarea>
+						<textarea name="majorDescribe" rows="4" cols="100%" class="TEXTAREA_STYLE1"  >${mr.majorDescribe }</textarea>
 					</td>
 					 
 				</tr>
@@ -206,7 +208,7 @@
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="engagerequired" rows="4"  cols="100%" class="TEXTAREA_STYLE1"   >${mr.engagerequired }</textarea>
+						<textarea name="engageRequired" rows="4"  cols="100%" class="TEXTAREA_STYLE1"   >${mr.engageRequired }</textarea>
 					</td>
 					 
 				</tr>

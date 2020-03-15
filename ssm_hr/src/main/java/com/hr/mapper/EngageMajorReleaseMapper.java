@@ -13,8 +13,8 @@ import com.hr.pojo.EngageMajorRelease;
 public interface EngageMajorReleaseMapper {
 	public List<EngageMajorRelease> findEngageMajorReleaseAll();
 	public List<EngageMajorRelease> findEngageMajorReleaseByIds(List list);
-	public void insertEngageMajorRelease(EngageMajorRelease s);
+	public int insertEngageMajorRelease(EngageMajorRelease s);
 	public void updateEngageMajorRelease(Map map);
-	public void deleteEngageMajorReleaseById(String mreId);
+	public int deleteEngageMajorReleaseById(String mreId);
 	
 }

@@ -69,13 +69,12 @@
     </select>
     
     <!-- 插入数据 -->
-    <insert id="insertEngageMajorRelease" parameterType="map">
+    <insert id="insertEngageMajorRelease" parameterType="EngageMajorRelease">
         INSERT INTO ENGAGE_MAJOR_RELEASE (
-            MRE_ID, FIRST_KIND_ID, FIRST_KIND_NAME, SECOND_KIND_ID, SECOND_KIND_NAME, THIRD_KIND_ID, THIRD_KIND_NAME, MAJOR_KIND_ID, 
+            FIRST_KIND_ID, FIRST_KIND_NAME, SECOND_KIND_ID, SECOND_KIND_NAME, THIRD_KIND_ID, THIRD_KIND_NAME, MAJOR_KIND_ID, 
             MAJOR_KIND_NAME, MAJOR_ID, MAJOR_NAME, HUMAN_AMOUNT, ENGAGE_TYPE, DEADLINE, REGISTER, CHANGER, 
             REGIST_TIME, CHANGE_TIME, MAJOR_DESCRIBE, ENGAGE_REQUIRED
         ) VALUES (
-            #{mreId},
             #{firstKindId},
             #{firstKindName},
             #{secondKindId},

@@ -8,26 +8,26 @@
     <title>My JSP 'index.jsp' starting page</title>
 	 
 		 <link rel="stylesheet"
-			href="../page/css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../page/css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../page/javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../page/javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../page/javascript/comm/time.js">
+			src="/ssm_hr/page/javascript/comm/time.js">
 		</script>
 		<script type="text/javascript"
-			src="../page/javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../page/javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../page/javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 		<script type="text/javascript" src="../page/javascript/jquery.messager.js"></script>
  		<script type="text/javascript">
@@ -120,7 +120,6 @@
 			//获取下拉框里的文本内容
 			var firstName = $("#first_" + fid).html();
 			$("#fisrtKindName").val(firstName);
- 			alert(firstName);
  			//清空下拉框
  			thirdSelect.empty();
  			secondSelect.empty();
@@ -134,7 +133,6 @@
  						},
  						function(data){
  							var obj=JSON.parse(data);
- 							alert(obj);
  							for(var i=0;i<obj.length;i++){
  	 							var eachsecond = obj[i];
  	 							secondSelect.append("<option id='second_"+eachsecond.secondKindId+"' value="+eachsecond.secondKindId+">"+eachsecond.secondKindName+"</option>");
@@ -162,7 +160,6 @@
  						},
  						function(data){
  							var obj=JSON.parse(data);
- 							alert(obj);
  							for(var i=0;i<obj.length;i++){
  	 							var eachThird = obj[i];
  	 							thirdSelect.append("<option id='third_"+eachThird.thirdKindId+"' value="+eachThird.thirdKindId+">"+eachThird.thirdKindName+"</option>");
@@ -193,12 +190,13 @@
 		 	majorSelect.append("<option value=''>--请选择--</option>");
 		 	if(mid != 0){
 			 	$.ajax({
-					url:'ByIdQueryMajor?mid='+mid,
+					url:'/ssm_hr/position/ByIdQueryMajor.do?mid='+mid,
 					type:'get',
 					success:function(data){
-			 			for(var i=0;i<data.length;i++){
-							var eachMajor = data[i];
-							majorSelect.append("<option id='major_"+eachMajor.majorid+"' value="+eachMajor.majorid+">"+eachMajor.majorname+"</option>");
+						var obj=JSON.parse(data);
+			 			for(var i=0;i<obj.length;i++){
+							var eachMajor = obj[i];
+							majorSelect.append("<option id='major_"+eachMajor.majorId+"' value="+eachMajor.majorId+">"+eachMajor.majorName+"</option>");
 						}
 			 			}
 				 	});
@@ -207,12 +205,12 @@
 </script> 
  	</head>
 	<body>
-		<form name="humanfileForm" method="post" action="addMajorRelease" >
-			<input type="hidden" id="fisrtKindName" name="firstkindname"/>
-			<input type="hidden" id="secondKindName" name="secondkindname">
-			<input type="hidden" id="thirdKindName" name="thirdkindname">
-			<input type="hidden" id="majorKindName" name="majorkindname">
-			<input type="hidden" id="majorName" name="majorname">
+		<form name="humanfileForm" method="post" action="/ssm_hr/position/savepositionRegister.do" >
+			<input type="hidden" id="fisrtKindName" name="firstKindName"/>
+			<input type="hidden" id="secondKindName" name="secondKindName">
+			<input type="hidden" id="thirdKindName" name="thirdKindName">
+			<input type="hidden" id="majorKindName" name="majorKindName">
+			<input type="hidden" id="majorName" name="majorName">
 			<table width="100%">
 				<tr>
 					<td>
@@ -236,7 +234,7 @@
 					</td>
 					<td width="14%" class="TD_STYLE2">
 						
-						<select name="firstkindid" id="firstKindId"  class="SELECT_STYLE1" onchange="querysecondByFid()"> 
+						<select name="firstKindId" id="firstKindId"  class="SELECT_STYLE1" onchange="querysecondByFid()"> 
 						<option value="">--请选择--</option>
 						<c:forEach items="${flist}" var="f">
 							<option id="first_${f.firstKindId }" value="${f.firstKindId }">${f.firstKindName }</option>
@@ -247,7 +245,7 @@
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="secondkindid" id="secondKindId" class="SELECT_STYLE1" onchange="queryThirdyBySid()"> 
+						<select name="secondKindId" id="secondKindId" class="SELECT_STYLE1" onchange="queryThirdyBySid()"> 
 						<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -255,7 +253,7 @@
 						III级机构
 					</td>
 					<td class="TD_STYLE2"  >
-						<select name="thirdkindid" id="thirdKindId" class="SELECT_STYLE1" onchange="getThirdName()">
+						<select name="thirdKindId" id="thirdKindId" class="SELECT_STYLE1" onchange="getThirdName()">
 							<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -263,7 +261,7 @@
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					<select name="engagetype" id="engageType" class="SELECT_STYLE1"> 
+					<select name="engageType" id="engageType" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option> 
 							<option value="校园招聘">校园招聘</option> 
 							<option value="社会招聘">社会招聘</option> 
@@ -275,7 +273,7 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="majorkindid" id="majorKindId" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
+						<select name="majorKindId" id="majorKindId" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
 							<option value="">--请选择--</option> 
 							<c:forEach items="${mlist}" var="m">
 								<option value="${m.majorKindId }" id="majork_${m.majorKindId }">${m.majorKindName }</option>
@@ -286,7 +284,7 @@
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="majorid" id="majorId" class="SELECT_STYLE1" onchange="getMajorName()"> 
+						<select name="majorId" id="majorId" class="SELECT_STYLE1" onchange="getMajorName()"> 
 							<option value="0">--请选择--</option>
 						</select>
 					</td>
@@ -294,7 +292,7 @@
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="humanamount" id="humanAmount"  class="INPUT_STYLE2">
+						 <input type="text" name="humanAmount" id="humanAmount"  class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						截止日期
@@ -316,7 +314,7 @@
 					</td>
 					<td   class="TD_STYLE2">
 					
-							<input type="text" name="registtime"
+							<input type="text" name="registTime"
 							  id="nowTime" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
@@ -332,7 +330,7 @@
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="majordescribe" rows="4" id="majordescribe" cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="majorDescribe" rows="4" id="majordescribe" cols="80" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
 				</tr>
@@ -341,7 +339,7 @@
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="engagerequired" rows="4" id="engagerequired" cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="engageRequired" rows="4" id="engagerequired" cols="80" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
 				</tr>

@@ -29,4 +29,22 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  
+   <!-- 字符转码过滤器配置 -->
+  <filter>
+  	<filter-name>character</filter-name>
+  	<filter-class>com.hr.web.filter.CharacterEncodingFilter</filter-class>
+ 	<init-param>
+ 		<param-name>oldEncoding</param-name>
+ 		<param-value>ISO8859-1</param-value>
+ 	</init-param>
+ 	<init-param>
+ 		<param-name>newEncoding</param-name>
+ 		<param-value>UTF-8</param-value>
+ 	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>character</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

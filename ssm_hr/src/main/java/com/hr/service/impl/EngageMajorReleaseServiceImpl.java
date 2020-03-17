@@ -28,8 +28,8 @@ public class EngageMajorReleaseServiceImpl implements EngageMajorReleaseService 
 	}
 
 	@Override
-	public void saveEngageMajorRelease(EngageMajorRelease s) {
-		EngageMajorReleaseMapper.insertEngageMajorRelease(s);
+	public int saveEngageMajorRelease(EngageMajorRelease s) {
+		return EngageMajorReleaseMapper.insertEngageMajorRelease(s);
 	}
 
 	@Override
@@ -38,8 +38,8 @@ public class EngageMajorReleaseServiceImpl implements EngageMajorReleaseService 
 	}
 
 	@Override
-	public void removeEngageMajorReleaseById(String id) {
-		EngageMajorReleaseMapper.deleteEngageMajorReleaseById(id);
+	public int removeEngageMajorReleaseById(String id) {
+		return EngageMajorReleaseMapper.deleteEngageMajorReleaseById(id);
 	}
 	
 	

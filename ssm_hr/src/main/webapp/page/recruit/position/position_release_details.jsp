@@ -8,23 +8,23 @@
     <title>My JSP 'position-release_details.jsp' starting page</title>
     
 	  <link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 		
 		<script type="text/javascript">
@@ -37,13 +37,13 @@
  		
  	</head>
 	<body>
-		<form id="recruitAction!toRegister" name="fm" action="toRegister?mrid=${mr.mreid }" method="post" enctype="multipart/form-data">
-			<input type="hidden" id="fisrtKindName" name="firstkindid" value="${mr.firstkindid }"/>
-			<input type="hidden" id="secondKindName" name="secondkindid" value="${mr.secondkindid }">
-			<input type="hidden" id="thirdKindName" name="thirdkindid" value="${mr.thirdkindid }">
-			<input type="hidden" id="majorKindName" name="majorkindid" value="${mr.majorkindid }">
-			<input type="hidden" id="majorName" name="majorid" value="${mr.majorid }">
-			<input type="hidden" name ="mreid" value="${mr.mreid }"/>
+		<form id="recruitAction!toRegister" name="fm" action="toRegister?mrid=${mr.mreId }" method="post" enctype="multipart/form-data">
+			<input type="hidden" id="fisrtKindName" name="firstkindid" value="${mr.firstKindId }"/>
+			<input type="hidden" id="secondKindName" name="secondkindid" value="${mr.secondKindId }">
+			<input type="hidden" id="thirdKindName" name="thirdkindid" value="${mr.thirdKindId }">
+			<input type="hidden" id="majorKindName" name="majorkindid" value="${mr.majorKindId }">
+			<input type="hidden" id="majorName" name="majorid" value="${mr.majorId }">
+			<input type="hidden" name ="mreid" value="${mr.mreId }"/>
 			<table width="100%"> 
 				<tr>
 					<td>
@@ -65,35 +65,25 @@
 						I级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						
-						<select name="firstkindname" id="firstKindId"  class="SELECT_STYLE1"> 
-						<option>${mr.firstkindname }</option>
-						
-					 </select>
+						${mr.firstKindName }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="secondkindname" id="secondKindId" class="SELECT_STYLE1" onchange="queryThirdyBySid()"> 
-						<option>${mr.secondkindname }</option>
-						</select>
+						${mr.secondKindName }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2"  >
-						<select name="thirdkindname" id="thirdKindId" class="SELECT_STYLE1" onchange="getThirdName()">
-							<option>${mr.thirdkindname }</option>
-						</select>
+						${mr.thirdKindName }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					<select name="engagetype" id="engageType" class="SELECT_STYLE1"> 
-							<option value="${mr.engagetype }">${mr.engagetype }</option> 
-					</select>
+						${mr.engageType }
 					</td>
 				</tr>
 				<tr>
@@ -101,30 +91,26 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="majorkindname" id="majorKindId" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
-							<option>${mr.majorkindname }</option> 
-								 </select>
+						${mr.majorKindName }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="majorname" id="majorId" class="SELECT_STYLE1" onchange="getMajorName()"> 
-							<option>${mr.majorname }</option>
-						</select>
+						${mr.majorName }
 					</td>
 					<td class="TD_STYLE1">
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="humanamount" id="humanAmount"  class="INPUT_STYLE2" value="${mr.humanamount }">
+						 <input type="text" readonly="readonly" name="humanamount" id="humanAmount"  class="INPUT_STYLE2" value="${mr.humanAmount }">
 					</td>
 					<td class="TD_STYLE1">
 						截止日期
 					</td>
 					<td   class="TD_STYLE2">
 							  <input type="text" name="deadline" 
-							  class="INPUT_STYLE2" id="date_start" onclick="aa('deadline')" value="${mr.deadline }">
+							  class="INPUT_STYLE2" id="date_start" readonly="readonly" value="${mr.deadline }">
 					</td>
 				</tr>
 				<tr>
@@ -132,7 +118,7 @@
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="register" value="${userlogin.user_true_name }" class="INPUT_STYLE2">
+						 ${mr.register }
 					</td>
 					<td class="TD_STYLE1">
 						登记时间
@@ -140,7 +126,7 @@
 					<td   class="TD_STYLE2">
 					
 							<input type="text" name="registtime"
-							  id="nowTime" readonly="readonly" value="${mr.registtime }"
+							  id="nowTime" readonly="readonly" value="${mr.registTime }"
 							class="INPUT_STYLE2">
 					</td>
 					
@@ -156,7 +142,7 @@
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="majordescribe" rows="4" cols="80" class="TEXTAREA_STYLE1">${mr.majordescribe }</textarea>
+						<textarea name="majordescribe" readonly="readonly" rows="4" cols="80" class="TEXTAREA_STYLE1">${mr.majorDescribe }</textarea>
 					</td>
 					 
 				</tr>
@@ -165,7 +151,7 @@
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="engagerequired" rows="4"  cols="80" class="TEXTAREA_STYLE1">${mr.engagerequired }</textarea>
+						<textarea name="engagerequired" readonly="readonly" rows="4"  cols="80" class="TEXTAREA_STYLE1">${mr.engageRequired }</textarea>
 					</td>
 					 
 				</tr>

@@ -640,7 +640,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/position/position_release_change.jsp"
+													<a href="/ssm_hr/position/positionChangeUpdate.do"
 														target="mainFrame">职位发布变更</a>
 												</td>
 											</tr>
@@ -649,7 +649,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/position/position_release_search.jsp"
+													<a href="/ssm_hr/position/positionReleaseSearch.do"
 														target="mainFrame">职位发布查询</a>
 												</td>
 											</tr>

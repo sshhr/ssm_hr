@@ -41,6 +41,11 @@ public class ConfigMajorServiceImpl implements ConfigMajorService {
 	public void removeConfigMajorById(String id) {
 		ConfigMajorMapper.deleteConfigMajorById(id);
 	}
+
+	@Override
+	public List<ConfigMajor> findConfigMajorByMajorKindId(String mkid) {
+		return ConfigMajorMapper.findConfigMajorByMajorKindId(mkid);
+	}
 	
 	
 

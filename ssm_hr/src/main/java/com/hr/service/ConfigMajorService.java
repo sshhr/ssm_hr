@@ -11,4 +11,5 @@ public interface ConfigMajorService {
 	public void saveConfigMajor(ConfigMajor s);
 	public void changeConfigMajor(Map map);
 	public void removeConfigMajorById(String id);
+	public List<ConfigMajor> findConfigMajorByMajorKindId(String mkid);
 }

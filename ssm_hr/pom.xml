@@ -130,6 +130,12 @@
         	<version>2.1</version>
         	<classifier>jdk15</classifier>
         </dependency>
+        
+        <dependency>
+	        <groupId>commons-fileupload</groupId>
+	        <artifactId>commons-fileupload</artifactId>
+	        <version>1.3.2</version>
+	    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -150,7 +156,6 @@
         </configuration>
       </plugin>
     </plugins>
-    
     
    
   </build>

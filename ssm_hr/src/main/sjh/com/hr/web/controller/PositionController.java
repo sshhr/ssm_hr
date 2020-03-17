@@ -125,7 +125,6 @@ public class PositionController {
 	@RequestMapping("deleteMajorRelease.do")
 	@ResponseBody
 	public String deleteMajorRelease(String mid){
-		System.out.println(mid);
 		int i = majorReleaseService.removeEngageMajorReleaseById(mid);
 		if(i==1){
 			return "ok";

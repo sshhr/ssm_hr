@@ -11,4 +11,5 @@ public interface EngageResumeService {
 	public void saveEngageResume(EngageResume s);
 	public void changeEngageResume(Map map);
 	public void removeEngageResumeById(String id);
+	public List<EngageResume> findchooseQuery(Map map);
 }

@@ -49,14 +49,15 @@
 			majorSelect.append("<option value=''>--请选择--</option>");
 			if(mid != 0){
 				$.ajax({
-					url:'ByIdQueryMajor?mid='+mid,
+					url:'/ssm_hr/position/ByIdQueryMajor.do?mid='+mid,
 					type:'get',
 					success:function(data){
-			 			for(var i=0;i<data.length;i++){
-							var eachMajor = data[i];
-							majorSelect.append("<option>"+eachMajor.majorname+"</option>");
+						var obj=JSON.parse(data);
+			 			for(var i=0;i<obj.length;i++){
+							var eachMajor = obj[i];
+							majorSelect.append("<option>"+eachMajor.majorName+"</option>");
 						}
-			 			}
+			 		}
 				});
 			}
  	 	}
@@ -64,7 +65,7 @@
 	</head>
 
 	<body>
-		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="chooseQuery" method="post">
+		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="/ssm_hr/resume/chooseQuery.do" method="post">
 			<input type="hidden" name="engageResume.checkStatus" value="false" /> 
 			<input type="hidden"  id="humanMajorKindId" name="humanmajorkindname" />
 			<input type="hidden"  name="checkstatus" value="0" />
@@ -91,7 +92,7 @@
 					 style="width: 290;height: 100" class="SELECT_STYLE2"> 
 						<option value="0">--请选择--</option>
 					<c:forEach items="${mklist}" var="m">
-						<option  value="${m.majorkindid }" id="humanMajorKind${m.majorkindid }">${m.majorkindname }</option>
+						<option  value="${m.majorKindId }" id="humanMajorKind${m.majorKindId }">${m.majorKindName }</option>
 					</c:forEach>
 					 </select>
 						<select name="humanmajorname" multiple="multiple" id="humanMajorId"

@@ -11,4 +11,5 @@ public interface ConfigPrimaryKeyService {
 	public void saveConfigPrimaryKey(ConfigPrimaryKey s);
 	public void changeConfigPrimaryKey(Map map);
 	public void removeConfigPrimaryKeyById(String id);
+	public List<ConfigPrimaryKey> findConfigPrimaryKeyByPrimaryKeyTable(String tableName);
 }

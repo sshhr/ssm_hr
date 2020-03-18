@@ -41,6 +41,11 @@ public class ConfigPrimaryKeyServiceImpl implements ConfigPrimaryKeyService {
 	public void removeConfigPrimaryKeyById(String id) {
 		ConfigPrimaryKeyMapper.deleteConfigPrimaryKeyById(id);
 	}
+
+	@Override
+	public List<ConfigPrimaryKey> findConfigPrimaryKeyByPrimaryKeyTable(String tableName) {
+		return ConfigPrimaryKeyMapper.findConfigPrimaryKeyByPrimaryKeyTable(tableName);
+	}
 	
 	
 

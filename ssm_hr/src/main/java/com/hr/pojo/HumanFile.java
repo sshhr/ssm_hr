@@ -101,7 +101,7 @@ public class HumanFile implements java.io.Serializable {
     private String humanRace;
 
     /** humanBirthday */
-    private Timestamp humanBirthday;
+    private String humanBirthday;
 
     /** humanBirthplace */
     private String humanBirthplace;
@@ -731,7 +731,7 @@ public class HumanFile implements java.io.Serializable {
      * 
      * @return humanBirthday
      */
-    public Timestamp getHumanBirthday() {
+    public String getHumanBirthday() {
         return this.humanBirthday;
     }
 
@@ -740,7 +740,7 @@ public class HumanFile implements java.io.Serializable {
      * 
      * @param humanBirthday
      */
-    public void setHumanBirthday(Timestamp humanBirthday) {
+    public void setHumanBirthday(String humanBirthday) {
         this.humanBirthday = humanBirthday;
     }
 

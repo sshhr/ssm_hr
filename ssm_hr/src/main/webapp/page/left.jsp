@@ -286,7 +286,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td width="98%">
-									<a href="humanResources/human_register.jsp" target="mainFrame">人力资源档案登记</a>
+									<a href="/ssm_hr/humanresources/humanRegist.do" target="mainFrame">人力资源档案登记</a>
 								</td>
 							</tr>
 							<tr>

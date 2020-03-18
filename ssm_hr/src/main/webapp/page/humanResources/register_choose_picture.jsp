@@ -5,15 +5,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 	</head>
 	<body>
-		<form method="post" action="upload" enctype="multipart/form-data">
-	          <input type="hidden" name ="humanid" value="${humanid}"/>
-	          <input type="hidden" name ="humanpicture" value="${humanpicture}"/>
+		<form method="post" action="/ssm_hr/humanresources/uploadPictureFile.do" enctype="multipart/form-data">
+	          <input type="hidden" name ="humanId" value="${humanid}"/>
+	          <input type="hidden" name ="humanPicture" value="${humanpicture}"/>
 			<table width="100%">
 				<tr>
 					<td colspan="2">

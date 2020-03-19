@@ -115,6 +115,16 @@
         </foreach>
     </select>
     
+     <!-- 根据humanid查询数据 -->
+    <select id="findHumanFileByHumanId" resultMap="humanFileMap" parameterType="String">
+        SELECT *  FROM HUMAN_FILE  WHERE HUMAN_ID = #{humanId}
+    </select>
+    
+     <!-- 根据状态码查询数据 -->
+    <select id="findHumanFileByStatus" resultMap="humanFileMap" parameterType="Integer">
+        SELECT * FROM HUMAN_FILE WHERE HUMAN_FILE_STATUS = #{humanFileStatus}
+    </select>
+    
     <!-- 插入数据 -->
     <insert id="insertHumanFile" parameterType="map">
         INSERT INTO HUMAN_FILE (

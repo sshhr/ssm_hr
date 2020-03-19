@@ -6,27 +6,27 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script language="javascript"
-			src="javascript/winopen/winopenm.js">
+			src="/ssm_hr/page/javascript/winopen/winopenm.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery.messager.js">
+			src="/ssm_hr/page/javascript/jquery.messager.js">
 		</script>
-		<script src="javascript/time.js"></script>
+		<script src="/ssm_hr/page/javascript/time.js"></script>
 		<script type="text/javascript"
-			src="javascript/human_check.js">
+			src="/ssm_hr/page/javascript/human_check.js">
 		</script>
 		
 		<script type="text/javascript">
@@ -35,16 +35,16 @@
  			var majorname=$("#salary_"+sid).html();
  			$("#salarystandardName").val(majorname);
  	 		}
-	 		
+
  		</script> 
 	</head>
 	<body>
 
-		<form action="update_human" method="post" enctype="multipart/form-data">
-				<input  name="salarystandardname" type="hidden" id="salarystandardName">
-		        <input  name="humanid" type="hidden" value="${hf.humanid}">
+		<form action="/ssm_hr/humanresources/humanFileCheckPass.do" method="post" enctype="multipart/form-data">
+				<input  name="salaryStandardName" type="hidden" id="salarystandardName">
+				 <input  name="humanId" type="hidden" value="${human.humanId}">
+		        <input  name="hufId" type="hidden" value="${human.hufId}">
 			<table width="100%">
-			
 				<tr>
 					<td>
 						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案复核 </font>
@@ -54,8 +54,7 @@
 					<td align="right">
 						<input type="submit" value="复核通过" class="BUTTON_STYLE1"/>
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
-						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back()">
+						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back()">
 					</td>
 				</tr>
 			</table>
@@ -67,10 +66,10 @@
 						档案编号
 					</td>
 					<td colspan="6" class="TD_STYLE2">
-						${hf.humanid}
+						${human.humanId}
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						<img src="images/${hf.humanpicture}"  style="width:120px;height:150px;"/>
+						<img src=""  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -78,25 +77,25 @@
 						I级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-					<input  name="firstkindname" type="hidden" value="${hf.firstkindname }">
-					<input  name="firstkindid" type="hidden" value="${hf.firstkindid }">
-						${hf.firstkindname }
+					<input  name="firstKindName" type="hidden" value="${human.firstKindName }">
+					<input  name="firstKindId" type="hidden" value="${human.firstKindId }">
+						${human.firstKindName }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-					<input  name="secondkindname" type="hidden" value="${hf.secondkindname }">
-					<input  name="secondkindid" type="hidden" value="${hf.secondkindid }">
-						${hf.secondkindname }
+					<input  name="secondKindName" type="hidden" value="${human.secondKindName }">
+					<input  name="secondKindId" type="hidden" value="${human.secondKindId }">
+						${human.secondKindName }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2" width="2%">
-					<input  name="thirdkindname" type="hidden" value="${hf.thirdkindname }">
-					<input  name="thirdkindid" type="hidden" value="${hf.thirdkindid }">
-						${hf.thirdkindname }
+					<input  name="thirdKindName" type="hidden" value="${human.thirdKindName }">
+					<input  name="thirdKindId" type="hidden" value="${human.thirdKindId }">
+						${human.thirdKindName }
 					</td>
 				</tr>
 				<tr>
@@ -104,33 +103,33 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-					<input  name="humanmajorkindname" type="hidden" value="${hf.humanmajorkindname }">
-					<input  name="humanmajorkindid" type="hidden" value="${hf.humanmajorkindid }">
-						${hf.humanmajorkindname }
+					<input  name="humanMajorKindName" type="hidden" value="${human.humanMajorKindName }">
+					<input  name="humanMajorKindId" type="hidden" value="${human.humanMajorKindId }">
+						${human.humanMajorKindName }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-					<input  name="humanmajorname" type="hidden" value="${hf.humanmajorname }">
-					<input  name="humanmajorid" type="hidden" value="${hf.humanmajorid }">
-						${hf.humanmajorname }
+					<input  name="hunmaMajorName" type="hidden" value="${human.hunmaMajorName }">
+					<input  name="humanMajorId" type="hidden" value="${human.humanMajorId }">
+						${human.hunmaMajorName }
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<select class="SELECT_STYLE1" name="humanprodesignation">
+						<select class="SELECT_STYLE1" name="humanProDesignation">
 							
-					<c:forEach items="${clist}" var="c">
-						<c:if test="${c.attributename == hf.humanprodesignation}">
-							<option value="${c.attributename }" selected="selected">
-								${c.attributename}
+					<c:forEach items="${zclist}" var="c">
+						<c:if test="${c == human.humanProDesignation}">
+							<option value="${c }" selected="selected">
+								${c}
 							</option>
 						</c:if>
-						<c:if test="${c.attributename != hf.humanprodesignation}">
-							<option value="${c.attributename }" >
-								${c.attributename}
+						<c:if test="${c != human.humanProDesignation}">
+							<option value="${c }" >
+								${c}
 							</option>
 						</c:if>
 						
@@ -143,18 +142,18 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="humanname" value="${hf.humanname }"
+						<input type="text" id="humanName" name="humanName" value="${human.humanName }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						<select class="SELECT_STYLE1" name="humansex">
-						<c:if test="${hf.humansex == '男'}">
+						<select class="SELECT_STYLE1" name="humanSex">
+						<c:if test="${human.humanSex == '男'}">
 							<option value="男"selected="selected">男</option>  
 						</c:if>
-						<c:if test="${hf.humansex == '女'}">
+						<c:if test="${human.humanSex == '女'}">
 							<option value="男"selected="selected">女</option>  
 						</c:if>
 						</select>
@@ -163,7 +162,7 @@
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanemail" value="${hf.humanemail }"
+						<input type="text" name="humanEmail" value="${human.humanEmail }"
 							class="INPUT_STYLE2" id="humanEmail">
 					</td>
 				</tr>
@@ -172,22 +171,22 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humantelephone" value="${hf.humantelephone}"
+						<input type="text" name="humanTelephone" value="${human.humanTelephone}"
 							class="INPUT_STYLE2" id="0">
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanqq" value="${hf.humanqq }"
+						<input type="text" name="humanQq" value="${human.humanQq }"
 							class="INPUT_STYLE2" id="humanQq">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanmobilephone" id="humanMobilephone"
-							value="${hf.humanmobilephone }" class="INPUT_STYLE2">
+						<input type="text" name="humanMobilephone" id="humanMobilephone"
+							value="${human.humanMobilephone }" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -195,14 +194,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="humanaddress" value="${hf.humanaddress }"
+						<input type="text" name="humanAddress" value="${human.humanAddress }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanpostcode" value="${hf.humanpostcode }"
+						<input type="text" name="humanPostcode" value="${human.humanPostcode }"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -211,16 +210,16 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humannationality" class="SELECT_STYLE1" >
+						<select name="humanNationality" class="SELECT_STYLE1" >
 						<c:forEach items="${glist}" var="g">
-							<c:if test="${g.attributename == hf.humannationality }">
-								<option value="${g.attributename}" selected="selected">
-									${g.attributename}
+							<c:if test="${g == human.humanNationality }">
+								<option value="${g}" selected="selected">
+									${g}
 								</option>
 							</c:if>
-							<c:if test="${g.attributename != hf.humannationality }">
-								<option value="${g.attributename}">
-									${g.attributename}
+							<c:if test="${g != human.humanNationality }">
+								<option value="${g}">
+									${g}
 								</option>
 							</c:if>
 							
@@ -231,30 +230,30 @@
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanbirthplace" value="${hf.humanbirthplace }"
+						<input type="text" name="humanBirthplace" value="${human.humanBirthplace }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						<input type="text" name="humanbirthday" readonly="readonly"
-							value="${hf.humanbirthday }" class="INPUT_STYLE2" id="birthday">
+						<input type="text" name="humanBirthday" readonly="readonly"
+							value="${human.humanBirthday }" class="INPUT_STYLE2" id="birthday">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanrace" class="SELECT_STYLE1" >
+						<select name="humanRace" class="SELECT_STYLE1" >
 						<c:forEach items="${mlist}" var="m1">
-							<c:if test="${m1.attributename == hf.humanrace }">
-								<option value="${m1.attributename}" selected="selected">
-								${m1.attributename}
+							<c:if test="${m1 == human.humanRace }">
+								<option value="${m1}" selected="selected">
+								${m1}
 							</option>
 							</c:if>
-							<c:if test="${m1.attributename != hf.humanrace }">
-								<option value="${m1.attributename}" >
-								${m1.attributename}
+							<c:if test="${m1 != human.humanRace }">
+								<option value="${m1}" >
+								${m1}
 							</option>
 							</c:if>
 						</c:forEach>
@@ -266,13 +265,13 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanreligion" class="SELECT_STYLE1" >
+						<select name="humanReligion" class="SELECT_STYLE1" >
 						<c:forEach items="${zlist}" var="z1">
-							<c:if test="${z1.attributename == hf.humanreligion }">
-								<option value="${z1.attributename}" selected="selected">${z1.attributename}</option>
+							<c:if test="${z1 == human.humanReligion }">
+								<option value="${z1}" selected="selected">${z1}</option>
 							</c:if>
-							<c:if test="${z1.attributename != hf.humanreligion }">
-								<option value="${z1.attributename}">${z1.attributename}</option>
+							<c:if test="${z1 != human.humanReligion }">
+								<option value="${z1}">${z1}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -281,13 +280,13 @@
 						政治面貌
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanparty" class="SELECT_STYLE1" >
+						<select name="humanParty" class="SELECT_STYLE1" >
 						<c:forEach items="${zzlist}" var="z">
-							<c:if test="${z.attributename == hf.humanparty }">
-								<option value="${z.attributename}" selected="selected">${z.attributename}</option>
+							<c:if test="${z == human.humanParty }">
+								<option value="${z}" selected="selected">${z}</option>
 							</c:if>
-							<c:if test="${z.attributename != hf.humanparty }">
-								<option value="${z.attributename}" >${z.attributename}</option>
+							<c:if test="${z != human.humanParty }">
+								<option value="${z}" >${z}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -296,14 +295,14 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanidcard" id="humanIdCard"
-							value="${hf.humanidcard }" class="INPUT_STYLE2">
+						<input type="text" name="humanIdCard" id="humanIdCard"
+							value=" ${human.humanIdCard }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humansocietysecurityid" value="${hf.humansocietysecurityid }"
+						<input type="text" name="humanSocietySecurityId" value="${human.humanSocietySecurityId }"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -312,20 +311,20 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanage" value="${hf.humanage }"
+						<input type="text" name="humanAge" value="${human.humanAge }"
 							class="INPUT_STYLE2" id="humanAge">
 					</td>
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humaneducateddegree" class="SELECT_STYLE1" >
+						<select name="humanEducatedDegree" class="SELECT_STYLE1" >
 						<c:forEach items="${xlist}" var="x">
-							<c:if test="${x.attributename == hf.humaneducateddegree }">
-								<option value="${x.attributename}" selected="selected">${x.attributename}</option>
+							<c:if test="${x == human.humanEducatedDegree }">
+								<option value="${x}" selected="selected">${x}</option>
 							</c:if>
-							<c:if test="${x.attributename != hf.humaneducateddegree }">
-								<option value="${x.attributename}" >${x.attributename}</option>
+							<c:if test="${x != human.humanEducatedDegree }">
+								<option value="${x}" >${x}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -334,13 +333,13 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humaneducatedyears" class="SELECT_STYLE1" >
+						<select name="humanEducatedYears" class="SELECT_STYLE1" >
 						<c:forEach items="${jlist}" var="j">
-							<c:if test="${j.attributename == hf.humaneducatedyears }">
-								<option value="${j.attributename}"  selected="selected">${j.attributename}</option>
+							<c:if test="${j == human.humanEducatedYears }">
+								<option value="${j}"  selected="selected">${j}</option>
 							</c:if>
-							<c:if test="${j.attributename != hf.humaneducatedyears }">
-								<option value="${j.attributename}" >${j.attributename}</option>
+							<c:if test="${j != human.humanEducatedYears }">
+								<option value="${j}" >${j}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -349,13 +348,13 @@
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humaneducatedmajor" class="SELECT_STYLE1" >
+						<select name="humanEducatedMajor" class="SELECT_STYLE1" >
 						<c:forEach items="${xlzylist}" var="x1">
-							<c:if test="${x1.attributename == hf.humaneducatedmajor }">
-								<option value="${x1.attributename}" selected="selected">${x1.attributename}</option>
+							<c:if test="${x1 == human.humanEducatedMajor }">
+								<option value="${x1}" selected="selected">${x1}</option>
 							</c:if>
-							<c:if test="${x1.attributename != hf.humaneducatedmajor }">
-								<option value="${x1.attributename}" >${x1.attributename}</option>
+							<c:if test="${x1 != human.humanEducatedMajor }">
+								<option value="${x1}" >${x1}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -367,13 +366,13 @@
 					</td>
 					<td class="TD_STYLE2" >
 					
-						<select name="salarystandardid" class="SELECT_STYLE1" id="salarystandard" onchange="getsalaryname()">
-						<c:forEach items="${slist}" var="s">
-							<c:if test="${s.sstid == hf.salarystandardid }">
-								<option id="salary_${s.sstid}"  value="${s.sstid}" selected="selected">${s.sname}</option>
+						<select name="salaryStandardId" class="SELECT_STYLE1" id="salarystandard" onchange="getsalaryname()">
+						<c:forEach items="${xclist}" var="s">
+							<c:if test="${s.ssdId == human.salaryStandardId }">
+								<option id="salary_${s.ssdId}"  value="${s.ssdId}" selected="selected">${s.standardName}</option>
 							</c:if>
-							<c:if test="${s.sstid == hf.salarystandardid }">
-								<option id="salary_${s.sstid}"  value="${s.sstid}" >${s.sname}</option>
+							<c:if test="${s.ssdId != human.salaryStandardId }">
+								<option id="salary_${s.ssdId}"  value="${s.ssdId}" >${s.standardName}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -382,15 +381,15 @@
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanbank" value="${hf.humanbank }"
+						<input type="text" name="humanBank" value="${human.humanBank }"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						帐号
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanaccount"
-							value="${hf.humanaccount }" class="INPUT_STYLE2">
+						<input type="text" name="humanAccount"
+							value="${human.humanAccount }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						复核人
@@ -405,21 +404,21 @@
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="checktime"
+						<input type="text" name="checkTime"
 							id="create_time" readonly="readonly"
-							class="INPUT_STYLE2" value="${hf.checktime }">
+							class="INPUT_STYLE2" value="${human.checkTime }">
 					</td>
 					<td class="TD_STYLE1">
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanspeciality" class="SELECT_STYLE1" >
+						<select name="humanSpeciality" class="SELECT_STYLE1" >
 						<c:forEach items="${tlist}" var="t">
-							<c:if test="${t.attributename == hr.humanspeciality}">
-								<option value="${t.attributename}" selected="selected">${t.attributename} </option>
+							<c:if test="${t == human.humanSpeciality}">
+								<option value="${t}" selected="selected">${t} </option>
 							</c:if>
-							<c:if test="${t.attributename != hr.humanspeciality}">
-								<option value="${t.attributename}"  >${t.attributename} </option>
+							<c:if test="${t != human.humanSpeciality}">
+								<option value="${t}"  >${t} </option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -428,13 +427,13 @@
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanhobby" class="SELECT_STYLE1" >
+						<select name="humanHobby" class="SELECT_STYLE1" >
 						<c:forEach items="${alist}" var="a">
-							<c:if test="${a.attributename == hr.humanhobby}">
-								<option value="${a.attributename}" selected="selected">${a.attributename}</option>
+							<c:if test="${a == human.humanHobby}">
+								<option value="${a}" selected="selected">${a}</option>
 							</c:if>
-							<c:if test="${a.attributename != hr.humanhobby}">
-								<option value="${a.attributename}" >${a.attributename}</option>
+							<c:if test="${a != human.humanHobby}">
+								<option value="${a}" >${a}</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -451,7 +450,7 @@
 						档案附件
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<a href="javascript:winopenm('query.jsp?filename=')">${hf.attachmentname}</a>
+						<a href="javascript:winopenm('query.jsp?filename=')">${human.attachmentName}</a>
 					</td>
 				</tr>
 				<tr>
@@ -459,8 +458,8 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanhistroyrecords" rows="4"
-							class="TEXTAREA_STYLE1">${hf.humanhistroyrecords }</textarea>
+						<textarea name="humanHistroyRecords" rows="4"
+							class="TEXTAREA_STYLE1">${human.humanHistroyRecords }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -468,8 +467,8 @@
 						家庭关系信息
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanfamilymembership" rows="4"
-							class="TEXTAREA_STYLE1">${hf.humanfamilymembership }</textarea>
+						<textarea name="humanFamilyMembership" rows="4"
+							class="TEXTAREA_STYLE1">${human.humanFamilyMembership }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -477,7 +476,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1">${hf.remark }</textarea>
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1">${human.remark }</textarea>
 					</td>
 				</tr>
 			</table>

@@ -5,30 +5,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/table.css" type="text/css">
-<link rel="stylesheet" href="css/cwcalendar.css" type="text/css">
-<script type="text/javascript" src="javascript/jquery-1.7.2.js">
+<link rel="stylesheet" href="/ssm_hr/page/css/table.css" type="text/css">
+<link rel="stylesheet" href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
+<script type="text/javascript" src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 	
 </script>
-<script type="text/javascript" src="javascript/jquery.messager.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/jquery.messager.js">
 	
 </script>
-<script type="text/javascript" src="javascript/comm/comm.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/comm/comm.js">
 	
 </script>
-<script type="text/javascript" src="javascript/comm/select.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/comm/select.js">
 	
 </script>
-<script type="text/javascript" src="javascript/calendar-ch.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/calendar-ch.js">
 	
 </script>
-<script type="text/javascript" src="javascript/time.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/time.js">
 	
 </script>
-<script type="text/javascript" src="javascript/human_register.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/human_register.js">
 	
 </script>
-<script type="text/javascript" src="javascript/human_input_check.js">
+<script type="text/javascript" src="/ssm_hr/page/javascript/human_input_check.js">
 	
 </script>
 <script type="text/javascript">
@@ -182,40 +182,46 @@
  			thirdSelect.append("<option value='0'>--请选择--</option>");
  			secondSelect.append("<option value='0'>--请选择--</option>");
  			if(fid != 0){
- 				$.ajax({
- 					url:'querySecondByFid?fid='+fid,
- 					type:'get',
- 					success:function(data){
- 						for(var i=0;i<data.length;i++){
- 							var eachsecond = data[i];
- 							secondSelect.append("<option id='second_"+eachsecond.secondkindid+"' value="+eachsecond.secondkindid+">"+eachsecond.secondkindname+"</option>");
+ 				$.post("/ssm_hr/position/second.do",
+ 						{
+ 						fid:fid,
+ 						},
+ 						function(data){
+ 							var obj=JSON.parse(data);
+ 							for(var i=0;i<obj.length;i++){
+ 	 							var eachsecond = obj[i];
+ 	 							secondSelect.append("<option id='second_"+eachsecond.secondKindId+"' value="+eachsecond.secondKindId+">"+eachsecond.secondKindName+"</option>");
+ 	 						}
  						}
- 					}
- 				});
+ 				);
  			}
  		}
  		
  		function queryThirdyByid(){
+ 			var fid = $("#firstKind").val();
  			var sid = $("#secondKind").val();
  			var thirdSelect = $("#thirdKind");
  			var secondid=$("#second_"+sid).html();
  			$("#secondKindName").val(secondid);
- 			
+ 			//alert(fid+sid);
  			//清空下拉框
  			thirdSelect.empty();
  			//添加下拉框
  			thirdSelect.append("<option value='0'>--请选择--</option>");
  			if(sid != 0){
- 				$.ajax({
- 					url:'queryThirdyBySid?sid='+sid,
- 					type:'get',
- 					success:function(data){
- 						for(var i=0;i<data.length;i++){
- 							var eachThird = data[i];
- 							thirdSelect.append("<option id='third_"+eachThird.thirdkindid+"' value="+eachThird.thirdkindid+">"+eachThird.thirdkindname+"</option>");
+ 				$.post("/ssm_hr/position/third.do",
+ 						{
+ 						fid:fid,
+ 						sid:sid,
+ 						},
+ 						function(data){
+ 							var obj=JSON.parse(data);
+ 							for(var i=0;i<obj.length;i++){
+ 	 							var eachThird = obj[i];
+ 	 							thirdSelect.append("<option id='third_"+eachThird.thirdKindId+"' value="+eachThird.thirdKindId+">"+eachThird.thirdKindName+"</option>");
+ 	 						}
  						}
- 					}
- 				});
+ 				);
  			}
  		}
  		function getthirdKindid(){
@@ -238,12 +244,13 @@
 		 	majorSelect.append("<option value='0'>--请选择--</option>");
 		 	if(mid != 0){
 			 	$.ajax({
-					url:'ByIdQueryMajor?mid='+mid,
+					url:'/ssm_hr/position/ByIdQueryMajor.do?mid='+mid,
 					type:'get',
 					success:function(data){
-			 			for(var i=0;i<data.length;i++){
-							var eachMajor = data[i];
-							majorSelect.append("<option id='major_"+eachMajor.majorid+"' value="+eachMajor.majorid+">"+eachMajor.majorname+"</option>");
+						var obj=JSON.parse(data);
+			 			for(var i=0;i<obj.length;i++){
+							var eachMajor = obj[i];
+							majorSelect.append("<option id='major_"+eachMajor.majorId+"' value="+eachMajor.majorId+">"+eachMajor.majorName+"</option>");
 						}
 			 			}
 				 	});
@@ -284,14 +291,14 @@
 </head>
 
 <body>
-<form method="post" action="add" name="fm">
-		<input  name="firstkindname" type="hidden" id="firstKindName">
-		<input  name="secondkindname" type="hidden" id="secondKindName">
-		<input  name="thirdkindname" type="hidden" id="thirdKindName">
-		<input  name="humanmajorkindname" type="hidden" id="majorKindName">
-		<input  name="humanmajorname" type="hidden" id="humanmajorName">
-		<input  name="salarystandardname" type="hidden" id="salarystandardName">
-		<input  name="humanid" type="hidden" value="${time}">
+<form method="post" action="/ssm_hr/humanresources/saveHumanRegister.do" name="fm" enctype="multipart/form-data">
+		<input  name="firstKindName" type="hidden" id="firstKindName">
+		<input  name="secondKindName" type="hidden" id="secondKindName">
+		<input  name="thirdKindName" type="hidden" id="thirdKindName">
+		<input  name="humanMajorKindName" type="hidden" id="majorKindName">
+		<input  name="hunmaMajorName" type="hidden" id="humanmajorName">
+		<input  name="salaryStandardName" type="hidden" id="salarystandardName">
+		<input  name="humanId" type="hidden" value="${time}">
 		
 <table width="100%">
 	<tr>
@@ -309,22 +316,22 @@
 	<tr>
 		<td class="TD_STYLE1" width="11%">I级机构</td>
 		<td width="14%" class="TD_STYLE2">
-		<select name="firstkindid" class="SELECT_STYLE1" id="firstKind" onchange="querysecondByid()">
+		<select name="firstKindId" class="SELECT_STYLE1" id="firstKind" onchange="querysecondByid()">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${flist}" var="f" >
-			<option id="first_${f.firstkindid}" value="${f.firstkindid}">${f.firstkindname}</option>
+			<option id="first_${f.firstKindId}" value="${f.firstKindId}">${f.firstKindName}</option>
 			</c:forEach>
 		</select> 
 		</td>
 		<td width="11%" class="TD_STYLE1">II级机构</td>
 		<td width="14%" class="TD_STYLE2">
-		<select name="secondkindid" class="SELECT_STYLE1" id="secondKind" onchange="queryThirdyByid()">
+		<select name="secondKindId" class="SELECT_STYLE1" id="secondKind" onchange="queryThirdyByid()">
 			<option value="0">请选择</option>
 		</select> 
 		</td>
 		<td width="11%" class="TD_STYLE1">III级机构</td>
 		<td class="TD_STYLE2" colspan="2">
-		<select	name="thirdkindid" class="SELECT_STYLE1" id="thirdKind" onchange="getthirdKindid()">
+		<select	name="thirdKindId" class="SELECT_STYLE1" id="thirdKind" onchange="getthirdKindid()">
 			<option value="0">--请选择--</option>
 		</select> 
 		</td>
@@ -334,161 +341,161 @@
 	<tr>
 		<td class="TD_STYLE1">职位分类</td>
 		<td class="TD_STYLE2">
-		<select name="humanmajorkindid" class="SELECT_STYLE1" id="majorKind" onchange="ByIdQueryMajor()">
+		<select name="humanMajorKindId" class="SELECT_STYLE1" id="majorKind" onchange="ByIdQueryMajor()">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${zwlist}" var="r">
-				<option id="kind_${r.majorkindid}" value="${r.majorkindid}">${r.majorkindname}</option>
+				<option id="kind_${r.majorKindId}" value="${r.majorKindId}">${r.majorKindName}</option>
 			</c:forEach>
 		</select> </td>
 		<td class="TD_STYLE1">职位名称</td>
-		<td class="TD_STYLE2"><select name="humanmajorid"
+		<td class="TD_STYLE2"><select name="humanMajorId"
 			class="SELECT_STYLE1" id="majorname" onchange="getMajorid()">
 			<option value="0">--请选择--</option>
 			
 		</select> </td>
 		<td class="TD_STYLE1">职称</td>
 		<td colspan="2" class="TD_STYLE2"><select
-			name="humanprodesignation" class="SELECT_STYLE1">
+			name="humanProDesignation" class="SELECT_STYLE1">
 			<option value="0">--请选择--</option>
-			<c:forEach items="${clist}" var="c">
-			<option>${c.attributename}</option>
+			<c:forEach items="${zclist}" var="zc">
+			<option>${zc}</option>
 			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">姓名</td>
 		<td class="TD_STYLE2"><input type="text" id="humanName"
-			name="humanname" class="INPUT_STYLE2" /></td>
+			name="humanName" class="INPUT_STYLE2" /></td>
 		<td class="TD_STYLE1">身份证</td>
 		<td class="TD_STYLE2">
 		<input type="text"
-		 name="humanidcard" id="humanidcardid" class="INPUT_STYLE2" onkeyup="checksfz()">
+		 name="humanIdCard" id="humanidcardid" class="INPUT_STYLE2" onkeyup="checksfz()">
 		</td>
 		<td class="TD_STYLE1">EMAIL</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"
-			name="humanemail" id="humanEmail" class="INPUT_STYLE2">
+			name="humanEmail" id="humanEmail" class="INPUT_STYLE2">
 		</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">电话</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humantelephone" id="humanTelephone"
+			name="humanTelephone" id="humanTelephone"
 			class="INPUT_STYLE2"></td>
 		<td class="TD_STYLE1">QQ</td>
-		<td class="TD_STYLE2"><input type="text" name="humanqq"
+		<td class="TD_STYLE2"><input type="text" name="humanQq"
 			id="humanQq" class="INPUT_STYLE2"></td>
 		<td class="TD_STYLE1">手机</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"
-			name="humanmobilephone" id="humanMobilephone"
+			name="humanMobilephone" id="humanMobilephone"
 			class="INPUT_STYLE2"></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">住址</td>
 		<td colspan="3" class="TD_STYLE2"><input type="text"
-			name="humanaddress" class="INPUT_STYLE2" id="humanaddress"></td>
+			name="humanAddress" class="INPUT_STYLE2" id="humanaddress"></td>
 		<td class="TD_STYLE1">邮编</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"
-			name="humanpostcode" class="INPUT_STYLE2" id="humanpostcodeid"></td>
+			name="humanPostcode" class="INPUT_STYLE2" id="humanpostcodeid"></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">国籍</td>
-		<td class="TD_STYLE2"><select name="humannationality"
+		<td class="TD_STYLE2"><select name="humanNationality"
 			class="SELECT_STYLE1" id="humannationality">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${glist}" var="g">
-			<option>${g.attributename}</option>
+			<option>${g}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">出生地</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanbirthplace" class="INPUT_STYLE2" id="humanbirthplace"></td>
+			name="humanBirthplace" class="INPUT_STYLE2" id="humanbirthplace"></td>
 		<td class="TD_STYLE1">生日</td>
 		<td width="13%" class="TD_STYLE2">
-		<input type="text" name="humanbirthday" 
+		<input type="text" name="humanBirthday" 
 			class="INPUT_STYLE2" id="birthday" readonly="readonly"></td>
 		<td width="11%" class="TD_STYLE1">民族</td>
 		<td class="TD_STYLE2" width="14%"><select
-			name="humanrace" class="SELECT_STYLE1" id="humanrace">
+			name="humanRace" class="SELECT_STYLE1" id="humanrace">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${mlist}" var="m1">
-			<option>${m1.attributename}</option>
+			<option>${m1}</option>
 			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">宗教信仰</td>
-		<td class="TD_STYLE2"><select name="humanreligion"
+		<td class="TD_STYLE2"><select name="humanReligion"
 			class="SELECT_STYLE1" id="humanreligion">
 			<option value="0">--请选择--</option>
 		       <c:forEach items="${zlist}" var="z1">
-			<option>${z1.attributename}</option>
+			<option>${z1}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">政治面貌</td>
-		<td class="TD_STYLE2"><select name="humanparty"
+		<td class="TD_STYLE2"><select name="humanParty"
 			class="SELECT_STYLE1" id="humanparty">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${zzlist}" var="z">
-			<option>${z.attributename}</option>
+			<option>${z}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">性别</td>
 		<td class="TD_STYLE2">
-		 <input type="text" name="humansex" class="INPUT_STYLE2" id="humansex">
+		 <input type="text" name="humanSex" class="INPUT_STYLE2" id="humansex">
 		</td>
 		
 		<td class="TD_STYLE1">社会保障号码</td>
 		<td class="TD_STYLE2">
-		<input type="text" name="humansocietysecurityid" class="INPUT_STYLE2" id="humansocietysecurityid">
+		<input type="text" name="humanSocietySecurityId" class="INPUT_STYLE2" id="humansocietysecurityid">
 		</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">年龄</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanage" id="humanage" class="INPUT_STYLE2" readonly="readonly">
+			name="humanAge" id="humanage" class="INPUT_STYLE2" readonly="readonly">
 		</td>
 		<td class="TD_STYLE1">学历</td>
 		<td class="TD_STYLE2"><select
-			name="humaneducateddegree" class="SELECT_STYLE1" id="humaneducateddegree">
+			name="humanEducatedDegree" class="SELECT_STYLE1" id="humaneducateddegree">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${xlist}" var="x">
-			<option >${x.attributename}</option>
+			<option >${x}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">教育年限</td>
-		<td class="TD_STYLE2"><select name="humaneducatedyears"
+		<td class="TD_STYLE2"><select name="humanEducatedYears"
 			class="SELECT_STYLE1" id="humaneducatedyears">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${jlist}" var="j">
-			<option >${j.attributename}</option>
+			<option >${j}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">学历专业</td>
-		<td class="TD_STYLE2"><select name="humaneducatedmajor"
+		<td class="TD_STYLE2"><select name="humanEducatedMajor"
 			class="SELECT_STYLE1" id="humaneducatedmajor">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${xlzylist}" var="x1">
-			<option>${x1.attributename}</option>
+			<option>${x1}</option>
 			</c:forEach>
 		</select></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">薪酬标准</td>
 		<td class="TD_STYLE2">
-		<select name="salarystandardid" id="salarystandardid" class="SELECT_STYLE1" onchange="getsalaryname()" id="salarystandard">
+		<select name="salaryStandardId" id="salarystandardid" class="SELECT_STYLE1" onchange="getsalaryname()" id="salarystandard">
 		<option value="0">--请选择--</option>
-			<c:forEach items="${slist}" var="s">
-			<option id="salary_${s.sstid}" value="${s.sstid}">${s.sname}</option>
+			<c:forEach items="${xclist}" var="s">
+			<option id="salary_${s.ssdId}" value="${s.ssdId}">${s.standardName}</option>
 			</c:forEach>
 		</select>
 		
 		</td>
 		<td class="TD_STYLE1">开户银行</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanbank" id="humanbank" class="INPUT_STYLE2"></td>
+			name="humanBank" id="humanbank" class="INPUT_STYLE2"></td>
 		<td class="TD_STYLE1">银行账户</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanaccount" id="humanaccount" class="INPUT_STYLE2"></td>
+			name="humanAccount" id="humanaccount" class="INPUT_STYLE2"></td>
 		<td class="TD_STYLE1">登记人</td>
 		<td class="TD_STYLE2"><input type="text"
 			name="register" value="${userlogin.user_true_name}" readonly="readonly"
@@ -497,22 +504,22 @@
 	<tr>
 		<td class="TD_STYLE1">建档时间</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="registtime" readonly="readonly"
+			name="registTime" readonly="readonly"
 			class="INPUT_STYLE2" id="create_time"></td>
 		<td class="TD_STYLE1">特长</td>
-		<td class="TD_STYLE2"><select name="humanspeciality"
+		<td class="TD_STYLE2"><select name="humanSpeciality"
 			class="SELECT_STYLE1" id="humanspeciality">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${tlist}" var="t">
-			<option >${t.attributename}</option>
+			<option >${t}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">爱好</td>
-		<td class="TD_STYLE2"><select name="humanhobby"
+		<td class="TD_STYLE2"><select name="humanHobby"
 			class="SELECT_STYLE1" id="humanhobby">
 			<option value="0">--请选择--</option>
 			<c:forEach items="${alist}" var="a">
-			<option>${a.attributename}</option>
+			<option>${a}</option>
 			</c:forEach>
 		</select></td>
 		<td class="TD_STYLE1">&nbsp;</td>
@@ -521,13 +528,13 @@
 	<tr>
 		<td class="TD_STYLE1">个人履历</td>
 		<td colspan="7" class="TD_STYLE2"><textarea
-			name="humanhistroyrecords" rows="4" class="TEXTAREA_STYLE1"></textarea>
+			name="humanHistroyRecords" rows="4" class="TEXTAREA_STYLE1"></textarea>
 		</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">家庭关系信息</td>
 		<td colspan="7" class="TD_STYLE2"><textarea
-			name="humanfamilymembership" rows="4"
+			name="humanFamilyMembership" rows="4"
 			class="TEXTAREA_STYLE1"></textarea></td>
 	</tr>
 	<tr>

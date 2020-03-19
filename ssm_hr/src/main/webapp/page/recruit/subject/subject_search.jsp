@@ -7,36 +7,36 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-resume.jsp' starting page</title>
      	<link rel="stylesheet"
-			href="/ssm_hr/page/css/table.css" type="text/css">
+			href="${pageContext.request.contextPath}/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="/ssm_hr/page/css/cwcalendar.css"
+			href="${pageContext.request.contextPath}/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/comm/comm.js">
+			src="${pageContext.request.contextPath}/javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/comm/list.js">
+			src="${pageContext.request.contextPath}/javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/calendar-ch.js">
+			src="${pageContext.request.contextPath}/javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
+			src="${pageContext.request.contextPath}/javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/locate.js">
+			src="${pageContext.request.contextPath}/javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/select.js">
+			src="${pageContext.request.contextPath}/javascript/select.js">
 	
 </script>
 	<script type="text/javascript"
-			src="/ssm_hr/page/javascript/comm/time.js">
+			src="${pageContext.request.contextPath}/javascript/comm/time.js">
 			</script>
 <script type="text/javascript">
 function search() {
@@ -45,23 +45,22 @@ function search() {
 	}
 
 function queryMajor(){
-	var mid = $("#humanMajorKind").val();
-	var humanmajorkindname = $("#humanMajorKind"+mid).html();
-	$("#humanMajorKindId").val(humanmajorkindname);
-	var majorSelect = $("#humanMajorId");
+	var mid = $("#firstKindId").val();
+	var humanmajorkindname = $("#firstKind"+mid).html();
+	$("#firstKindName").val(humanmajorkindname);
+	var majorSelect = $("#secondKindId");
 	majorSelect.empty();
 	majorSelect.append("<option value=''>--请选择--</option>");
 	if(mid != 0){
 		$.ajax({
-			url:'/ssm_hr/position/ByIdQueryMajor.do?mid='+mid,
+			url:'selectConfigQuestionSecondKindinAjax.do?mid='+mid,
 			type:'get',
 			success:function(data){
-				var obj=JSON.parse(data);
-	 			for(var i=0;i<obj.length;i++){
-					var eachMajor = obj[i];
-					majorSelect.append("<option>"+eachMajor.majorName+"</option>");
+	 			for(var i=0;i<data.length;i++){
+					var eachMajor = data[i];
+					majorSelect.append("<option value='"+eachMajor.secondKindId+"'>"+eachMajor.secondKindName+"</option>");
 				}
-	 		}
+	 			}
 		});
 	}
 	}
@@ -71,13 +70,13 @@ function queryMajor(){
 	</head>
 
 	<body>
-		<form name="interviewForm" method="post" action="/ssm_hr/interview/queryInterview.do" >
-			 <input type="hidden" name="checkstatus" value="1"/>
-			 <input type="hidden"  id="humanMajorKindId" name="humanmajorkindname" />
+		<form name="interviewForm" method="post" action="subjectRegisterSearchStart.do" >
+			 <input type="hidden" name="engageResume.interviewStatus" value="false"/>
+			 <input type="hidden"  id="firstKindName" name="firstKindName" />
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--面试管理--面试结果登记 </font>
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题查询 </font>
 					</td>
 				</tr>
 				<tr>
@@ -94,18 +93,18 @@ function queryMajor(){
 			 
 				<tr>
 					<td class="TD_STYLE1" width="30%">
-						请选择职位分类
+						请选择试题分类
 					</td>
 					<td  class="TD_STYLE2" width="30%">
 					 
-					<select name="humanmajorkindid" onchange="queryMajor()" multiple="multiple" id="humanMajorKind" 
+					<select name="firstKindId" onchange="queryMajor()" multiple="multiple" id="firstKindId" 
 					style="width: 290;height: 100" class="SELECT_STYLE2"> 
 						<option value="0">--请选择--</option>
-						<c:forEach items="${mklist}" var="m">
-							<option  value="${m.majorKindId }" id="humanMajorKind${m.majorKindId }">${m.majorKindName }</option>
+						<c:forEach items="${qlist}" var="ql">
+							<option  value="${ql.firstKindId }" id="firstKind${ql.firstKindId }">${ql.firstKindName }</option>
 						</c:forEach>
 					 </select>
-						<select name="humanmajorname" multiple="multiple" id="humanMajorId" 
+						<select name="secondKindId" multiple="multiple" id="secondKindId" 
 						 style="width: 290;height: 100" size="5" class="SELECT_STYLE2">
 							<option>--请选择--</option>
 						</select>
@@ -117,7 +116,7 @@ function queryMajor(){
 						请输入关键字
 					</td>
 					<td width="84%" >
-						<input type="text" name="primarkey" value=""
+						<input type="text" name="primarKey" value=""
 							class="INPUT_STYLE2" />
 					</td>
 				</tr>
@@ -129,10 +128,10 @@ function queryMajor(){
 					<td width="84%" class="TD_STYLE2" >
 					<input type="hidden" name="utilBean.datePropertyName" value="registTime"/>
 					 
-					<input type="text" name="startdate"   onclick="aa('startdate')" 
+					<input type="text" name="startDate"   onclick="aa('startdate')" 
 							style="width: 14%" class="INPUT_STYLE2">
 						至
-						<input type="text" name="enddate" 
+						<input type="text" name="endDate" 
 							style="width: 14%" class="INPUT_STYLE2" onclick="aa('enddate')">
 						（YYYY-MM-DD）
 					</td>

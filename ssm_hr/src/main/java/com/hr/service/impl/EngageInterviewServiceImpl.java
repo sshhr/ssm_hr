@@ -26,6 +26,11 @@ public class EngageInterviewServiceImpl implements EngageInterviewService {
 		// TODO Auto-generated method stub
 		return EngageInterviewMapper.findEngageInterviewByIds(list);
 	}
+	
+	@Override
+	public List<EngageInterview> findEngageInterviewByInterviewStatus(String interviewStatus) {
+		return EngageInterviewMapper.findEngageInterviewByInterviewStatus(interviewStatus);
+	}
 
 	@Override
 	public void saveEngageInterview(EngageInterview s) {
@@ -41,6 +46,12 @@ public class EngageInterviewServiceImpl implements EngageInterviewService {
 	public void removeEngageInterviewById(String id) {
 		EngageInterviewMapper.deleteEngageInterviewById(id);
 	}
+
+	@Override
+	public EngageInterview findEngageInterviewByResumeId(String resumeId) {
+		return EngageInterviewMapper.findEngageInterviewByResumeId(resumeId);
+	}
+
 	
 	
 

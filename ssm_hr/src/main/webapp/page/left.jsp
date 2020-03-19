@@ -694,7 +694,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/resume/valid-resume.jsp" target="mainFrame">有效简历查询</a>
+													<a href="/ssm_hr/resume/validResume.do" target="mainFrame">有效简历查询</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -722,7 +722,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/interview/interview-resume.jsp" target="mainFrame">面试结果登记</a>
+													<a href="/ssm_hr/interview/interviewResumeQuery.do" target="mainFrame">面试结果登记</a>
 												</td>
 											</tr>
 											<tr>
@@ -730,7 +730,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/interview/sift-list.jsp" target="mainFrame">面试筛选</a>
+													<a href="/ssm_hr/interview/siftInterview.do" target="mainFrame">面试筛选</a>
 												</td>
 											</tr>
 										</table> </span>

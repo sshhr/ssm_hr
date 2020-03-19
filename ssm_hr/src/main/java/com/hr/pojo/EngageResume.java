@@ -103,13 +103,13 @@ public class EngageResume implements java.io.Serializable {
     /** 期望薪资 */
     private Double demandSalaryStandard;
 
-    /** 经验 */
+    /** 个人履历 */
     private String humanHistoryRecords;
 
-    /** 个人履历 */
+    /** 备注 */
     private String remark;
 
-    /** 推荐人 */
+    /** 推荐意见 */
     private String recomandation;
 
     /** 照片 */

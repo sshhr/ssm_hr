@@ -1,55 +1,47 @@
-                             <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+ <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>My JSP 'interview-list.jsp' starting page</title>
+    <title>My JSP 'resume-list.jsp' starting page</title>
+	 <link rel="stylesheet"
+			href="${pageContext.request.contextPath}/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="/ssm_hr/page/css/table.css" type="text/css">
-		<link rel="stylesheet"
-			href="/ssm_hr/page/css/cwcalendar.css"
-			type="text/css">
+			href="${pageContext.request.contextPath}/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/comm/comm.js">
-	
-</script>
+			src="${pageContext.request.contextPath}/javascript/comm/comm.js">
+		</script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/comm/list.js">
-	
-</script>
+			src="${pageContext.request.contextPath}/javascript/comm/list.js">
+		</script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/calendar-ch.js">
-	
-</script>
+			src="${pageContext.request.contextPath}/javascript/calendar-ch.js">
+		</script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
-	
-</script>
+			src="${pageContext.request.contextPath}/javascript/jquery-1.7.2.js">
+		</script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/locate.js">
-	
-</script>
+			src="${pageContext.request.contextPath}/javascript/locate.js">
+		</script>
 		<script type="text/javascript"
-			src="/ssm_hr/page/javascript/select.js">
-	
-</script>
-     </head>
-
+			src="${pageContext.request.contextPath}/javascript/select.js">
+		</script>
+	  </head>
 	<body>
-		<form method="post" action="/HR_Fist/recruit/recruitAction!findInterviewByUtilBean?str=list" name="fm">
-				<input type="hidden" name="utilBean.currPage" id="page"/>
+		<form method="post" name="fm" action="/HR_Fist/recruit/recruitAction!toResumeList?a=list">
+		<input type="hidden" name="utilBean.currPage" id="page"/>
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--面试管理--面试结果登记--有效简历列表 
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题查询-试题查询结果
 						</font>
 					</td>
 				</tr>
 			  <tr>
 					<td align="right"> 
-						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back();">
+						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back()">
 					</td>
 				</tr>
 			</table> 
@@ -57,61 +49,54 @@
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
+					<td width="40%" class="TD_STYLE1" >
+						题干
+					</td>
 					<td width="10%" class="TD_STYLE1">
-						档案编号
+						试题I级分类
 					</td>
-					<td width="15%" class="TD_STYLE1">
-						姓名
+					<td width="10%" class="TD_STYLE1">
+						试题II级分类
 					</td>
-					<td width="15%" class="TD_STYLE1">
-						性别
+					<td width="5%" class="TD_STYLE1">
+						登记人
 					</td>
 					<td width="20%" class="TD_STYLE1">
-						职位分类
-					</td>
-					<td width="15%" class="TD_STYLE1">
-						职位名称
+						登记日期
 					</td>
 					<td width="10%" class="TD_STYLE1">
-						电话号码
+						出处
 					</td>
-					<td width="10%" class="TD_STYLE1">
-						面试状态
-					</td>
-					<td width="15%" class="TD_STYLE1">
-						登记
+					<td width="5%" class="TD_STYLE1">
+						正确答案
 					</td>
 				</tr>
-				<c:forEach items="${resultList}" var="re">
+				<c:forEach items="${slist}" var="sl">
 					<tr>
-						<td class="TD_STYLE2">
-								${re.resId}
+						<td class="TD_STYLE2" style="color:blue">
+							${sl.content}
 						</td>
 						<td class="TD_STYLE2">
-							${re.humanName}
+							${sl.firstKindName}
 						</td>
 						<td class="TD_STYLE2">
-							${re.humanSex}
+							${sl.secondKindName}
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanMajorKindName}
+						${sl.register}
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanMajorName}
+						${sl.registTime}
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanMobilephone}
+						${sl.derivation}
 						</td>
 						<td class="TD_STYLE2">
-						<c:if test="${re.interviewStatus == 1}">待面试</c:if>
-						<c:if test="${re.interviewStatus == 2}">已面试</c:if>
-						</td>
-						<td class="TD_STYLE2">
-							<c:if test="${re.interviewStatus == 1}"><a href="/ssm_hr/interview/byIdQueryInterview.do?resId=${re.resId}">登记</a></c:if>
-							<c:if test="${re.interviewStatus == 2}">不可登记</c:if>
+						${sl.correctKey}
 						</td>
 					</tr>
 				</c:forEach>
+				
 			</table>
 		</form>
 		<script type="text/javascript">

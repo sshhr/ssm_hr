@@ -76,11 +76,11 @@
 	</head>
 
 	<body>
-		<form name="humanfileForm" method="post" action="updateResume">
+		<form name="humanfileForm" method="post" action="/ssm_hr/resume/updateResume.do">
 			<input type="hidden" id="majorKindName" name="humanMajorKindId" value="${re.humanMajorKindId }">
 			<input type="hidden" id="majorName" name="humanMajorId" value="${re.humanMajorId }">
 			<input type="hidden" name ="resId" value="${re.resId }"/>
-			<input type="hidden" name="viewnotice" value="0">
+			<input type="hidden" name="interviewStatus" value="${re.interviewStatus }">
 			<table width="100%">
 				<tr>
 					<td>

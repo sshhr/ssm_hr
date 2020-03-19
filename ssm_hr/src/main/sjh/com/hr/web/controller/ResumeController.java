@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.hr.pojo.ConfigMajor;
 import com.hr.pojo.ConfigMajorKind;
 import com.hr.pojo.ConfigPrimaryKey;
+import com.hr.pojo.EngageInterview;
 import com.hr.pojo.EngageMajorRelease;
 import com.hr.pojo.EngageResume;
 import com.hr.service.ConfigMajorKindService;
@@ -35,7 +36,10 @@ import com.hr.service.ConfigPrimaryKeyService;
 import com.hr.service.ConfigPublicCharServiceSjh;
 import com.hr.service.EngageMajorReleaseService;
 import com.hr.service.EngageResumeService;
+import com.hr.service.ResumeService;
 import com.hr.util.PrimaryKeyToDBfieldUtil;
+import com.hr.util.ProjectToMapUtil;
+import com.hr.util.ResumeState;
 
 import net.sf.json.JSONArray;
 
@@ -197,11 +201,58 @@ public class ResumeController {
 		return "";
 	}
 	
+	@Autowired
+	ResumeService resumeService;
 	//简历的筛选 后推荐
 	@RequestMapping("updateResume.do")
-	public String updateResume(Model model){
-		
+	public String updateResume(@ModelAttribute EngageResume engageResume,@ModelAttribute EngageInterview engageInterview,Model model){
+		if(engageResume!=null&&!"".equals(engageResume)){
+			engageResume.setCheckStatus(ResumeState.RECOMMEND_INTERVIEW);
+			resumeService.updateResumeAndSaveEngageInterview(engageResume, engageInterview);
+			return "forward:/resume/validResume.do";
+		}
 		return "";
+	}
+	
+	//有效简历查询
+	@RequestMapping("validResume.do")
+	public String validResume(Model model){
+		List<ConfigMajorKind> list = majorKindService.findConfigMajorKindAll();
+		model.addAttribute("mklist", list);
+		return "forward:/page/recruit/resume/valid-resume.jsp";
+	}
+	
+	//简历的筛选
+	@RequestMapping("validQuery.do")
+	public String validQuery(String humanmajorkindname,String checkstatus,String humanmajorname,String primarkey,String startdate,String enddate,Model model){
+		Map<String,Object> map = new HashMap<>();
+		if(humanmajorkindname!=null&&!"".equals(humanmajorkindname)){
+			map.put("humanmajorkindname", humanmajorkindname);
+		}
+		if(checkstatus!=null&&!"".equals(checkstatus)){
+			map.put("checkstatus", checkstatus);
+		}
+		if(humanmajorname!=null&&!"".equals(humanmajorname)){
+			map.put("humanmajorname", humanmajorname);
+		}
+		if(primarkey!=null&&!"".equals(primarkey)){
+			map.put("primarkey", primarkey);
+			List<String> list = new ArrayList<>();
+			List<ConfigPrimaryKey> ConfigPrimaryKeys = configPrimaryKeyService.findConfigPrimaryKeyByPrimaryKeyTable("EngageResume");
+			for (ConfigPrimaryKey configPrimaryKey : ConfigPrimaryKeys) {
+				list.add(PrimaryKeyToDBfieldUtil.ToDBfield(configPrimaryKey.getPrimaryKey()));
+			}
+			map.put("primarkeys", list);
+		}
+		if(startdate!=null&&!"".equals(startdate)){
+			map.put("startdate", startdate);
+		}
+		if(enddate!=null&&!"".equals(enddate)){
+			map.put("enddate", enddate);
+		}
+		List<EngageResume> engageResumelist = engageResumeService.findchooseQuery(map);
+		model.addAttribute("resultList", engageResumelist);
+		return "forward:/page/recruit/resume/valid-list.jsp";
 	}
 	
 }

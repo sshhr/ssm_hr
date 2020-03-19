@@ -6,36 +6,36 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-register.jsp' starting page</title>
 	 	<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css"
+			href="/ssm_hr/page/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 	
 </script>
 			<script type="text/javascript"
-			src="javascript/comm/time.js">
+			src="/ssm_hr/page/javascript/comm/time.js">
 			</script>
 
  		 
@@ -50,7 +50,7 @@
 	</head>
 
 	<body >
-		<form id="recruitAction!toList" name="interviewForm" action="addInterviewOne" method="post">
+		<form id="recruitAction!toList" name="interviewForm" action="/ssm_hr/interview/addInterviewOne.do" method="post">
 		<input type="hidden" name="operate" value="doAdopt">
 	<!--	<input type="hidden" name="engageInterview.checkStatus" value=""/>
 		<input type="hidden" name="engageInterview.checkComment" value=""/>
@@ -58,10 +58,10 @@
 		  <input type="hidden" name="engageInterview.einId" value=""/>
 		<input type="hidden" name="engageInterview.result" value="完成"/>
 		<input type="hidden" name="engageInterview.resumeId" value="542"/>
-	    <input type="hidden" name="resumeid.resid" value="${re.resid }"/>
-		<input type="hidden" name="interviewstatus" value="${re.interviewstatus }"/>
-		<input type="hidden" id="majorKindName" name="humanmajorkindid" value="${re.humanmajorkindid }">
-			<input type="hidden" id="majorName" name="humanmajorid" value="${re.humanmajorid }">
+	    <input type="hidden" name="resId" value="${re.resId }"/>
+		<input type="hidden" name="interviewStatus" value="${re.interviewStatus }"/>
+		<input type="hidden" id="majorKindName" name="humanMajorKindId" value="${re.humanMajorKindId }">
+			<input type="hidden" id="majorName" name="humanMajorId" value="${re.humanMajorId }">
 			<table width="100%">
 				<tr>
 					<td>
@@ -87,19 +87,19 @@
 						职位分类
 					</td>
 					<td width="10%" class="TD_STYLE2">
-					<input type="text" name="humanmajorkindname" value="${re.humanmajorkindname }" readonly="readonly" class="INPUT_STYLE2">
+					<input type="text" name="humanMajorKindName" value="${re.humanMajorKindName }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						职位名称
 					</td>
 					<td width="15%" class="TD_STYLE2">
-						<input type="text" name="humanmajorname" value="${re.humanmajorname }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanMajorName" value="${re.humanMajorName }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						招聘类型
 					</td>
 					<td width="20%" class="TD_STYLE2" colspan="2">
-						<input type="text" name="engagetype" value="${re.engagetype }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="engageType" value="${re.engageType }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					
 					<td width="10%" rowspan="6" align="center">
@@ -113,20 +113,20 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanname" value="${re.humanname }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanName" value="${re.humanName }" readonly="readonly" class="INPUT_STYLE2">
 						
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humansex" value="${re.humansex }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanSex" value="${re.humanSex }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanemail" value="${re.humanemail }"  readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanEmail" value="${re.humanEmail }"  readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 
@@ -135,19 +135,19 @@
 						电话号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humantelephone" value="${re.humantelephone }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanTelephone" value="${re.humanTelephone }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						家庭电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanhomephone" value="${re.humanhomephone }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanHomephone" value="${re.humanHomephone }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanmobilephone" value="${re.humanmobilephone }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanMobilephone" value="${re.humanMobilephone }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 
@@ -156,13 +156,13 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="humanaddress" value="${re.humanaddress }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanAddress" value="${re.humanAddress }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanpostcode" value="${re.humanpostcode }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanPostcode" value="${re.humanPostcode }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 
@@ -171,19 +171,19 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humannationality" value="${re.humannationality }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanNationality" value="${re.humanNationality }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanbirthplace" value="${re.humanbirthplace }"  readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanBirthplace" value="${re.humanBirthplace }"  readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td class="TD_STYLE2" colspan="2"> 
-						<input type="text" name="humanbirthday" value="${re.humanbirthday }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanBirthday" value="${re.humanBirthday }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				
@@ -192,19 +192,19 @@
 						民族
 					</td>
 					<td class="TD_STYLE2" width="14%">
-						<input type="text" name="humanrace" value="${re.humanrace }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanRace" value="${re.humanRace }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanreligion" value="${re.humanreligion }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanReligion" value="${re.humanReligion }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<input type="text" name="humanparty" value="${re.humanparty }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanParty" value="${re.humanParty }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -213,25 +213,25 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanidcard" value="${re.humanidcard }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanIdcard" value="${re.humanIdcard }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanage" value="${re.humanage }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanAge" value="${re.humanAge }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						毕业学校
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humancollege" value="${re.humancollege }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanCollege" value="${re.humanCollege }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1" width="10%">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humaneducateddegree" value="${re.humaneducateddegree }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanEducatedDegree" value="${re.humanEducatedDegree }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -239,25 +239,25 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humaneducatedyears"  value="${re.humaneducatedyears }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanEducatedYears"  value="${re.humanEducatedYears }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humaneducatedmajor" value="${re.humaneducatedmajor }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanEducatedMajor" value="${re.humanEducatedMajor }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						薪酬要求
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="demandsalarystandard" value="${re.demandsalarystandard }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="demandSalaryStandard" value="${re.demandSalaryStandard }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						注册时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="registtime" value="${re.registtime }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="registTime" value="${re.registTime }" readonly="readonly" class="INPUT_STYLE2">
 					
 					</td>
 				</tr>
@@ -266,13 +266,13 @@
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanspecility" value="${re.humanspecility }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanSpecility" value="${re.humanSpecility }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanhobby" value="${re.humanhobby }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanHobby" value="${re.humanHobby }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1"><span style="font-size: 10.5pt; font-family: 宋体;"></span> 
 						推荐人
@@ -284,7 +284,7 @@
 						推荐时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="checktime" value="${re.checktime }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="checkTime" value="${re.checkTime }" readonly="readonly" class="INPUT_STYLE2">
 						 
 					</td>
 				</tr>
@@ -293,8 +293,8 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanhistoryrecords" rows="4"  
-						class="TEXTAREA_STYLE1" readonly="readonly"> ${re.humanhistoryrecords }
+						<textarea name="humanHistoryRecords" rows="4"  
+						class="TEXTAREA_STYLE1" readonly="readonly"> ${re.humanHistoryRecords }
 						</textarea>
 					</td>
 				</tr>
@@ -323,14 +323,14 @@
 						面试次数
 					</td>
 					<td class="TD_STYLE2">
-					<input type="hidden" value="1" name="interviewamount"/>
-						<input type="text"   value="第1次面试" class="INPUT_STYLE2" readonly="readonly"/>
+					<input type="hidden" value="${mscs}" name="interviewAmount"/>
+						<input type="text"   value="第${mscs}次面试" class="INPUT_STYLE2" readonly="readonly"/>
 					</td>
 					<td class="TD_STYLE1">
 						形象评价
 					</td>
 					<td class="TD_STYLE2">
-						<select name="imagedegree" class="SELECT_STYLE1">
+						<select name="imageDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -340,7 +340,7 @@
 						口才评价
 					</td>
 					<td class="TD_STYLE2">
-						<select name="nativelanguagedegree" class="SELECT_STYLE1">
+						<select name="nativeLanguageDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -350,7 +350,7 @@
 						外语口语能力
 					</td>
 					<td class="TD_STYLE1">
-						<select name="foreignlanguagedegree" class="SELECT_STYLE1">
+						<select name="foreignLanguageDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -362,7 +362,7 @@
 						应变能力
 					</td>
 					<td class="TD_STYLE2">
-						<select name="responsespeeddegree" class="SELECT_STYLE1">
+						<select name="responseSpeedDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -372,7 +372,7 @@
 						EQ
 					</td>
 					<td class="TD_STYLE2">
-						<select name="EQdegree" class="SELECT_STYLE1">
+						<select name="eqDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -382,7 +382,7 @@
 						IQ
 					</td>
 					<td class="TD_STYLE2">
-						<select name="IQdegree" class="SELECT_STYLE1">
+						<select name="iqDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -392,7 +392,7 @@
 						综合素质
 					</td>
 					<td class="TD_STYLE1">
-						<select name="multiqualitydegree" class="SELECT_STYLE1">
+						<select name="multiQualityDegree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -410,7 +410,7 @@
 						面试时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="registetime"  onclick="aa('registetime')"
+						<input type="text" name="registeTime"  onclick="aa('registetime')"
 							  class="INPUT_STYLE2"  id="date" >
 					</td>
 					<td class="TD_STYLE1">
@@ -432,7 +432,7 @@
 					</td>
 					<td class="TD_STYLE2" colspan="7">
 						<textarea
-							name="interviewcomment" class="TEXTAREA_STYLE1"
+							name="interviewComment" class="TEXTAREA_STYLE1"
 							rows="4"></textarea>
 					</td>
 				</tr>

@@ -16,5 +16,7 @@ public interface HumanFileMapper {
 	public void insertHumanFile(HumanFile s);
 	public void updateHumanFile(Map map);
 	public void deleteHumanFileById(String hufId);
+	public HumanFile findHumanFileByHumanId(String humanid);
+	public List<HumanFile> findHumanFileByStatus(int humanFileStatus);
 	
 }

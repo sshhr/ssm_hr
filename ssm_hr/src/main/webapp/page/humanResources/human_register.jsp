@@ -158,16 +158,6 @@
 	 		return ;
 	 	}
 		document.fm.submit();
-		<%--$.post("",{},
-					function(data){
-						var obj=JSON.parse(data);
-						if (obj) {
-							alert("保存成功！")
-						}else {
-							alert("保存失败！")
-						}
-					}
-			);--%>
 	};
 
  		
@@ -306,7 +296,7 @@
 		<input  name="secondKindName" type="hidden" id="secondKindName">
 		<input  name="thirdKindName" type="hidden" id="thirdKindName">
 		<input  name="humanMajorKindName" type="hidden" id="majorKindName">
-		<input  name="humanMajorName" type="hidden" id="humanmajorName">
+		<input  name="hunmaMajorName" type="hidden" id="humanmajorName">
 		<input  name="salaryStandardName" type="hidden" id="salarystandardName">
 		<input  name="humanId" type="hidden" value="${time}">
 		
@@ -379,7 +369,7 @@
 		<td class="TD_STYLE1">身份证</td>
 		<td class="TD_STYLE2">
 		<input type="text"
-		 name="humanIdcard" id="humanidcardid" class="INPUT_STYLE2" onkeyup="checksfz()">
+		 name="humanIdCard" id="humanidcardid" class="INPUT_STYLE2" onkeyup="checksfz()">
 		</td>
 		<td class="TD_STYLE1">EMAIL</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"

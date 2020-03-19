@@ -294,7 +294,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="humanResources/check_list.jsp" target="mainFrame">人力资源档案登记复核</a>
+									<a href="/ssm_hr/humanresources/humanFileCheckList.do" target="mainFrame">人力资源档案登记复核</a>
 								</td>
 							</tr>
 							<tr>
@@ -302,7 +302,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="humanResources/query_locate.jsp" target="mainFrame">人力资源档案查询</a>
+									<a href="/ssm_hr/humanresources/queryHumanFile.do" target="mainFrame">人力资源档案查询</a>
 								</td>
 							</tr>
 							<tr>

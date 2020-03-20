@@ -25,4 +25,20 @@ public interface ResumeState {
 	 * 简历移除
 	 */
 	public static int RECOMMEND_REMOVE = 4;
+	/**
+	 * 申请录用
+	 */
+	public static int RECOMMEND_APPLY = 5;
+	/**
+	 * 释放简历
+	 */
+	public static int RECOMMEND_RELEASE = 5;
+	/**
+	 * 录用通过
+	 */
+	public static int RECOMMEND_PASS = 6;
+	/**
+	 * 录用不通过
+	 */
+	public static int RECOMMEND_NOPASS = 7;
 }

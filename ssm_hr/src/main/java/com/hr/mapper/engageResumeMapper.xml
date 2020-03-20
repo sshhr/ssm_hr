@@ -354,4 +354,12 @@
           	</where>
     </select>
     
+    
+    <!-- 通过checkStatus查询数据 -->
+    <select id="findEngageResumeByCheckStatus" resultMap="engageResumeMap" parameterType="String">
+        SELECT
+        <include refid="allColumns" />
+        FROM ENGAGE_RESUME WHERE check_status = #{checkStatus}
+    </select>
+    
 </mapper>

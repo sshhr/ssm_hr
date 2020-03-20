@@ -6,35 +6,34 @@
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   	  <link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css"
+			href="/ssm_hr/page/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 	
 </script> 
-	 
      </head>
 
 	<body>
@@ -80,29 +79,29 @@
 				<c:forEach items="${vlist}" var="v">
 					<tr class="TR_STYLE1">
 						<td class="TD_STYLE2">
-							${v.humanname }
+							${v.humanName }
 						</td>
 						<td class="TD_STYLE2">
-							${v.resumeid.humansex }
+							${v.humanSex }
 						</td>
 						<td class="TD_STYLE2">
-							${v.resumeid.humanage }
+							${v.humanAge }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humanmajorkindname }
+							${v.humanMajorKindName }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humanmajorname }
+							${v.humanMajorName }
 						</td>
 						<td class="TD_STYLE2">
-							${v.resumeid.humancollege }
+							${v.humanCollege }
 						</td>
 						<td class="TD_STYLE2">
-							${v.resumeid.humaneducatedmajor }
+							${v.humanEducatedMajor }
 						</td>
 						<td class="TD_STYLE2">
-							<c:if test="${v.resumeid.passcheckcomment == null or v.resumeid.passcheckcomment==''}"><a href="toEmployRegister?einid=${v.einid }">申请</a></c:if>
-							<c:if test="${v.resumeid.passcheckcomment != null and v.resumeid.passcheckcomment!=''}">已申请</c:if>
+							<c:if test="${v.passCheckcomment == null or v.passCheckcomment==''}"><a href="/ssm_hr/employ/toEmployRegister.do?einId=${v.einId }">申请</a></c:if>
+							<c:if test="${v.passCheckcomment != null and v.passCheckcomment!=''}">已申请</c:if>
 						</td>
 					</tr>
 				</c:forEach>

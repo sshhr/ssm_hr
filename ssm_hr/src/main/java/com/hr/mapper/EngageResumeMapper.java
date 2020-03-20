@@ -17,4 +17,5 @@ public interface EngageResumeMapper {
 	public void updateEngageResume(Map map);
 	public void deleteEngageResumeById(String resId);
 	public List<EngageResume> findchooseQuery(Map map);
+	public List<EngageResume> findEngageResumeByCheckStatus(String checkStatus);
 }

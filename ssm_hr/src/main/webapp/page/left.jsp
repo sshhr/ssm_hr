@@ -854,7 +854,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/employ/register_list.jsp" target="mainFrame">录用申请</a>
+													<a href="/ssm_hr/employ/registerList.do" target="mainFrame">录用申请</a>
 												</td>
 											</tr>
 											<tr>
@@ -862,7 +862,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/employ/check_list.jsp" target="mainFrame">录用审批</a>
+													<a href="/ssm_hr/employ/toCheckList.do" target="mainFrame">录用审批</a>
 												</td>
 											</tr>
 											<tr>
@@ -870,7 +870,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/employ/list.jsp" target="mainFrame">录用查询</a>
+													<a href="/ssm_hr/employ/toFindList.do" target="mainFrame">录用查询</a>
 												</td>
 											</tr>
 										</table> </span>

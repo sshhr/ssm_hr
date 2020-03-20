@@ -60,11 +60,23 @@ public class InterviewServiceImpl implements InterviewService {
 				engageResume.setCheckStatus(ResumeState.RECOMMEND_HIRING);
 				Map<String,String> map3 = ProjectToMapUtil.toMap(engageResume);
 				engageResumeMapper.updateEngageResume(map3);
+				engageInterview.setResumeId(engageResume.getResId());
+				engageInterview.setInterviewStatus(3);
+				EngageInterview interview1 = engageInterviewMapper.findEngageInterviewByResumeId(engageResume.getResId().toString());
+				engageInterview.setEinId(interview1.getEinId());
+				Map<String,String> map5 = ProjectToMapUtil.toMap(engageInterview);
+				engageInterviewMapper.updateEngageInterview(map5);
 				break;
 			case "删除简历":
 				engageResume.setCheckStatus(ResumeState.RECOMMEND_REMOVE);
 				Map<String,String> map4 = ProjectToMapUtil.toMap(engageResume);
 				engageResumeMapper.updateEngageResume(map4);
+				engageInterview.setResumeId(engageResume.getResId());
+				engageInterview.setInterviewStatus(4);
+				EngageInterview interview2 = engageInterviewMapper.findEngageInterviewByResumeId(engageResume.getResId().toString());
+				engageInterview.setEinId(interview2.getEinId());
+				Map<String,String> map6 = ProjectToMapUtil.toMap(engageInterview);
+				engageInterviewMapper.updateEngageInterview(map6);
 				break;
 		}
 		return true;

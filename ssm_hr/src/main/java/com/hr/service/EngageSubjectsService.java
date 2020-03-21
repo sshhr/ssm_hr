@@ -11,4 +11,5 @@ public interface EngageSubjectsService {
 	public void saveEngageSubjects(EngageSubjects s);
 	public void changeEngageSubjects(Map map);
 	public void removeEngageSubjectsById(String id);
+	public List<EngageSubjects> findchooseQuery(Map map);
 }

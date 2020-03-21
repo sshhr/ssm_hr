@@ -16,5 +16,5 @@ public interface ConfigQuestionSecondKindMapper {
 	public void insertConfigQuestionSecondKind(ConfigQuestionSecondKind s);
 	public void updateConfigQuestionSecondKind(Map map);
 	public void deleteConfigQuestionSecondKindById(String qskId);
-	
+	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindByFirstKindId(String firstKindId);
 }

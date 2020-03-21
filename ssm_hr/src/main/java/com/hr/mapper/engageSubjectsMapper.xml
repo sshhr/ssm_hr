@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-    Welcome to use the TableGo Tools.
-    
-    http://www.tablego.cn
-    
-    http://vipbooks.iteye.com
-    http://blog.csdn.net/vipbooks
-    http://www.cnblogs.com/vipbooks
-    
-    Author: bianj
-    Email: tablego@qq.com
-    Version: 6.0.0
--->
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- ENGAGE_SUBJECTS -->
@@ -66,13 +54,12 @@
     </select>
     
     <!-- 插入数据 -->
-    <insert id="insertEngageSubjects" parameterType="map">
+    <insert id="insertEngageSubjects" parameterType="EngageSubjects">
         INSERT INTO ENGAGE_SUBJECTS (
-            SUB_ID, FIRST_KIND_ID, FIRST_KIND_NAME, SECOND_KIND_ID, SECOND_KIND_NAME, REGISTER, REGIST_TIME, DERIVATION, 
+            FIRST_KIND_ID, FIRST_KIND_NAME, SECOND_KIND_ID, SECOND_KIND_NAME, REGISTER, REGIST_TIME, DERIVATION, 
             CONTENT, KEY_A, KEY_B, KEY_C, KEY_D, KEY_E, CORRECT_KEY, CHANGER, 
             CHANGE_TIME
         ) VALUES (
-            #{subId},
             #{firstKindId},
             #{firstKindName},
             #{secondKindId},
@@ -152,5 +139,40 @@
     <delete id="deleteEngageSubjectsById" parameterType="string">
         DELETE FROM ENGAGE_SUBJECTS WHERE SUB_ID = #{subId}
     </delete>
+    
+    <!-- 动态条件查询 -->
+    <select id="findchooseQuery" resultMap="engageSubjectsMap" parameterType="map">
+          	select <include refid="allColumns" />
+            FROM
+	        (select <include refid="allColumns" />
+	         FROM ENGAGE_SUBJECTS
+	        <where>
+	            <if test="firstKindName != null">
+	                and FIRST_KIND_NAME = #{firstKindName}
+	            </if>
+	            <if test="secondKindName != null">
+	                and SECOND_KIND_NAME = #{secondKindName}
+	            </if>
+	            <if test="startdate != null">
+	            	<![CDATA[
+	              	 and REGIST_TIME >= #{startdate}
+	              	]]>
+	            </if>
+	            <if test="enddate != null">
+	               <![CDATA[
+	              	 and REGIST_TIME <= #{enddate}
+	               ]]>
+	            </if>
+	        </where>) a
+	        <where>
+      		 	<if test="primarkey != null">
+		             <bind name="pattern" value="'%' + primarkey + '%'" />
+		             <foreach collection="primarkeys" open=" " item="item" separator=" " close=" ">
+			            or a.${item} like #{pattern}
+			          </foreach>
+          		</if>
+          	</where>
+    </select>
+    
     
 </mapper>

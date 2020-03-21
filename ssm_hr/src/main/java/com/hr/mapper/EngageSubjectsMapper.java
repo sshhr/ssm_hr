@@ -16,5 +16,5 @@ public interface EngageSubjectsMapper {
 	public void insertEngageSubjects(EngageSubjects s);
 	public void updateEngageSubjects(Map map);
 	public void deleteEngageSubjectsById(String subId);
-	
+	public List<EngageSubjects> findchooseQuery(Map map);
 }

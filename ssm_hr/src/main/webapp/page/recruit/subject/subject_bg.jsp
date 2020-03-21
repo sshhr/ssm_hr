@@ -5,7 +5,7 @@
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>My JSP 'subject-search.jsp' starting page</title>
+		<title>My JSP 'subject-bg.jsp' starting page</title>
 
 		 <link rel="stylesheet"
 			href="/ssm_hr/page/css/table.css" type="text/css">
@@ -65,12 +65,12 @@
 	</head>
 
 	<body>
-		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="/ssm_hr/subject/subjectSelectstart.do" method="post">
+		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="/ssm_hr/subject/subjectlstart.do" method="post">
 			<input type="hidden"  id="humanMajorKindId" name="firstKindName" />
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题查询</font>
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题变更查询</font>
 					</td>
 				</tr>
 				<tr>
@@ -125,10 +125,6 @@
 				</tr>
 			</table>
 		</form>
-
-
-
-
 	</body>
 	
 </html>

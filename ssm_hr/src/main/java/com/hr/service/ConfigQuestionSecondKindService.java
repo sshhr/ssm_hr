@@ -11,4 +11,5 @@ public interface ConfigQuestionSecondKindService {
 	public void saveConfigQuestionSecondKind(ConfigQuestionSecondKind s);
 	public void changeConfigQuestionSecondKind(Map map);
 	public void removeConfigQuestionSecondKindById(String id);
+	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindByFirstKindId(String firstKindId);
 }

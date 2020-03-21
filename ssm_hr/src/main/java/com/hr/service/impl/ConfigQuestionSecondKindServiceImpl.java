@@ -41,6 +41,11 @@ public class ConfigQuestionSecondKindServiceImpl implements ConfigQuestionSecond
 	public void removeConfigQuestionSecondKindById(String id) {
 		ConfigQuestionSecondKindMapper.deleteConfigQuestionSecondKindById(id);
 	}
+
+	@Override
+	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindByFirstKindId(String firstKindId) {
+		return ConfigQuestionSecondKindMapper.findConfigQuestionSecondKindByFirstKindId(firstKindId);
+	}
 	
 	
 

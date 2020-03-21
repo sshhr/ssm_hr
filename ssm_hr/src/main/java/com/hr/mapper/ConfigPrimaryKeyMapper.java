@@ -16,5 +16,5 @@ public interface ConfigPrimaryKeyMapper {
 	public void insertConfigPrimaryKey(ConfigPrimaryKey s);
 	public void updateConfigPrimaryKey(Map map);
 	public void deleteConfigPrimaryKeyById(String prkId);
-	
+	public List<ConfigPrimaryKey> findConfigPrimaryKeyByPrimaryKeyTable(String tableName);
 }

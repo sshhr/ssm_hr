@@ -295,7 +295,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="check_list.jsp" target="mainFrame">人力资源档案登记复核</a>
+									<a href="/ssm_hr/humanresources/humanFileCheckList.do" target="mainFrame">人力资源档案登记复核</a>
 								</td>
 							</tr>
 							<tr>
@@ -303,7 +303,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="query_locate.jsp" target="mainFrame">人力资源档案查询</a>
+									<a href="/ssm_hr/humanresources/queryHumanFile.do" target="mainFrame">人力资源档案查询</a>
 								</td>
 							</tr>
 							<tr>
@@ -311,7 +311,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="change_locate.jsp" target="mainFrame">人力资源档案变更</a>
+									<a href="humanResources/change_locate.jsp" target="mainFrame">人力资源档案变更</a>
 								</td>
 							</tr>
 							<tr>
@@ -336,7 +336,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="delete_locate.jsp" target="mainFrame">人力资源档案删除</a>
+													<a href="humanResources/delete_locate.jsp" target="mainFrame">人力资源档案删除</a>
 												</td>
 											</tr>
 											<tr>
@@ -344,7 +344,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recovery_locate.jsp" target="mainFrame">档案删除恢复</a>
+													<a href="humanResources/recovery_locate.jsp" target="mainFrame">档案删除恢复</a>
 												</td>
 											</tr>
 											<tr>
@@ -352,7 +352,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="delete_forever_list.jsp" target="mainFrame">人力资源档案永久删除</a>
+													<a href="humanResources/delete_forever_list.jsp" target="mainFrame">人力资源档案永久删除</a>
 												</td>
 											</tr>
 										</table> </span>

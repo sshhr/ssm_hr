@@ -7,32 +7,32 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-list.jsp' starting page</title>
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css"
+			href="/ssm_hr/page/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 	
 </script>
      </head>
@@ -85,29 +85,30 @@
 				<c:forEach items="${resultList}" var="re">
 					<tr>
 						<td class="TD_STYLE2">
-								${re.resid}
+								${re.resId}
 						</td>
 						<td class="TD_STYLE2">
-							${re.humanname}
+							${re.humanName}
 						</td>
 						<td class="TD_STYLE2">
-							${re.humansex}
+							${re.humanSex}
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanmajorkindname}
+						${re.humanMajorKindName}
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanmajorname}
+						${re.humanMajorName}
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanmobilephone}
+						${re.humanMobilephone}
 						</td>
 						<td class="TD_STYLE2">
-						<c:if test="${re.interviewstatus == 1}">待面试</c:if>
-						<c:if test="${re.interviewstatus == 2}">不可面试</c:if>
+						<c:if test="${re.interviewStatus == 1}">待面试</c:if>
+						<c:if test="${re.interviewStatus == 2}">已面试</c:if>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="byIdQueryInterview?resid=${re.resid}">登记</a>
+							<c:if test="${re.interviewStatus == 1}"><a href="/ssm_hr/interview/byIdQueryInterview.do?resId=${re.resId}">登记</a></c:if>
+							<c:if test="${re.interviewStatus == 2}">不可登记</c:if>
 						</td>
 					</tr>
 				</c:forEach>

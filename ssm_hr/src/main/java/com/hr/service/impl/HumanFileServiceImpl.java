@@ -41,6 +41,16 @@ public class HumanFileServiceImpl implements HumanFileService {
 	public void removeHumanFileById(String id) {
 		HumanFileMapper.deleteHumanFileById(id);
 	}
+
+	@Override
+	public HumanFile findHumanFileByHumanId(String humanid) {
+		return HumanFileMapper.findHumanFileByHumanId(humanid);
+	}
+
+	@Override
+	public List<HumanFile> findHumanFileByStatus(int humanFileStatus) {
+		return HumanFileMapper.findHumanFileByStatus(humanFileStatus);
+	}
 	
 	
 

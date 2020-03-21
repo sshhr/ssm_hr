@@ -90,7 +90,7 @@
 							<a href="queryByIdMajorReleaseToDetails.do?mid=${mr.mreId }">查看</a>
 						</td>
 						 <td class="TD_STYLE2">
-							<a href="/ssm_hr/page/recruit/resume/register.jsp">申请该职位</a>
+							<a href="/ssm_hr/resume/register.do?mid=${mr.mreId }">申请该职位</a>
 						</td>
 					</tr>
 				</c:forEach>	

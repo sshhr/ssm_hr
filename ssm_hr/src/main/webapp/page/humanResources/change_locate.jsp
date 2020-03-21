@@ -6,7 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css" />
+			href="../css/table.css" type="text/css" />
 		<link rel="stylesheet"
 			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"

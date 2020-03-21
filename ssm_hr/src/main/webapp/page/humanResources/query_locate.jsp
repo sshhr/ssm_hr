@@ -6,26 +6,26 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css" />
+			href="/ssm_hr/page/css/table.css" type="text/css" />
 		<link rel="stylesheet"
-			href="css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/time.js">
+			src="/ssm_hr/page/javascript/comm/time.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 		<script type="text/javascript">
  	  function querysecondByid(){

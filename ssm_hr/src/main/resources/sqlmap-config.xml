@@ -13,6 +13,7 @@
 	</properties> -->
 	<typeAliases>
 		<package name="com.hr.pojo"/>
+		<package name="com.hr.dto"/>
 	</typeAliases>
 	
 	

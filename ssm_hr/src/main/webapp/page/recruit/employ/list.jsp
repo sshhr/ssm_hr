@@ -7,32 +7,32 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'filter_result.jsp' starting page</title>
  	  <link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css"
+			href="/ssm_hr/page/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 	
 </script> 
 	 
@@ -83,32 +83,31 @@
 				<c:forEach items="${vlist}" var="v">
 					<tr class="TR_STYLE1">
 						<td class="TD_STYLE2">
-							${v.humanname }
+							${v.humanName }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humansex }
+							${v.humanSex }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humanage }
+							${v.humanAge }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humanmajorkindname }
+							${v.humanMajorKindName }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humanmajorname }
+							${v.humanMajorName }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humancollege }
+							${v.humanCollege }
 						</td>
 						<td class="TD_STYLE2">
-							${v.humaneducatedmajor }
+							${v.humanEducatedMajor }
 						</td>
 						<td class="TD_STYLE2">
-						<c:if test="${v.viewnotice == 1}"><a href="toSendmail?resid=${v.resid}">${v.humanemail}</a></c:if>
-						<c:if test="${v.viewnotice == 2}">已通知</c:if>
+							${v.humanEmail}
 						</td>
 						<td class="TD_STYLE2">
-							<a href="toCheck?einid=${v.resid }">查询</a>
+							<a href="/ssm_hr/employ/toCheck.do?resId=${v.resId }">查询</a>
 						</td>
 					</tr>
 				</c:forEach>

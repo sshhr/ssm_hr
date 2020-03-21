@@ -41,6 +41,16 @@ public class EngageResumeServiceImpl implements EngageResumeService {
 	public void removeEngageResumeById(String id) {
 		EngageResumeMapper.deleteEngageResumeById(id);
 	}
+
+	@Override
+	public List<EngageResume> findchooseQuery(Map map) {
+		return EngageResumeMapper.findchooseQuery(map);
+	}
+
+	@Override
+	public List<EngageResume> findEngageResumeByCheckStatus(String checkStatus) {
+		return EngageResumeMapper.findEngageResumeByCheckStatus(checkStatus);
+	}
 	
 	
 

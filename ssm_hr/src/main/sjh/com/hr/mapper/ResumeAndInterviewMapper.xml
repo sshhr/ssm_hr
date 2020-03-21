@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hr.mapper.ResumeAndInterviewMapper">
+    
+    <!-- 根据checkStatus查询数据 -->
+    <select id="findResumeAndInterviewByCheckStatus" resultType="ResumeAndInterview" parameterType="String">
+        SELECT a.`ein_id` einId,b.`human_name` humanName,b.`human_sex` humanSex,b.`human_age` humanAge,b.`human_major_kind_name` humanMajorKindName,
+		b.`human_major_name` humanMajorName,b.`human_college` humanCollege,b.`human_educated_major` humanEducatedMajor,b.`pass_checkComment` passCheckcomment
+		FROM engage_interview a,engage_resume b
+		WHERE b.`check_status`=#{checkStatus} AND a.resume_id=b.`res_id`;
+    </select>
+    
+    <!-- 根据checkStatus查询数据 -->
+    <select id="findResumeAndInterviewByEinId" resultType="ResumeAndInterviewDetails" parameterType="String">
+        SELECT b.`res_id` resId,b.`human_name` humanName,b.`engage_type` engageType,b.`human_address` humanAddress,
+		b.`human_postcode` humanPostcode,b.`human_major_kind_id` humanMajorKindId,b.`human_major_kind_name` humanMajorKindName,
+		b.`human_major_id` humanMajorId,b.`human_major_name` humanMajorName,b.`human_telephone` humanTelephone,
+		b.`human_homephone` humanHomephone,b.`human_mobilephone` humanMobilephone,b.`human_email` humanEmail,
+		b.`human_hobby` humanHobby,b.`human_specility` humanSpecility,b.`human_sex` humanSex,b.`human_religion` humanReligion,
+		b.`human_party` humanParty,b.`human_nationality` humanNationality,b.`human_race` humanRace,b.`human_birthday` humanBirthday,
+		b.`human_age` humanAge,b.`human_educated_degree` humanEducatedDegree,b.`human_educated_years` humanEducatedYears,
+		b.`human_educated_major` humanEducatedMajor,b.`human_college` humanCollege,b.`human_idcard` humanIdcard,
+		b.`human_birthday` humanBirthplace,b.`demand_salary_standard` demandSalaryStandard,b.`human_history_records` humanHistoryRecords,
+		b.`remark` remark,b.`recomandation` recomandation,b.`human_picture` humanPicture,b.`attachment_name` attachmentName,
+		b.`check_status` checkStatus,b.`register` register,b.`regist_time` registTime,b.`checker` checker,
+		b.`check_time` checkTime,b.`interview_status` interviewStatus,b.`total_points` totalPoints,b.`test_amount` testAmount,
+		b.`test_checker` testChecker,b.`test_check_time` testCheckTime,b.`pass_register` passRegister,
+		b.`pass_regist_time` passRegistTime,b.`pass_checker` passChecker,b.`pass_check_time` passCheckTime,
+		b.`pass_check_status` passCheckStatus,b.`pass_checkComment` passCheckcomment,b.`pass_passComment` passPasscomment,
+		a.`ein_id` einId,a.`interview_amount` interviewAmount,a.`image_degree` imageDegree,a.`native_language_degree` nativeLanguageDegree,
+		a.`foreign_language_degree` foreignLanguageDegree,a.`response_speed_degree` responseSpeedDegree,a.`EQ_degree` eqDegree,
+		a.`IQ_degree` iqDegree,a.`multi_quality_degree` multiQualityDegree,a.`register` iregister,a.`checker` ichecker,
+		a.`registe_time` registeTime,a.`check_time` icheckTime,a.`resume_id` resumeId,a.`result` result,a.`interview_comment` interviewComment,
+		a.`check_comment` checkComment,a.`interview_status` iinterviewStatus,a.`check_status` icheckStatus
+		FROM engage_interview a,engage_resume b
+		WHERE a.`ein_id`=#{einId} AND a.resume_id=b.`res_id`;
+    </select>
+    
+    <!-- 根据checkStatus查询数据 -->
+    <select id="findResumeAndInterviewByresId" resultType="ResumeAndInterviewDetails" parameterType="String">
+        SELECT b.`res_id` resId,b.`human_name` humanName,b.`engage_type` engageType,b.`human_address` humanAddress,
+		b.`human_postcode` humanPostcode,b.`human_major_kind_id` humanMajorKindId,b.`human_major_kind_name` humanMajorKindName,
+		b.`human_major_id` humanMajorId,b.`human_major_name` humanMajorName,b.`human_telephone` humanTelephone,
+		b.`human_homephone` humanHomephone,b.`human_mobilephone` humanMobilephone,b.`human_email` humanEmail,
+		b.`human_hobby` humanHobby,b.`human_specility` humanSpecility,b.`human_sex` humanSex,b.`human_religion` humanReligion,
+		b.`human_party` humanParty,b.`human_nationality` humanNationality,b.`human_race` humanRace,b.`human_birthday` humanBirthday,
+		b.`human_age` humanAge,b.`human_educated_degree` humanEducatedDegree,b.`human_educated_years` humanEducatedYears,
+		b.`human_educated_major` humanEducatedMajor,b.`human_college` humanCollege,b.`human_idcard` humanIdcard,
+		b.`human_birthday` humanBirthplace,b.`demand_salary_standard` demandSalaryStandard,b.`human_history_records` humanHistoryRecords,
+		b.`remark` remark,b.`recomandation` recomandation,b.`human_picture` humanPicture,b.`attachment_name` attachmentName,
+		b.`check_status` checkStatus,b.`register` register,b.`regist_time` registTime,b.`checker` checker,
+		b.`check_time` checkTime,b.`interview_status` interviewStatus,b.`total_points` totalPoints,b.`test_amount` testAmount,
+		b.`test_checker` testChecker,b.`test_check_time` testCheckTime,b.`pass_register` passRegister,
+		b.`pass_regist_time` passRegistTime,b.`pass_checker` passChecker,b.`pass_check_time` passCheckTime,
+		b.`pass_check_status` passCheckStatus,b.`pass_checkComment` passCheckcomment,b.`pass_passComment` passPasscomment,
+		a.`ein_id` einId,a.`interview_amount` interviewAmount,a.`image_degree` imageDegree,a.`native_language_degree` nativeLanguageDegree,
+		a.`foreign_language_degree` foreignLanguageDegree,a.`response_speed_degree` responseSpeedDegree,a.`EQ_degree` eqDegree,
+		a.`IQ_degree` iqDegree,a.`multi_quality_degree` multiQualityDegree,a.`register` iregister,a.`checker` ichecker,
+		a.`registe_time` registeTime,a.`check_time` icheckTime,a.`resume_id` resumeId,a.`result` result,a.`interview_comment` interviewComment,
+		a.`check_comment` checkComment,a.`interview_status` iinterviewStatus,a.`check_status` icheckStatus
+		FROM engage_interview a,engage_resume b
+		WHERE b.`res_id`=#{resId} AND a.resume_id=b.`res_id`;
+    </select>
+</mapper>

@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-    Welcome to use the TableGo Tools.
-    
-    http://www.tablego.cn
-    
-    http://vipbooks.iteye.com
-    http://blog.csdn.net/vipbooks
-    http://www.cnblogs.com/vipbooks
-    
-    Author: bianj
-    Email: tablego@qq.com
-    Version: 6.0.0
--->
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- ENGAGE_INTERVIEW -->
@@ -72,14 +60,20 @@
         </foreach>
     </select>
     
+    <!-- 根据InterviewStatus查询数据 -->
+    <select id="findEngageInterviewByInterviewStatus" resultMap="engageInterviewMap" parameterType="String">
+        SELECT
+        <include refid="allColumns" />
+        FROM ENGAGE_INTERVIEW WHERE INTERVIEW_STATUS = #{interviewStatus}
+    </select>
+    
     <!-- 插入数据 -->
     <insert id="insertEngageInterview" parameterType="map">
         INSERT INTO ENGAGE_INTERVIEW (
-            EIN_ID, HUMAN_NAME, INTERVIEW_AMOUNT, HUMAN_MAJOR_KIND_ID, HUMAN_MAJOR_KIND_NAME, HUMAN_MAJOR_ID, HUMAN_MAJOR_NAME, IMAGE_DEGREE, 
+            HUMAN_NAME, INTERVIEW_AMOUNT, HUMAN_MAJOR_KIND_ID, HUMAN_MAJOR_KIND_NAME, HUMAN_MAJOR_ID, HUMAN_MAJOR_NAME, IMAGE_DEGREE, 
             NATIVE_LANGUAGE_DEGREE, FOREIGN_LANGUAGE_DEGREE, RESPONSE_SPEED_DEGREE, EQ_DEGREE, IQ_DEGREE, MULTI_QUALITY_DEGREE, REGISTER, CHECKER, 
             REGISTE_TIME, CHECK_TIME, RESUME_ID, RESULT, INTERVIEW_COMMENT, CHECK_COMMENT, INTERVIEW_STATUS, CHECK_STATUS
         ) VALUES (
-            #{einId},
             #{humanName},
             #{interviewAmount},
             #{humanMajorKindId},
@@ -183,9 +177,89 @@
         WHERE EIN_ID = #{einId}
     </update>
     
+    <!-- 修改数据 -->
+    <update id="updateEngageInterviewByResumeId" parameterType="map">
+        UPDATE ENGAGE_INTERVIEW
+        <set>
+            <if test="humanName != null">
+                HUMAN_NAME = #{humanName},
+            </if>
+            <if test="interviewAmount != null">
+                INTERVIEW_AMOUNT = #{interviewAmount},
+            </if>
+            <if test="humanMajorKindId != null">
+                HUMAN_MAJOR_KIND_ID = #{humanMajorKindId},
+            </if>
+            <if test="humanMajorKindName != null">
+                HUMAN_MAJOR_KIND_NAME = #{humanMajorKindName},
+            </if>
+            <if test="humanMajorId != null">
+                HUMAN_MAJOR_ID = #{humanMajorId},
+            </if>
+            <if test="humanMajorName != null">
+                HUMAN_MAJOR_NAME = #{humanMajorName},
+            </if>
+            <if test="imageDegree != null">
+                IMAGE_DEGREE = #{imageDegree},
+            </if>
+            <if test="nativeLanguageDegree != null">
+                NATIVE_LANGUAGE_DEGREE = #{nativeLanguageDegree},
+            </if>
+            <if test="foreignLanguageDegree != null">
+                FOREIGN_LANGUAGE_DEGREE = #{foreignLanguageDegree},
+            </if>
+            <if test="responseSpeedDegree != null">
+                RESPONSE_SPEED_DEGREE = #{responseSpeedDegree},
+            </if>
+            <if test="eqDegree != null">
+                EQ_DEGREE = #{eqDegree},
+            </if>
+            <if test="iqDegree != null">
+                IQ_DEGREE = #{iqDegree},
+            </if>
+            <if test="multiQualityDegree != null">
+                MULTI_QUALITY_DEGREE = #{multiQualityDegree},
+            </if>
+            <if test="register != null">
+                REGISTER = #{register},
+            </if>
+            <if test="checker != null">
+                CHECKER = #{checker},
+            </if>
+            <if test="registeTime != null">
+                REGISTE_TIME = #{registeTime},
+            </if>
+            <if test="checkTime != null">
+                CHECK_TIME = #{checkTime},
+            </if>
+            <if test="result != null">
+                RESULT = #{result},
+            </if>
+            <if test="interviewComment != null">
+                INTERVIEW_COMMENT = #{interviewComment},
+            </if>
+            <if test="checkComment != null">
+                CHECK_COMMENT = #{checkComment},
+            </if>
+            <if test="interviewStatus != null">
+                INTERVIEW_STATUS = #{interviewStatus},
+            </if>
+            <if test="checkStatus != null">
+                CHECK_STATUS = #{checkStatus}
+            </if>
+        </set>
+        WHERE RESUME_ID = #{resumeId},
+    </update>
+    
     <!-- 根据主键删除数据 -->
     <delete id="deleteEngageInterviewById" parameterType="string">
         DELETE FROM ENGAGE_INTERVIEW WHERE EIN_ID = #{einId}
     </delete>
     
+    <!-- 根据ResumeId查询数据 -->
+    <select id="findEngageInterviewByResumeId" resultMap="engageInterviewMap" parameterType="String">
+        SELECT
+        <include refid="allColumns" />
+        FROM ENGAGE_INTERVIEW WHERE  RESUME_ID = #{resumeId}
+    </select>
 </mapper>

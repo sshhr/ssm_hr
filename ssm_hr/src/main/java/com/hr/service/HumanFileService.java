@@ -11,4 +11,6 @@ public interface HumanFileService {
 	public void saveHumanFile(HumanFile s);
 	public void changeHumanFile(Map map);
 	public void removeHumanFileById(String id);
+	public HumanFile findHumanFileByHumanId(String humanid);
+	public List<HumanFile>  findHumanFileByStatus(int humanFileStatus);
 }

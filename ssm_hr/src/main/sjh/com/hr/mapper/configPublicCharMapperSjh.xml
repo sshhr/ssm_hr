@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- CONFIG_PUBLIC_CHAR -->
+<mapper namespace="com.hr.mapper.ConfigPublicCharMapperSjh">
+    <!-- 字段映射 -->
+    <resultMap id="configPublicCharMap" type="ConfigPublicChar">
+        <id column="PBC_ID" property="pbcId" jdbcType="VARCHAR" />
+        <result column="ATTRIBUTE_KIND" property="attributeKind" jdbcType="VARCHAR" />
+        <result column="ATTRIBUTE_NAME" property="attributeName" jdbcType="VARCHAR" />
+    </resultMap>
+    <!-- 表所有字段 -->
+    <sql id="allColumns">
+        PBC_ID, ATTRIBUTE_KIND, ATTRIBUTE_NAME
+    </sql>
+    
+    <!-- 根据AttributeKind查询数据 -->
+    <select id="findConfigPublicCharByAttributeKind" resultType="String" parameterType="String">
+        SELECT
+        ATTRIBUTE_NAME
+        FROM CONFIG_PUBLIC_CHAR WHERE ATTRIBUTE_KIND = #{name}
+    </select>
+    
+    
+</mapper>

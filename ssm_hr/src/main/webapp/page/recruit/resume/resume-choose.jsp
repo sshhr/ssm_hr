@@ -8,29 +8,29 @@
 		<title>My JSP 'resume-choose.jsp' starting page</title>
 
 		 <link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 		</script>
 	   <script type="text/javascript"
-			src="javascript/comm/time.js">
+			src="/ssm_hr/page/javascript/comm/time.js">
 			</script>
 		<script type="text/javascript">
 	function search() {
@@ -49,14 +49,15 @@
 			majorSelect.append("<option value=''>--请选择--</option>");
 			if(mid != 0){
 				$.ajax({
-					url:'ByIdQueryMajor?mid='+mid,
+					url:'/ssm_hr/position/ByIdQueryMajor.do?mid='+mid,
 					type:'get',
 					success:function(data){
-			 			for(var i=0;i<data.length;i++){
-							var eachMajor = data[i];
-							majorSelect.append("<option>"+eachMajor.majorname+"</option>");
+						var obj=JSON.parse(data);
+			 			for(var i=0;i<obj.length;i++){
+							var eachMajor = obj[i];
+							majorSelect.append("<option>"+eachMajor.majorName+"</option>");
 						}
-			 			}
+			 		}
 				});
 			}
  	 	}
@@ -64,7 +65,7 @@
 	</head>
 
 	<body>
-		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="chooseQuery" method="post">
+		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="/ssm_hr/resume/chooseQuery.do" method="post">
 			<input type="hidden" name="engageResume.checkStatus" value="false" /> 
 			<input type="hidden"  id="humanMajorKindId" name="humanmajorkindname" />
 			<input type="hidden"  name="checkstatus" value="0" />
@@ -91,7 +92,7 @@
 					 style="width: 290;height: 100" class="SELECT_STYLE2"> 
 						<option value="0">--请选择--</option>
 					<c:forEach items="${mklist}" var="m">
-						<option  value="${m.majorkindid }" id="humanMajorKind${m.majorkindid }">${m.majorkindname }</option>
+						<option  value="${m.majorKindId }" id="humanMajorKind${m.majorKindId }">${m.majorKindName }</option>
 					</c:forEach>
 					 </select>
 						<select name="humanmajorname" multiple="multiple" id="humanMajorId"

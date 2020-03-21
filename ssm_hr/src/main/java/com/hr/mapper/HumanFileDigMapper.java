@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.hr.pojo.HumanFile;
 import com.hr.pojo.HumanFileDig;
 
 @Repository
@@ -16,5 +17,6 @@ public interface HumanFileDigMapper {
 	public void insertHumanFileDig(HumanFileDig s);
 	public void updateHumanFileDig(Map map);
 	public void deleteHumanFileDigById(String hfdId);
+//	public HumanFile findHumanFileByHumanId(String id);
 	
 }

@@ -83,7 +83,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="first_kind.jsp"
+													<a href="client/first_kind.jsp"
 														target="mainFrame">I级机构设置</a>
 												</td>
 											</tr>
@@ -109,7 +109,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="profession_design.html" target="mainFrame">职称设置</a>
+													<a href="client/profession_design.jsp" target="mainFrame">职称设置</a>
 												</td>
 											</tr>
 											<tr>
@@ -117,7 +117,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="major_kind.html"
+													<a href="client/major_kind.jsp"
 														target="mainFrame">职位分类设置</a>
 												</td>
 											</tr>
@@ -126,7 +126,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="major.html"
+													<a href="client/major.jsp"
 														target="mainFrame">职位设置</a>
 												</td>
 											</tr>
@@ -135,7 +135,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="public_char.html"
+													<a href="client/public_char.jsp"
 														target="mainFrame">公共属性设置</a>
 												</td>
 											</tr>
@@ -216,7 +216,8 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													试题I级分类设置
+												<a href="/ssm_hr/client/toQuestionFirstKind.do" target="mainFrame">试题I级分类设置</a>
+													
 												</td>
 											</tr>
 											<tr>
@@ -224,7 +225,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													试题II级分类设置
+													<a href="/ssm_hr/client/toQuestionSecondKind.do" target="mainFrame">试题II级分类设置
 												</td>
 											</tr>
 										</table> </span>
@@ -252,7 +253,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="primary_key.html"
+													<a href="client/primary_key.jsp"
 														target="mainFrame">关键字查询设置</a>
 												</td>
 											</tr>
@@ -286,7 +287,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td width="98%">
-									<a href="human_register.html" target="mainFrame">人力资源档案登记</a>
+									<a href="human_register.jsp" target="mainFrame">人力资源档案登记</a>
 								</td>
 							</tr>
 							<tr>
@@ -294,7 +295,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="check_list.html" target="mainFrame">人力资源档案登记复核</a>
+									<a href="check_list.jsp" target="mainFrame">人力资源档案登记复核</a>
 								</td>
 							</tr>
 							<tr>
@@ -302,7 +303,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="query_locate.html" target="mainFrame">人力资源档案查询</a>
+									<a href="query_locate.jsp" target="mainFrame">人力资源档案查询</a>
 								</td>
 							</tr>
 							<tr>
@@ -310,7 +311,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="change_locate.html" target="mainFrame">人力资源档案变更</a>
+									<a href="change_locate.jsp" target="mainFrame">人力资源档案变更</a>
 								</td>
 							</tr>
 							<tr>
@@ -335,7 +336,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="delete_locate.html" target="mainFrame">人力资源档案删除</a>
+													<a href="delete_locate.jsp" target="mainFrame">人力资源档案删除</a>
 												</td>
 											</tr>
 											<tr>
@@ -343,7 +344,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recovery_locate.html" target="mainFrame">档案删除恢复</a>
+													<a href="recovery_locate.jsp" target="mainFrame">档案删除恢复</a>
 												</td>
 											</tr>
 											<tr>
@@ -351,7 +352,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="delete_forever_list.html" target="mainFrame">人力资源档案永久删除</a>
+													<a href="delete_forever_list.jsp" target="mainFrame">人力资源档案永久删除</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -384,7 +385,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td width="98%">
-									<a href="salarystandard_register.html" target="mainFrame">薪酬标准登记</a>
+									<a href="salarystandard_register.jsp" target="mainFrame">薪酬标准登记</a>
 								</td>
 							</tr>
 							<tr>
@@ -392,7 +393,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="salarystandard_check_list.html" target="mainFrame">薪酬标准登记复核</a>
+									<a href="salarystandard_check_list.jsp" target="mainFrame">薪酬标准登记复核</a>
 								</td>
 							</tr>
 							<tr>
@@ -400,7 +401,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="salarystandard_query_locate.html" target="mainFrame">薪酬标准查询</a>
+									<a href="salarystandard_query_locate.jsp" target="mainFrame">薪酬标准查询</a>
 								</td>
 							</tr>
 							<tr>
@@ -408,7 +409,7 @@ a{ CURSOR: hand}
 									<img src="images/jt0.gif">
 								</td>
 								<td>
-									<a href="salarystandard_change_locate.html" target="mainFrame">薪酬标准变更</a>
+									<a href="salarystandard_change_locate.jsp" target="mainFrame">薪酬标准变更</a>
 								</td>
 							</tr>
 						</table> </span>

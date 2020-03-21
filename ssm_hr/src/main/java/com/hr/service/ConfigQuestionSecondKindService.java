@@ -9,6 +9,6 @@ public interface ConfigQuestionSecondKindService {
 	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindAll();
 	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindByIds(List list);
 	public void saveConfigQuestionSecondKind(ConfigQuestionSecondKind s);
-	public void changeConfigQuestionSecondKind(Map map);
-	public void removeConfigQuestionSecondKindById(String id);
+	public void changeConfigQuestionSecondKind(ConfigQuestionSecondKind s);
+	public int removeConfigQuestionSecondKindById(String id);
 }

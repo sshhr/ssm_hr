@@ -15,27 +15,44 @@
 			<script type="text/javascript" src="/ssm_hr/page/javascript/jquery.messager.js"></script>
 
 <script type="text/javascript">
+		function addbyid(firstKindId,firstKindName){
+			$.post("/ssm_hr/client/questionFirstKindAdd.do",
+				{
+					firstKindId:document.getElementById("firstKindId").value,
+					firstKindName:document.getElementById("firstKindName").value,
+				},
+				function(data){
+					if (data=="xiugai") {
+						$.messager.show("消息提示","您已修改成功",2000);
+					}
+					else {
+						$.messager.show("消息提示","您已添加成功",2000);
+					}
+					document.questionFirstKindAdd.submit();
+				}
+			);
+		}
 		function check(){
-			if (document.getElementById("majorkindid").value==""){
-				$.messager.show("消息提示","职位分类编号不能为空!!!",2000);
+			if (document.getElementById("firstKindId").value==""){
+				$.messager.show("消息提示","一级分类编号不能为空!!!",2000);
 				return ;
 			}
-			if (document.getElementById("majorkindname").value==""){
-				$.messager.show("消息提示","职位分类名称不能为空!!!",2000);
+			if (document.getElementById("firstKindName").value==""){
+				$.messager.show("消息提示"," 一级分类名称不能为空!!!",2000);
 				return ;
 			}
-			document.addmajorkind.submit();
+			addbyid();
 		}	
 </script>	
 	
 	
 	
 	<body>
-		<form action="addmajorkind" method="post" name="addmajorkind">
+		<form action="forward:/page/client/question_first_kind.jsp" method="post" name="questionFirstKindAdd">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--客户化设置--人力资源档案管理设置--职位分类设置--职位分类添加
+						<font color="black">您正在做的业务是：人力资源--客户化设置--题库管理设置--题库一级分类添加
 						</font>
 					</td>
 				</tr>
@@ -54,18 +71,18 @@
 				class="TABLE_STYLE1">
 				<tr>
 					<td class="TD_STYLE1" width="19%">
-						职位分类编号
+						一级分类编号
 					</td>
 					<td class="TD_STYLE2" width="81%">
-					<input type="text" class="INPUT_STYLE1" name="majorkindid" id="majorkindid" />
+					<input type="text" class="INPUT_STYLE1" name="firstKindId" id="firstKindId" />
 					</td>
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
-						职位分类名称
+						一级分类名称
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" class="INPUT_STYLE1" name="majorkindname" id="majorkindname"/>
+						<input type="text" class="INPUT_STYLE1" name="firstKindName" id="firstKindName"/>
 					</td>
 				</tr>
 			</table>

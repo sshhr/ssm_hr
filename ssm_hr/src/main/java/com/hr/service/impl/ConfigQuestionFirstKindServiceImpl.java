@@ -33,13 +33,13 @@ public class ConfigQuestionFirstKindServiceImpl implements ConfigQuestionFirstKi
 	}
 
 	@Override
-	public void changeConfigQuestionFirstKind(Map map) {
-		ConfigQuestionFirstKindMapper.updateConfigQuestionFirstKind(map);
+	public void changeConfigQuestionFirstKind(ConfigQuestionFirstKind s) {
+		ConfigQuestionFirstKindMapper.updateConfigQuestionFirstKind(s);
 	}
 
 	@Override
-	public void removeConfigQuestionFirstKindById(String id) {
-		ConfigQuestionFirstKindMapper.deleteConfigQuestionFirstKindById(id);
+	public int removeConfigQuestionFirstKindById(String id) {
+		return ConfigQuestionFirstKindMapper.deleteConfigQuestionFirstKindById(id);
 	}
 	
 	

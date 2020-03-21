@@ -13,15 +13,18 @@
 		
 		<script type="text/javascript" src="/ssm_hr/page/javascript/jquery-1.7.2.js"></script>
          <script type="text/javascript">
-		function ajax(maid){
-			$.ajax({
-				url:'deletemajor?maid='+maid,
-				type:'get',
-				success:function(){
-					$('#'+maid).remove();
-				}
-			});
-		}
+         function deletebyid(qskId){
+ 			$.post("/ssm_hr/client/deleteQuestionSecondKind.do",
+ 						{
+ 						qskId:qskId,
+ 						},
+ 						function(data){
+ 							if(data=="ok"){
+ 								$('#'+qskId).remove();
+ 							}
+ 						}
+ 				);
+ 		}
 		</script>
 	</head>
 
@@ -30,14 +33,14 @@
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--客户化设置--人力资源档案管理设置--职位设置
+						<font color="black">您正在做的业务是：人力资源--客户化设置--题库管理设置--二级题库设置
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
 						<input type="button" value="添加" class="BUTTON_STYLE1"
-							onclick="window.location.href='major_add.jsp';">
+							onclick="window.location.href='/ssm_hr/page/client/question_second_kind_add.jsp';">
 					</td>
 				</tr>
 			</table>
@@ -46,38 +49,38 @@
 				class="TABLE_STYLE1">
 				<tr>
 					<td width="22%" class="TD_STYLE1">
-						职位分类编号
+						一级题库分类编号
 					</td>
 					<td width="23%" class="TD_STYLE1">
-						职位分类名称
+						一级题库分类名称
 					</td>
 					<td width="26%" class="TD_STYLE1">
-						职位编号
+						二级题库分类编号
 					</td>
 					<td width="24%" class="TD_STYLE1">
-						职位名称
+						二级题库分类名称
 					</td>
 					<td width="5%" class="TD_STYLE1">
 						删除
 					</td>
 				</tr>
 
-				<c:forEach items="${jlist}" var="j">
-				<tr id="${j.makid }">
+				<c:forEach items="${qklist}" var="j">
+				<tr id="${j.qskId }">
 					<td class="TD_STYLE2">
-						${j.majorkindid} 
+						${j.firstKindId} 
 					</td>
 					<td class="TD_STYLE2">
-						${j.majorkindname} 
+						${j.firstKindName} 
 					</td>
 					<td class="TD_STYLE2">
-						${j.majorid} 
+						${j.secondKindId} 
 					</td>
 					<td class="TD_STYLE2">
-					${j.majorname} 
+					${j.secondKindName} 
 					</td>
 					<td class="TD_STYLE2">
-						<a href="javascript:ajax(${j.makid })">删除</a>
+						<a href="javascript:deletebyid(${j.qskId })">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

@@ -40,6 +40,44 @@
 
  		 
  	<script type="text/javascript">
+ 	window.onload=check;
+	function tick() {
+		var now = new Date();
+		var hours, minutes, seconds, noon;
+		var intHours, intMinutes, intSeconds;
+		intHours = now.getHours();
+		intMinutes = now.getMinutes();
+		intSeconds = now.getSeconds();
+		if (intHours < 24) {
+			hours = intHours+":";
+			noon = "A.M.";
+		} else {
+			intHours = intHours - 24;
+			hours = intHours + ":";
+			noon = "P.M.";
+		}
+		if (intMinutes < 10) {
+			minutes = "0"+intMinutes+":";
+		} else {
+			minutes = intMinutes+":";
+		}
+		if (intSeconds < 10) {
+			seconds = "0"+intSeconds+" ";
+		} else {
+			seconds = intSeconds+" ";
+		}
+		timeString = hours+minutes+seconds;
+		var now = new Date();
+	  	document.getElementById("nowTime").value=now.getFullYear()+"-"+(now.getMonth()+1)+"-"+now.getDate()+" "+timeString;
+		window.setTimeout("tick();", 1000);
+	}
+	
+	//load事件
+	function check(){
+		//获得系统当前时间的方法
+	  	tick();					
+	}
+ 	
  	function search(){ 
  	if(document.getElementById("date").value==""){
  	alert("请选择面试时间");
@@ -410,8 +448,9 @@
 						面试时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="registeTime"  onclick="aa('registetime')"
-							  class="INPUT_STYLE2"  id="date" >
+					<input type="text" name="registeTime"
+							  id="nowTime" readonly="readonly"
+							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						&nbsp;

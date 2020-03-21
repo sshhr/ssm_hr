@@ -12,32 +12,35 @@
 		</script>
 		<script type="text/javascript" src="/ssm_hr/page/javascript/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
-		function ajax(mfkid){
-			$.ajax({
-				url:'deletemajorkind?mfkid='+mfkid,
-				type:'get',
-				success:function(){
-					$('#'+mfkid).remove();
-				}
-			});
+		function deletebyid(qfkId){
+			$.post("/ssm_hr/client/deleteQuestionFirstKind.do",
+						{
+						qfkId:qfkId,
+						},
+						function(data){
+							if(data=="ok"){
+								$('#'+qfkId).remove();
+							}
+						}
+				);
 		}
 		</script>
 		
 	</head>
 
 	<body>
-		<form method="post" action="../customiz/customizAction!findMajorKind">
+		<form method="post" action="">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--客户化设置--人力资源档案管理设置--职位分类设置
+						<font color="black">您正在做的业务是：人力资源--客户化设置--题库管理设置--题库一级分类设置
 						</font>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="添加" class="BUTTON_STYLE1"
-							onclick="window.location.href='major_kind_add.jsp';">
+						<input type="button" value="添加" class="BUTTON_STYLE1" 
+							onclick="window.location.href='/ssm_hr/page/client/question_first_kind_add.jsp';">
 					</td>
 				</tr>
 			</table>
@@ -46,26 +49,26 @@
 				class="TABLE_STYLE1">
 				<tr>
 					<td width="46%" class="TD_STYLE1">
-						职位分类编号
+						题库一级分类编号
 					</td>
 					<td width="47%" class="TD_STYLE1">
-						职位分类名称
+						题库一级分类名称
 					</td>
 					<td width="5%" class="TD_STYLE1">
 						删除
 					</td>
 				</tr>
-
-				<c:forEach items="${mlist}" var="m">
-				<tr id="${m.mfkid }">
+<!-- 这是复制了职位分类设置major_kind.jsp的代码 -->
+				<c:forEach items="${qklist}" var="m">
+				<tr id="${m.qfkId }">
 					<td class="TD_STYLE2">
-						${m.majorkindid}
+						${m.firstKindId}
 					</td>
 					<td class="TD_STYLE2">
-						${m.majorkindname}
+						${m.firstKindName}
 					</td>
 					<td class="TD_STYLE2">
-						<a href="javascript:ajax(${m.mfkid })">删除</a>
+						<a href="javascript:deletebyid(${m.qfkId });">删除</a>
 					</td>
 				</tr>
 				</c:forEach>

@@ -33,13 +33,13 @@ public class ConfigQuestionSecondKindServiceImpl implements ConfigQuestionSecond
 	}
 
 	@Override
-	public void changeConfigQuestionSecondKind(Map map) {
-		ConfigQuestionSecondKindMapper.updateConfigQuestionSecondKind(map);
+	public void changeConfigQuestionSecondKind(ConfigQuestionSecondKind s) {
+		ConfigQuestionSecondKindMapper.updateConfigQuestionSecondKind(s);
 	}
 
 	@Override
-	public void removeConfigQuestionSecondKindById(String id) {
-		ConfigQuestionSecondKindMapper.deleteConfigQuestionSecondKindById(id);
+	public int removeConfigQuestionSecondKindById(String id) {
+		return ConfigQuestionSecondKindMapper.deleteConfigQuestionSecondKindById(id);
 	}
 
 	@Override

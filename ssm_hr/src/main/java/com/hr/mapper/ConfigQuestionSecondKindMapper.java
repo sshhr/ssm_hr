@@ -14,7 +14,7 @@ public interface ConfigQuestionSecondKindMapper {
 	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindAll();
 	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindByIds(List list);
 	public void insertConfigQuestionSecondKind(ConfigQuestionSecondKind s);
-	public void updateConfigQuestionSecondKind(Map map);
-	public void deleteConfigQuestionSecondKindById(String qskId);
+	public void updateConfigQuestionSecondKind(ConfigQuestionSecondKind s);
+	public int deleteConfigQuestionSecondKindById(String qskId);
 	public List<ConfigQuestionSecondKind> findConfigQuestionSecondKindByFirstKindId(String firstKindId);
 }

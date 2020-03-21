@@ -14,7 +14,7 @@ public interface ConfigQuestionFirstKindMapper {
 	public List<ConfigQuestionFirstKind> findConfigQuestionFirstKindAll();
 	public List<ConfigQuestionFirstKind> findConfigQuestionFirstKindByIds(List list);
 	public void insertConfigQuestionFirstKind(ConfigQuestionFirstKind s);
-	public void updateConfigQuestionFirstKind(Map map);
-	public void deleteConfigQuestionFirstKindById(String qfkId);
+	public void updateConfigQuestionFirstKind(ConfigQuestionFirstKind s);
+	public int deleteConfigQuestionFirstKindById(String qfkId);
 	
 }

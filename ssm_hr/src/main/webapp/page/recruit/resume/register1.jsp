@@ -167,8 +167,8 @@
 			<input type="hidden" name="passpasscomment" value="不通过"/>
 	 		<input type="hidden" name="passcheckstatus" value="0"/> -->
 	 		<input type="hidden" name="checkStatus" value="0">
-	 		<input type="hidden" id="majorKindName" name="majorKindName">
-			<input type="hidden" id="majorName" name="majorName">
+	 		<input type="hidden" id="majorKindName" name="humanMajorKindName">
+			<input type="hidden" id="majorName" name="humanMajorName">
 	 		<input type="hidden"  name="interviewStatus" value="1"/>
 	 		<input type="hidden" value="${userlogin.user_true_name }" name="register">
 			<table width="100%">
@@ -194,7 +194,7 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="majorKindId" id="majorKindid" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
+						<select name="humanMajorKindId" id="majorKindid" class="SELECT_STYLE1" onchange="ByIdQueryMajor()">
 							<option value="">--请选择--</option> 
 							<c:forEach items="${mjlist}" var="mj">
 								<option value="${mj.majorKindId }" id="majork_${mj.majorKindId }">${mj.majorKindName }</option>
@@ -205,7 +205,7 @@
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="majorId" id="majorId" class="SELECT_STYLE1" onchange="getMajorName()"> 
+						<select name="humanMajorId" id="majorId" class="SELECT_STYLE1" onchange="getMajorName()"> 
 							<option value="0">--请选择--</option>
 						</select>
 					</td>

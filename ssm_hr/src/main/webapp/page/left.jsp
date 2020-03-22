@@ -803,7 +803,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													考试出题
+												<a href="/ssm_hr/exam/queryExamList.do" target="mainFrame">考试出题</a>
 												</td>
 											</tr>
 											<tr>

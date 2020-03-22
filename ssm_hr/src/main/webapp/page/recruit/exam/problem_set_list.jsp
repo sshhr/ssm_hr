@@ -5,7 +5,7 @@
 <html>
   <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>My JSP 'interview-list.jsp' starting page</title>
+    <title>My JSP 'problem_set_list.jsp' starting page</title>
 		<link rel="stylesheet"
 			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
@@ -38,18 +38,18 @@
      </head>
 
 	<body>
-		<form method="post" action="/HR_Fist/recruit/recruitAction!findInterviewByUtilBean?str=list" name="fm">
+		<form method="post" action="" name="fm">
 				<input type="hidden" name="utilBean.currPage" id="page"/>
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--面试管理--面试结果登记--有效简历列表 
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试管理--考试出题 
 						</font>
 					</td>
 				</tr>
 			  <tr>
 					<td align="right"> 
-						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back();">
+						<input type="button" value="出题" class="BUTTON_STYLE1" onclick="history.back();">
 					</td>
 				</tr>
 			</table> 
@@ -57,61 +57,47 @@
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="10%" class="TD_STYLE1">
-						档案编号
+					<td width="15%" class="TD_STYLE1">
+						职业分类编号
+					</td>
+					<td width="25%" class="TD_STYLE1">
+						职业分类名称
 					</td>
 					<td width="15%" class="TD_STYLE1">
-						姓名
+						职位编号
 					</td>
-					<td width="15%" class="TD_STYLE1">
-						性别
-					</td>
-					<td width="20%" class="TD_STYLE1">
-						职位分类
-					</td>
-					<td width="15%" class="TD_STYLE1">
+					<td width="25%" class="TD_STYLE1">
 						职位名称
 					</td>
 					<td width="10%" class="TD_STYLE1">
-						电话号码
+						套题数量
 					</td>
 					<td width="10%" class="TD_STYLE1">
-						面试状态
-					</td>
-					<td width="15%" class="TD_STYLE1">
-						登记
+						出题
 					</td>
 				</tr>
-				<c:forEach items="${resultList}" var="re">
+				    <c:forEach items="${elist}" var="e">
 					<tr>
 						<td class="TD_STYLE2">
-								${re.resId}
+						${e.majorKindId }
 						</td>
 						<td class="TD_STYLE2">
-							${re.humanName}
+						${e.majorKindName }
 						</td>
 						<td class="TD_STYLE2">
-							${re.humanSex}
+						${e.majorId }
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanMajorKindName}
+						${e.majorName }
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanMajorName}
+						${e.amount }
 						</td>
 						<td class="TD_STYLE2">
-						${re.humanMobilephone}
-						</td>
-						<td class="TD_STYLE2">
-						<c:if test="${re.interviewStatus == 1}">待面试</c:if>
-						<c:if test="${re.interviewStatus == 2}">已面试</c:if>
-						</td>
-						<td class="TD_STYLE2">
-							<c:if test="${re.interviewStatus == 1}"><a href="/ssm_hr/interview/byIdQueryInterview.do?resId=${re.resId}">登记</a></c:if>
-							<c:if test="${re.interviewStatus == 2}">不可登记</c:if>
+							<a href="">出题</a>
 						</td>
 					</tr>
-				</c:forEach>
+					</c:forEach>
 			</table>
 		</form>
 		<script type="text/javascript">

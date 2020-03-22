@@ -141,7 +141,7 @@ public class ResumeController {
 					engageResume.setHumanPicture(pp);
 				}
 				engageResumeService.saveEngageResume(engageResume);
-				return "";
+				return "redirect:/resume/resumeChoose.do";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{

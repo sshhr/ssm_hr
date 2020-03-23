@@ -38,8 +38,8 @@ public class HumanFileServiceImpl implements HumanFileService {
 	}
 
 	@Override
-	public void removeHumanFileById(String id) {
-		HumanFileMapper.deleteHumanFileById(id);
+	public int removeHumanFileById(int id) {
+		return HumanFileMapper.deleteHumanFileById(id);
 	}
 
 	@Override
@@ -48,8 +48,28 @@ public class HumanFileServiceImpl implements HumanFileService {
 	}
 
 	@Override
-	public List<HumanFile> findHumanFileByStatus(int humanFileStatus) {
-		return HumanFileMapper.findHumanFileByStatus(humanFileStatus);
+	public List<HumanFile> findHumanFileByStatus(int checkStatus) {
+		return HumanFileMapper.findHumanFileByStatus(checkStatus);
+	}
+
+	@Override
+	public List<HumanFile> querysLocate(Map map) {
+		return HumanFileMapper.findLocate(map);
+	}
+
+	@Override
+	public List<HumanFile> querysSearch(Map map) {
+		return HumanFileMapper.findSearch(map);
+	}
+
+	@Override
+	public List<HumanFile> recoveryLocate(Map map) {
+		return HumanFileMapper.recoveryLocate(map);
+	}
+
+	@Override
+	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus) {
+		return HumanFileMapper.findHumanFileByHumanStatus(humanFileStatus);
 	}
 	
 	

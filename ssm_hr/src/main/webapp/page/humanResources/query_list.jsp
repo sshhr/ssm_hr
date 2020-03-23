@@ -7,10 +7,21 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
 			href="/ssm_hr/page/css/table.css" type="text/css">
+			
+				<script type="text/javascript">
+
+		function queryHuman(mid) {
+		     var id=mid;
+			 console.log(id);
+			 if(id != 0){
+				 window.location.href='/ssm_hr/humanresources/humanFileInfo.do?humanid='+id;
+				}
+		}
+		</script>
 	</head>
 
 	<body>
-		<form action=".." method="post">
+		<form action="" method="post">
 			<table width="100%">
 				<tr>
 					<td>
@@ -28,13 +39,13 @@
 				class="TABLE_STYLE1">
 				
 				<tr class="TR_STYLE1">
-					<td width="14%" class="TD_STYLE1">
+					<td width="13%" class="TD_STYLE1">
 						档案编号
 					</td>
-					<td width="10%" class="TD_STYLE1">
+					<td width="13%" class="TD_STYLE1">
 						姓名
 					</td>
-					<td width="6%" class="TD_STYLE1">
+					<td width="11%" class="TD_STYLE1">
 						性别
 					</td>
 					<td width="14%" class="TD_STYLE1">
@@ -57,31 +68,32 @@
 				
 					<tr class="TR_STYLE2">
 						
-						<td width="13%" class="TD_STYLE2"><a href="queryid?id=${h.humanid}">
-							${h.humanid}</a>
+						<td width="13%" class="TD_STYLE2"><a href="#" onclick="queryHuman(${h.humanId })" >
+							${h.humanId}</a>
 						</td>
 						
 						<td width="10%" class="TD_STYLE2">
-							${h.humanname }
+							${h.humanName }
 						</td>
 						<td width="4%" class="TD_STYLE2">
-							${h.humansex }
+							${h.humanSex }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.firstkindname }
+							${h.firstKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.secondkindname }
+							${h.secondKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.thirdkindname }
+							${h.thirdKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.humanmajorkindname }
+							${h.humanMajorKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.humanmajorname}
+							${h.hunmaMajorName}
 						</td>
+						
 					</tr>
 				</c:forEach>
 					

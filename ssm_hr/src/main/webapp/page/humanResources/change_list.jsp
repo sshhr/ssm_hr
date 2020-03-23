@@ -6,7 +6,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
+			<script type="text/javascript">
+
+		function queryHuman(mid) {
+		     var id=mid;
+			 console.log(id);
+			 if(id != 0){
+				 window.location.href='/ssm_hr/humanresources/updateHumanFile.do?humanid='+id;
+				}
+		}
+		</script>
 	</head>
 
 	<body>
@@ -55,28 +65,28 @@
 				<c:forEach items="${hlist}" var="h">
 					<tr class="TR_STYLE2">
 						<td width="14%" class="TD_STYLE2">
-							<a href="queryid_change_locate?id=${h.humanid}">${h.humanid}</a>
+							<a href="#" onclick="queryHuman(${h.humanId })" >
+							${h.humanId}</a>
 						</td>
 						<td width="10%" class="TD_STYLE2">
-							${h.humanname }
+							${h.humanName }
 						</td>
 						<td width="4%" class="TD_STYLE2">
-							${h.humansex }
+						${h.humanSex }						</td>
+						<td width="14%" class="TD_STYLE2">
+							${h.firstKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.firstkindname }
+							${h.secondKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.secondkindname }
+							${h.thirdKindName }
 						</td>
 						<td width="14%" class="TD_STYLE2">
-							${h.thirdkindname }
-						</td>
-						<td width="14%" class="TD_STYLE2">
-							${h.humanmajorkindname }
+						${h.humanMajorKindName }
 						</td>
 						<td width="12%" class="TD_STYLE2">
-							${h.humanmajorname }
+							${h.hunmaMajorName}
 						</td>
 					</tr>
 				</c:forEach>

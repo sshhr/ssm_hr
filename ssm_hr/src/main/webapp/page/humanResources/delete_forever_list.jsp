@@ -6,20 +6,24 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript">
-			function doDelete(hid) {
-			
+			function doDelete(humanid) {
+				if(window.confirm("确认删除该项纪录？")){
 					$.ajax({
-						url:'delete_list?hid=' + hid,
+						url:'/ssm_hr/humanresources/deleteForever.do?humanid=' + humanid,
 						type:'get',
 						success:function(data){
-							$("#" + hid).remove();
+							if (data!='0') {
+								$("#" + humanid).remove();
+							}
+						
 						}
 					});
+				}
 				}
 	
 			
@@ -72,34 +76,34 @@
 						永久删除
 					</td>
 				</tr>
-				<c:forEach items="${hflist}" var="h">
-					<tr class="TR_STYLE2" id="${h.humanid}">
+				<c:forEach items="${foreverlist}" var="h">
+					<tr class="TR_STYLE2" id="${h.humanId}">
 						<td width="14%" height="13" class="TD_STYLE2">
-							${h.humanid}
+							${h.humanId}
 						</td>
 						<td width="11%" class="TD_STYLE2">
-							${h.humanname }
+							${h.humanName }
 						</td>
 						<td width="6%" class="TD_STYLE2">
-							${h.humansex }
+							${h.humanSex }
 						</td>
 						<td width="13%" class="TD_STYLE2">
-							${h.firstkindname }
+							${h.firstKindName }
 						</td>
 						<td width="12%" class="TD_STYLE2">
-							${h.secondkindname }
+							${h.secondKindName }
 						</td>
 						<td width="13%" class="TD_STYLE2">
-							${h.thirdkindname }
+							${h.thirdKindName }
 						</td>
 						<td width="11%" class="TD_STYLE2">
-							${h.humanmajorkindname }
+							${h.humanMajorKindName }
 						</td>
 						<td width="13%" class="TD_STYLE2">
-							${h.humanmajorname }
+							${h.hunmaMajorName }
 						</td>
 						<td width="7%" class="TD_STYLE2">
-	<img src="images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${h.humanid})">
+							<img src="/ssm_hr/images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${h.humanId})">
 						</td>
 					</tr>
 				</c:forEach>

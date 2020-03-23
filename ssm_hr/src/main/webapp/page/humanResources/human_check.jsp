@@ -395,7 +395,7 @@
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="checker" value="${userlogin.user_true_name}"
+						<input type="text" name="checker" value="${human.checker}"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>

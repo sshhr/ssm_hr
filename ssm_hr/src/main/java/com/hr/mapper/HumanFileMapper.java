@@ -15,8 +15,11 @@ public interface HumanFileMapper {
 	public List<HumanFile> findHumanFileByIds(List list);
 	public void insertHumanFile(HumanFile s);
 	public void updateHumanFile(Map map);
-	public void deleteHumanFileById(String hufId);
+	public int deleteHumanFileById(int hufId);
 	public HumanFile findHumanFileByHumanId(String humanid);
-	public List<HumanFile> findHumanFileByStatus(int humanFileStatus);
-	
+	public List<HumanFile> findHumanFileByStatus(int checkStatus);
+	public List<HumanFile> findLocate(Map map);
+	public List<HumanFile> findSearch(Map map);
+	public List<HumanFile> recoveryLocate(Map map);
+	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus);
 }

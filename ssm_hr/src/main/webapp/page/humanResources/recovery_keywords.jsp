@@ -5,11 +5,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css"/>
+			href="/ssm_hr/page/css/table.css" type="text/css"/>
 	</head>
 
 	<body>
-		<form action="recovery_search" method="post">
+		<form action="/ssm_hr/humanresources/recoverySearch.do" method="post">
 			<table width="100%">
 				<tr>
 					<td>
@@ -32,7 +32,7 @@
 						请输入关键字
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<input type="text" name="primarkey" class="INPUT_STYLE1">
+						<input type="text" name="primaryKey" class="INPUT_STYLE1">
 					</td>
 				</tr>
 			</table>

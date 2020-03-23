@@ -5,11 +5,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css"/>
+			href="/ssm_hr/page/css/table.css" type="text/css"/>
 	</head>
 
 	<body>
-		<form action="query_search" method="post">
+		<form action="/ssm_hr/humanresources/querySearch.do" method="post">
 			<table width="100%">
 				<tr>
 					<td>

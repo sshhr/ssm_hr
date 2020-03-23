@@ -185,7 +185,7 @@ public class HumanFile implements java.io.Serializable {
     private Timestamp checkTime;
 
     /** changeTime */
-    private Timestamp changeTime;
+    private String changeTime;
 
     /** lastlyChangeTime */
     private Timestamp lastlyChangeTime;
@@ -1235,7 +1235,7 @@ public class HumanFile implements java.io.Serializable {
      * 
      * @return changeTime
      */
-    public Timestamp getChangeTime() {
+    public String getChangeTime() {
         return this.changeTime;
     }
 
@@ -1244,7 +1244,7 @@ public class HumanFile implements java.io.Serializable {
      * 
      * @param changeTime
      */
-    public void setChangeTime(Timestamp changeTime) {
+    public void setChangeTime(String changeTime) {
         this.changeTime = changeTime;
     }
 

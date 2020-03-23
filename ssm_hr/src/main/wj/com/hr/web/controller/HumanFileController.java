@@ -1,11 +1,6 @@
 package com.hr.web.controller;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,12 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
+import com.hr.mapper.CheckStatus;
 import com.hr.mapper.HumanFileStatus;
 import com.hr.pojo.ConfigFileFirstKind;
-import com.hr.pojo.ConfigMajor;
 import com.hr.pojo.ConfigMajorKind;
 import com.hr.pojo.HumanFile;
 import com.hr.pojo.SalaryStandard;
@@ -36,6 +31,7 @@ import com.hr.service.SalaryStandardService;
 import com.hr.util.ProjectToMapUtil;
 
 import net.sf.json.JSONArray;
+
 
 @Controller
 @RequestMapping("/humanresources")
@@ -97,7 +93,7 @@ public class HumanFileController {
 			long lon=System.currentTimeMillis();
 			String humanId=String.valueOf(lon);
 			humanfile.setHumanId(humanId);
-			humanfile.setHumanFileStatus(HumanFileStatus.NO);
+			humanfile.setCheckStatus(CheckStatus.NO);
 			humanfileservice.saveHumanFile(humanfile);
 			//通过humanId查询出humanfile
 			humanfile = humanfileservice.findHumanFileByHumanId(humanId);
@@ -111,7 +107,7 @@ public class HumanFileController {
 	//列出待复核的所有人资档案
 	@RequestMapping("humanFileCheckList.do")
 	  public String humanFileCheckList(@ModelAttribute HumanFile humanfile,Model model){
-		List<HumanFile> checklist=humanfileservice.findHumanFileByStatus(HumanFileStatus.NO);
+		List<HumanFile> checklist=humanfileservice.findHumanFileByStatus(CheckStatus.NO);
 		model.addAttribute("checklist", checklist);
 		model.addAttribute("count", checklist.size());
 		return "forward:/page/humanResources/check_list.jsp";
@@ -157,8 +153,8 @@ public class HumanFileController {
 	//某个待复核的人资档案通过审核
 	@RequestMapping("humanFileCheckPass.do")
 	public String humanFileCheckPass(@ModelAttribute HumanFile humanfile) {
-		humanfile.setHumanFileStatus(HumanFileStatus.YES);
-		System.out.println(humanfile.toString());
+		humanfile.setCheckStatus(CheckStatus.YES);
+//		System.out.println(humanfile.toString());
 		Map<String,String> map = ProjectToMapUtil.toMap(humanfile);
 		humanfileservice.changeHumanFile(map);
 		return "forward:/page/humanResources/success.jsp";
@@ -166,30 +162,359 @@ public class HumanFileController {
 
 	//查询
 	@RequestMapping("queryHumanFile.do")
-	public String queryHumanFile() {
+	public String queryHumanFile(Model model) {
+		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
+		List<ConfigMajorKind> zwlist = majorKindService.findConfigMajorKindAll();
+		model.addAttribute("flist",list);
+		model.addAttribute("zwlist",zwlist);
 		return "forward:/page/humanResources/query_locate.jsp";
 		
 	}
+	//符合查询条件的人  多条件查询
+	@RequestMapping("queryList.do")
+	public String queryList(String firstKindId,String secondKindId,String thirdKindId,String humanMajorKindId,String humanMajorId,String startdate,String enddate,Model model){
+		Map<String,Object> map = new HashMap<>();
+		if(firstKindId!=null&&!"".equals(firstKindId)){
+			map.put("firstKindId",firstKindId);
+		}
+		if(secondKindId!=null&&!"".equals(secondKindId)){
+			map.put("secondKindId", secondKindId);
+		}
+		if(thirdKindId!=null&&!"".equals(thirdKindId)){
+			map.put("thirdKindId",thirdKindId);
+		}
+		if(humanMajorKindId!=null&&!"".equals(humanMajorKindId)){
+			map.put("humanMajorKindId", humanMajorKindId);
+		}
+		if(humanMajorId!=null&&!"".equals(humanMajorId)){
+			map.put("humanMajorId", humanMajorId);
+		}
+		if(startdate!=null&&!"".equals(startdate)){
+			map.put("startdate", startdate);
+		}
+		if(enddate!=null&&!"".equals(enddate)){
+			map.put("enddate", enddate);
+		}
+		List<HumanFile> hlist=humanfileservice.querysLocate(map);
+//		System.out.println(firstKindId);
+//		System.out.println(secondKindId);
+//		System.out.println(thirdKindId);
+//		System.out.println(humanMajorKindId);
+//		System.out.println(humanMajorId);
+		model.addAttribute("hlist", hlist);
+		model.addAttribute("count",hlist.size());//查询条数
+		return "forward:/page/humanResources/query_list.jsp";
+		
+	}
+	//人资档案明细
+	@RequestMapping(value="humanFileInfo.do")
+	public String humanFileInfo(String humanid,Model model) {
+		if(humanid!=null&&!"".equals(humanid)){
+			HumanFile human =humanfileservice.findHumanFileByHumanId(humanid);
+			model.addAttribute("human", human);
+			return "forward:/page/humanResources/query_list_information.jsp";
+	}else {
+		return "shibai";
+	}
+	}	
+	//关键字搜索
+		@RequestMapping("toquerySearch.do")
+		public String toquerySearch(){
+			return "forward:/page/humanResources/query_keywords.jsp";
+			
+		}
+	//关键字搜索的
+	@RequestMapping("querySearch.do")
+	public String querys_search(@RequestParam Map map,Model model){
+		List<HumanFile> hlist=humanfileservice.querysSearch(map);
+		model.addAttribute("primarykey",map.get("primaryKey"));
+		model.addAttribute("hlist", hlist);
+		model.addAttribute("count",hlist.size());
+		return "forward:/page/humanResources/query_list.jsp";
+	}
 	
+	//档案变更
+	@RequestMapping("humanUpdate.do")
+	public String humanUpdate(Model model){
+		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
+		List<ConfigMajorKind> rlist = majorKindService.findConfigMajorKindAll();
+		model.addAttribute("flist",list);
+		model.addAttribute("rlist",rlist);
+		return "forward:/page/humanResources/change_locate.jsp";
+	}
+	//符合查询条件的人  多条件查询
+	@RequestMapping("changeList.do")
+	public String changeList(String firstKindId,String secondKindId,String thirdKindId,String humanMajorKindId,String humanMajorId,String startdate,String enddate,Model model){
+		Map<String,Object> map = new HashMap<>();
+		if(firstKindId!=null&&!"".equals(firstKindId)){
+			map.put("firstKindId",firstKindId);
+		}
+		if(secondKindId!=null&&!"".equals(secondKindId)){
+			map.put("secondKindId", secondKindId);
+		}
+		if(thirdKindId!=null&&!"".equals(thirdKindId)){
+			map.put("thirdKindId",thirdKindId);
+		}
+		if(humanMajorKindId!=null&&!"".equals(humanMajorKindId)){
+			map.put("humanMajorKindId", humanMajorKindId);
+		}
+		if(humanMajorId!=null&&!"".equals(humanMajorId)){
+			map.put("humanMajorId", humanMajorId);
+		}
+		if(startdate!=null&&!"".equals(startdate)){
+			map.put("startdate", startdate);
+		}
+		if(enddate!=null&&!"".equals(enddate)){
+			map.put("enddate", enddate);
+		}
+		List<HumanFile> hlist=humanfileservice.querysLocate(map);
+		model.addAttribute("hlist", hlist);
+		model.addAttribute("count",hlist.size());//查询条数
+		return "forward:/page/humanResources/change_list.jsp";
+		
+	}
+	//人资档案详情信息更改
+	@RequestMapping("updateHumanFile.do")
+	public String updateHumanFile(String humanid,Model model) {
+		if(humanid!=null&&!"".equals(humanid)){
+			HumanFile human =humanfileservice.findHumanFileByHumanId(humanid);
+			List<String> zclist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("职称");
+			List<String> glist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("国籍");
+			List<String> mlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("民族");
+			List<String> zlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("宗教信仰");
+			List<String> zzlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("政治面貌");
+			List<String> xlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("学历");
+			List<String> jlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("教育年限");
+			List<String> xlzylist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("专业");
+			List<String> tlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("特长");
+			List<String> alist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("爱好");
+			List<SalaryStandard> xclist = salarystandardservice.findSalaryStandardAll();
+			model.addAttribute("zclist", zclist);
+			model.addAttribute("glist", glist);
+			model.addAttribute("mlist", mlist);
+			model.addAttribute("zlist", zlist);
+			model.addAttribute("zzlist", zzlist);
+			model.addAttribute("xlist", xlist);
+			model.addAttribute("jlist", jlist);
+			model.addAttribute("xlzylist", xlzylist);
+			model.addAttribute("tlist", tlist);
+			model.addAttribute("alist", alist);
+			model.addAttribute("xclist", xclist);
+			model.addAttribute("human", human);
+			return "forward:/page/humanResources/change_list_information.jsp";
+	}else {
+		return "shibai";
+	}
+	}
+	//关键字搜索
+	@RequestMapping("changeSearchPage.do")
+	public String changeSearchPage(){
+		return "forward:/page/humanResources/change_keywords.jsp";
+		
+	}
+	//关键字搜索的
+	@RequestMapping("changeSearch.do")
+	public String changeSearch(@RequestParam Map map,Model model){
+		List<HumanFile> hlist=humanfileservice.querysSearch(map);
+		model.addAttribute("primarykey",map.get("primaryKey"));
+		model.addAttribute("hlist", hlist);
+		model.addAttribute("count",hlist.size());
+		return "forward:/page/humanResources/change_list.jsp";
+	}
 	
+	//某个人资档案已变更，待复核
+	@RequestMapping("humanFileUpdate.do")
+	public String humanFileUpdate(@ModelAttribute HumanFile human) {
+		human.setCheckStatus(CheckStatus.NO);
+//		System.out.println(human.toString());
+		Map<String,String> map = ProjectToMapUtil.toMap(human);
+		humanfileservice.changeHumanFile(map);
+		return "forward:/page/humanResources/success.jsp";
+	}
 	
+//	删除
+	//查询界面
+	@RequestMapping("deleteLocate.do")
+	public String deleteLocate(Model model) {
+		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
+		List<ConfigMajorKind> zwlist = majorKindService.findConfigMajorKindAll();
+		model.addAttribute("flist",list);
+		model.addAttribute("zwlist",zwlist);
+		return "forward:/page/humanResources/delete_locate.jsp";
+		
+	}
+	//符合查询条件的人  多条件查询
+	@RequestMapping("deleteList.do")
+	public String deleteList(String firstKindId,String secondKindId,String thirdKindId,String humanMajorKindId,String humanMajorId,String startdate,String enddate,Model model){
+		Map<String,Object> map = new HashMap<>();
+		if(firstKindId!=null&&!"".equals(firstKindId)){
+			map.put("firstKindId",firstKindId);
+		}
+		if(secondKindId!=null&&!"".equals(secondKindId)){
+			map.put("secondKindId", secondKindId);
+		}
+		if(thirdKindId!=null&&!"".equals(thirdKindId)){
+			map.put("thirdKindId",thirdKindId);
+		}
+		if(humanMajorKindId!=null&&!"".equals(humanMajorKindId)){
+			map.put("humanMajorKindId", humanMajorKindId);
+		}
+		if(humanMajorId!=null&&!"".equals(humanMajorId)){
+			map.put("humanMajorId", humanMajorId);
+		}
+		if(startdate!=null&&!"".equals(startdate)){
+			map.put("startdate", startdate);
+		}
+		if(enddate!=null&&!"".equals(enddate)){
+			map.put("enddate", enddate);
+		}
+		List<HumanFile> hlist=humanfileservice.querysLocate(map);
+		model.addAttribute("hlist", hlist);
+		model.addAttribute("count",hlist.size());//查询条数
+		return "forward:/page/humanResources/delete_list.jsp";
+		
+	}
+	//人资档案明细
+	@RequestMapping(value="humanFileDelInfo.do")
+	public String humanFileDelInfo(String humanid,Model model) {
+		if(humanid!=null&&!"".equals(humanid)){
+			HumanFile human =humanfileservice.findHumanFileByHumanId(humanid);
+			model.addAttribute("human", human);
+			return "forward:/page/humanResources/delete_list_information.jsp";
+	}else {
+		return "shibai";
+	}
+	}
+//	某个人资档案已删除
+	@RequestMapping("humanFileDel.do")
+	public String humanFileDel(@ModelAttribute HumanFile human) {
+		human.setHumanFileStatus(HumanFileStatus.NO);
+		System.out.println(human.toString());
+		Map<String,String> map = ProjectToMapUtil.toMap(human);
+		humanfileservice.changeHumanFile(map);
+		return "forward:/page/humanResources/success.jsp";
+	}
+	//关键字搜索
+		@RequestMapping("deleteSearchPage.do")
+		public String deleteSearchPage(){
+			return "forward:/page/humanResources/delete_keywords.jsp";
+			
+		}
+		//关键字搜索的
+		@RequestMapping("deleteSearch.do")
+		public String deleteSearch(@RequestParam Map map,Model model){
+			List<HumanFile> hlist=humanfileservice.querysSearch(map);
+			model.addAttribute("primarykey",map.get("primaryKey"));
+			model.addAttribute("hlist", hlist);
+			model.addAttribute("count",hlist.size());
+			return "forward:/page/humanResources/delete_list.jsp";
+		}
+		
+//		恢复删除
+		//查询界面
+		@RequestMapping("recoveryLocate.do")
+		public String recoveryLocate(Model model) {
+			List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
+			List<ConfigMajorKind> zwlist = majorKindService.findConfigMajorKindAll();
+			model.addAttribute("flist",list);
+			model.addAttribute("zwlist",zwlist);
+			return "forward:/page/humanResources/recovery_locate.jsp";
+			
+		}
 	
+		//符合查询条件的人  多条件查询
+		@RequestMapping("recoveryList.do")
+		public String recoveryList(String firstKindId,String secondKindId,String thirdKindId,String humanMajorKindId,String humanMajorId,String startdate,String enddate,Model model){
+			Map<String,Object> map = new HashMap<>();
+			if(firstKindId!=null&&!"".equals(firstKindId)){
+				map.put("firstKindId",firstKindId);
+			}
+			if(secondKindId!=null&&!"".equals(secondKindId)){
+				map.put("secondKindId", secondKindId);
+			}
+			if(thirdKindId!=null&&!"".equals(thirdKindId)){
+				map.put("thirdKindId",thirdKindId);
+			}
+			if(humanMajorKindId!=null&&!"".equals(humanMajorKindId)){
+				map.put("humanMajorKindId", humanMajorKindId);
+			}
+			if(humanMajorId!=null&&!"".equals(humanMajorId)){
+				map.put("humanMajorId", humanMajorId);
+			}
+			if(startdate!=null&&!"".equals(startdate)){
+				map.put("startdate", startdate);
+			}
+			if(enddate!=null&&!"".equals(enddate)){
+				map.put("enddate", enddate);
+			}
+			List<HumanFile> hlist=humanfileservice.recoveryLocate(map);
+			model.addAttribute("hlist", hlist);
+			model.addAttribute("count",hlist.size());//查询条数
+			return "forward:/page/humanResources/recovery_list.jsp";
+			
+		}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		//人资档案明细
+		@RequestMapping(value="recoveryHumanFile.do")
+		public String recoveryHumanFile(String humanid,Model model) {
+			if(humanid!=null&&!"".equals(humanid)){
+				HumanFile human =humanfileservice.findHumanFileByHumanId(humanid);
+				model.addAttribute("human", human);
+				return "forward:/page/humanResources/recovery_list_information.jsp";
+		}else {
+			return "shibai";
+		}
+		}
+//		某个人资档案已删除
+		@RequestMapping("humanFileRecovery.do")
+		public String humanFileRecovery(@ModelAttribute HumanFile human) {
+			human.setHumanFileStatus(HumanFileStatus.YES);
+			System.out.println(human.toString());
+			Map<String,String> map = ProjectToMapUtil.toMap(human);
+			humanfileservice.changeHumanFile(map);
+			return "forward:/page/humanResources/success.jsp";
+		}
+		//关键字搜索
+		@RequestMapping("recoverySearchPage.do")
+		public String recoverySearchPage(){
+			return "forward:/page/humanResources/recovery_keywords.jsp";
+			
+		}
+		//关键字搜索的
+		@RequestMapping("recoverySearch.do")
+		public String recoverySearch(@RequestParam Map map,Model model){
+			List<HumanFile> hlist=humanfileservice.querysSearch(map);
+			model.addAttribute("primarykey",map.get("primaryKey"));
+			model.addAttribute("hlist", hlist);
+			model.addAttribute("count",hlist.size());
+			return "forward:/page/humanResources/recovery_list.jsp";
+		}
+		//永久删除 列表
+		@RequestMapping("deleteForeverList.do")
+		public String deleteForeverList(@RequestParam Map map,Model model){
+			List<HumanFile> foreverlist=humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.NO);
+			model.addAttribute("foreverlist", foreverlist);
+			model.addAttribute("count", foreverlist.size());
+			return "forward:/page/humanResources/delete_forever_list.jsp";
+		}
+//	 点击删除
+		@RequestMapping("deleteForever.do")
+		@ResponseBody
+		public String deleteForever(String humanid){
+//			System.out.println(humanid);
+			HumanFile humanfile=humanfileservice.findHumanFileByHumanId(humanid);
+//			System.out.println(humanfile.getHufId());
+			int i=humanfileservice.removeHumanFileById(humanfile.getHufId());
+			if (i!=0) {
+				JSONArray jsonarr = JSONArray.fromObject(i);
+				return jsonarr.toString();
+			}else {
+				JSONArray jsonarr = JSONArray.fromObject(0);
+				return jsonarr.toString();
+			}
+			
+			
+		}
 	
 	
 	

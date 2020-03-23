@@ -5,17 +5,17 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script language="javascript"
-			src="javascript/winopen/winopenm.js">
+			src="/ssm_hr/page/javascript/winopen/winopenm.js">
 		</script>
 	</head>
 	<body>
 
-		<form name="humanfileForm" method="post" action="/hr/humanfile.do">
+		<form name="humanfileForm" method="post" action="">
 			<table width="100%">
 				<tr>
 					<td>
@@ -24,8 +24,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back()">
+						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back()">
 					</td>
 				</tr>
 			</table>
@@ -37,10 +36,10 @@
 						档案编号
 					</td>
 					<td colspan="6" class="TD_STYLE2">
-						${hf.humanid}
+						${human.humanId}
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						<img src="images/${hf.humanpicture}"  style="width:120px;height:150px;"/>
+						<img src=""  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -48,19 +47,19 @@
 						I级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						${hf.firstkindname }
+						${human.firstKindName }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						${hf.secondkindname }
+						${human.secondKindName }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2" width="2%">
-						${hf.thirdkindname }
+						${human.thirdKindName }
 					</td>
 				</tr>
 				<tr>
@@ -68,19 +67,19 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanmajorkindname }
+						${human.humanMajorKindName }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanmajorname }
+						${human.hunmaMajorName }
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						${hf.humanprodesignation }
+						${human.humanProDesignation }
 					</td>
 				</tr>
 				<tr>
@@ -88,19 +87,19 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanname }
+						${human.humanName }
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humansex}
+						${human.humanSex}
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						${hf.humanemail }
+						${human.humanEmail }
 					</td>
 				</tr>
 				<tr>
@@ -108,19 +107,19 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humantelephone}
+						${human.humanTelephone}
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanqq }
+						${human.humanQq }
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						${hf.humanmobilephone }
+						${human.humanMobilephone }
 					</td>
 				</tr>
 				<tr>
@@ -128,13 +127,13 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						${hf.humanaddress }
+						${human.humanAddress }
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						${hf.humanpostcode }
+					${human.humanPostcode }
 					</td>
 				</tr>
 				<tr>
@@ -142,25 +141,25 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humannationality }
+						${human.humanNationality }
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanbirthplace }
+						${human.humanBirthplace }
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						${hf.humanbirthday }
+						${human.humanBirthday }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
 					</td>
 					<td class="TD_STYLE2">
-					${hf.humanrace }
+					${human.humanRace  }
 					</td>
 				</tr>
 				<tr>
@@ -168,25 +167,25 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanreligion }
+						${human.humanReligion }
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanparty }
+						${human.humanParty }
 					</td>
 					<td class="TD_STYLE1">
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanidcard }
+						${human.humanIdCard }
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humansocietysecurityid }
+						${human.humanSocietySecurityId }
 					</td>
 				</tr>
 				<tr>
@@ -194,25 +193,25 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanage }
+						${human.humanAge }
 					</td>
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-					${hf.humaneducateddegree }
+					${human.humanEducatedDegree }
 					</td>
 					<td class="TD_STYLE1">
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humaneducatedyears }
+						${human.humanEducatedYears }
 					</td>
 					<td class="TD_STYLE1">
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humaneducatedmajor }
+						${human.humanEducatedMajor }
 					</td>
 				</tr>
 				<tr>
@@ -220,25 +219,25 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						${hf.salarystandardname }
+						${human.salaryStandardId }
 					</td>
 					<td class="TD_STYLE1">
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-					${hf.humanbank }
+					${human.humanBank }
 					</td>
 					<td class="TD_STYLE1">
 						帐号
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanaccount }
+						${human.humanAccount }
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						${hf.checker }
+					${human.checker}
 					</td>
 				</tr>
 				<tr>
@@ -246,19 +245,19 @@
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						${hf.checktime }
+						${human.checkTime }
 					</td>
 					<td class="TD_STYLE1">
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanspeciality }
+						${human.humanSpeciality }
 					</td>
 					<td class="TD_STYLE1">
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						${hf.humanhobby }
+						${human.humanHobby }
 					</td>
 					<td class="TD_STYLE1">
 						&nbsp;
@@ -281,7 +280,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="item.humanHistroyRecords" rows="4"
-							class="TEXTAREA_STYLE1" readonly="readonly">${hf.humanhistroyrecords}</textarea>
+							class="TEXTAREA_STYLE1" readonly="readonly">${human.humanHistroyRecords }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -290,7 +289,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="item.humanFamilyMembership" rows="4"
-							class="TEXTAREA_STYLE1" readonly="readonly">${hf.humanfamilymembership }</textarea>
+							class="TEXTAREA_STYLE1" readonly="readonly">${human.humanFamilyMembership }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -298,7 +297,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="item.remark" rows="4" class="TEXTAREA_STYLE1" readonly="readonly">${hf.remark }</textarea>
+						<textarea name="item.remark" rows="4" class="TEXTAREA_STYLE1" readonly="readonly">${human.remark }</textarea>
 					</td>
 				</tr>
 			</table>

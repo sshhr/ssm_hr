@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.hr.dto.EExam;
 import com.hr.pojo.EngageExam;
 
 @Repository
@@ -16,5 +17,5 @@ public interface EngageExamMapper {
 	public void insertEngageExam(EngageExam s);
 	public void updateEngageExam(Map map);
 	public void deleteEngageExamById(String exaId);
-	
+	public List<EExam> findEngageExamAllCategoryamount();
 }

@@ -3,45 +3,53 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
- <head>
+  <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>My JSP 'subject-list.jsp' starting page</title>
-	 <link rel="stylesheet"
+    <title>My JSP 'problem_set_list.jsp' starting page</title>
+		<link rel="stylesheet"
 			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css"
+			type="text/css">
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/comm/comm.js">
-		</script>
+	
+</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/comm/list.js">
-		</script>
+	
+</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/calendar-ch.js">
-		</script>
+	
+</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
-		</script>
+	
+</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/locate.js">
-		</script>
+	
+</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/select.js">
-		</script>
-	  </head>
+	
+</script>
+     </head>
+
 	<body>
-		<form method="post" name="fm" action="/HR_Fist/recruit/recruitAction!toResumeList?a=list">
-		<input type="hidden" name="utilBean.currPage" id="page"/>
+		<form method="post" action="" name="fm">
+				<input type="hidden" name="utilBean.currPage" id="page"/>
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题查询--试题列表
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试管理--考试出题 
 						</font>
 					</td>
 				</tr>
 			  <tr>
 					<td align="right"> 
-						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back()">
+						<input type="button" value="出题" class="BUTTON_STYLE1" onclick="history.back();">
 					</td>
 				</tr>
 			</table> 
@@ -49,54 +57,47 @@
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="40%" class="TD_STYLE1" >
-						题干
+					<td width="15%" class="TD_STYLE1">
+						职业分类编号
+					</td>
+					<td width="25%" class="TD_STYLE1">
+						职业分类名称
+					</td>
+					<td width="15%" class="TD_STYLE1">
+						职位编号
+					</td>
+					<td width="25%" class="TD_STYLE1">
+						职位名称
 					</td>
 					<td width="10%" class="TD_STYLE1">
-						试题I级分类
+						套题数量
 					</td>
 					<td width="10%" class="TD_STYLE1">
-						试题II级分类
-					</td>
-					<td width="5%" class="TD_STYLE1">
-						登记人
-					</td>
-					<td width="20%" class="TD_STYLE1">
-						登记日期
-					</td>
-					<td width="10%" class="TD_STYLE1">
-						出处
-					</td>
-					<td width="5%" class="TD_STYLE1">
-						正确答案
+						出题
 					</td>
 				</tr>
-				<c:forEach items="${slist}" var="sl">
+				    <c:forEach items="${elist}" var="e">
 					<tr>
-						<td class="TD_STYLE2" style="color:blue">
-							${sl.content}
+						<td class="TD_STYLE2">
+						${e.majorKindId }
 						</td>
 						<td class="TD_STYLE2">
-							${sl.firstKindName}
+						${e.majorKindName }
 						</td>
 						<td class="TD_STYLE2">
-							${sl.secondKindName}
+						${e.majorId }
 						</td>
 						<td class="TD_STYLE2">
-						${sl.register}
+						${e.majorName }
 						</td>
 						<td class="TD_STYLE2">
-						${sl.registTime}
+						${e.amount }
 						</td>
 						<td class="TD_STYLE2">
-						${sl.derivation}
-						</td>
-						<td class="TD_STYLE2">
-						${sl.correctKey}
+							<a href="">出题</a>
 						</td>
 					</tr>
-				</c:forEach>
-				
+					</c:forEach>
 			</table>
 		</form>
 		<script type="text/javascript">

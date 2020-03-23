@@ -95,6 +95,33 @@ public class ResumeController {
 		}
 	}
 	
+	//简历登记
+	@RequestMapping("jlregister.do")
+	public String jlregister(Model model){
+		List<ConfigMajorKind> mjlist = majorKindService.findConfigMajorKindAll();
+		model.addAttribute("mjlist",mjlist);
+		List<String> glist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("国籍");
+		List<String> mlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("民族");
+		List<String> zlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("宗教信仰");
+		List<String> zzlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("政治面貌");
+		List<String> xlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("学历");
+		List<String> jlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("教育年限");
+		List<String> xlzylist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("专业");
+		List<String> tlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("特长");
+		List<String> alist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("爱好");
+		model.addAttribute("glist", glist);
+		model.addAttribute("mlist", mlist);
+		model.addAttribute("zlist", zlist);
+		model.addAttribute("zzlist", zzlist);
+		model.addAttribute("xlist", xlist);
+		model.addAttribute("jlist", jlist);
+		model.addAttribute("xlzylist", xlzylist);
+		model.addAttribute("tlist", tlist);
+		model.addAttribute("alist", alist);
+		return "forward:/page/recruit/resume/register1.jsp";
+	}
+	
+	
 	//简历的提交
 	@RequestMapping("saveResumeRegister.do")
 	public String saveResumeRegister(HttpServletRequest request,MultipartFile file,@ModelAttribute EngageResume engageResume,String humanBirthday,Model model){
@@ -114,7 +141,7 @@ public class ResumeController {
 					engageResume.setHumanPicture(pp);
 				}
 				engageResumeService.saveEngageResume(engageResume);
-				return "";
+				return "redirect:/resume/resumeChoose.do";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{

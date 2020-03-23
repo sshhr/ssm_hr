@@ -5,7 +5,7 @@
 <html>
  <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>My JSP 'subject-list.jsp' starting page</title>
+    <title>My JSP 'subject-l.jsp' starting page</title>
 	 <link rel="stylesheet"
 			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
@@ -30,12 +30,12 @@
 		</script>
 	  </head>
 	<body>
-		<form method="post" name="fm" action="/HR_Fist/recruit/recruitAction!toResumeList?a=list">
+		<form method="post" name="fm" >
 		<input type="hidden" name="utilBean.currPage" id="page"/>
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题查询--试题列表
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题变更查询-试题变更查询结果
 						</font>
 					</td>
 				</tr>
@@ -49,7 +49,7 @@
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="40%" class="TD_STYLE1" >
+					<td width="35%" class="TD_STYLE1" >
 						题干
 					</td>
 					<td width="10%" class="TD_STYLE1">
@@ -69,6 +69,9 @@
 					</td>
 					<td width="5%" class="TD_STYLE1">
 						正确答案
+					</td>
+					<td width="5%" class="TD_STYLE1">
+						变更
 					</td>
 				</tr>
 				<c:forEach items="${slist}" var="sl">
@@ -93,6 +96,9 @@
 						</td>
 						<td class="TD_STYLE2">
 						${sl.correctKey}
+						</td>
+						<td class="TD_STYLE2">
+							<a href="/ssm_hr/subject/subjectUpdate.do?subId=${sl.subId }">变更</a>
 						</td>
 					</tr>
 				</c:forEach>

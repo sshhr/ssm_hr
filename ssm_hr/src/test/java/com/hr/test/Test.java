@@ -9,17 +9,21 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.hr.dto.EExam;
 import com.hr.mapper.BonusMapper;
+import com.hr.mapper.EngageExamMapper;
 import com.hr.pojo.Bonus;
 import com.hr.pojo.ConfigFileFirstKind;
 import com.hr.pojo.ConfigFileSecondKind;
 import com.hr.pojo.ConfigFileThirdKind;
 import com.hr.pojo.ConfigMajor;
+import com.hr.pojo.EngageExam;
 import com.hr.service.BonusService;
 import com.hr.service.ConfigFileFirstKindService;
 import com.hr.service.ConfigFileSecondKindService;
 import com.hr.service.ConfigFileThirdKindService;
 import com.hr.service.ConfigMajorService;
+import com.hr.service.EngageExamService;
 import com.hr.service.impl.BonusServiceImpl;
 import com.hr.service.impl.ConfigFileFirstKindServiceImpl;
 
@@ -29,15 +33,21 @@ public class Test {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("/applicationContext.xml");
 		
-//		BonusService impl = (BonusService) context.getBean("bonusServiceImpl");
-////		List<Bonus> list = impl.findBonusAll();
+		EngageExamService impl = (EngageExamService) context.getBean("engageExamServiceImpl");
+		List<EExam> ee = impl.findEngageExamAllCategoryamount();
+		for (EExam engageExam : ee) {
+			System.out.println(engageExam);
+		}
+		
+		
+//		List<Bonus> list = impl.findBonusAll();
 //		
-////		List<Integer> ll = new ArrayList<>();
-////		ll.add(1);
-////		List<Bonus> list = impl.findBonusByIds(ll);
-////		for (Bonus Bonus : list) {
-////			System.out.println(Bonus.getMajorId());
-////		}
+//		List<Integer> ll = new ArrayList<>();
+//		ll.add(1);
+//		List<Bonus> list = impl.findBonusByIds(ll);
+//		for (Bonus Bonus : list) {
+//			System.out.println(Bonus.getMajorId());
+//		}
 ////		
 //		
 ////		impl.removeBonusById("1");
@@ -72,12 +82,12 @@ public class Test {
 //			System.out.println(Bonus.getThirdKindName());
 //		}
 		
-		ConfigMajorService impl = (ConfigMajorService) context.getBean("configMajorServiceImpl");
-		
-		List<ConfigMajor> list = impl.findConfigMajorAll();
-		
-		for (ConfigMajor Bonus : list) {
-			System.out.println(Bonus.getMajorName());
-		}
+//		ConfigMajorService impl = (ConfigMajorService) context.getBean("configMajorServiceImpl");
+//		
+//		List<ConfigMajor> list = impl.findConfigMajorAll();
+//		
+//		for (ConfigMajor Bonus : list) {
+//			System.out.println(Bonus.getMajorName());
+//		}
 	}
 }	

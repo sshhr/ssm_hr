@@ -81,33 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	tick();					
 		}
 		
-		function findscondkind(){//当第一个选择框改变
-			var mid = $("#firstKindId").val();//n拿到选择的id
-			var majorSelect = $("#secondKindid");//拿到第二个选择框
-			var majorkindname = $("#firstKindId"+mid).html();//拿到一级分类名
-			 $("#firstKindName").val(majorkindname);//改变隐藏域里的一级分类名值
-			majorSelect.empty();
-			majorSelect.append("<option value=''>--请选择--</option>");
-			if(mid != 0){
-				$.post("/ssm_hr/subject/findscondkind.do",
- 						{
-						mid:mid,
- 						},
- 						function(data){
- 							var obj=JSON.parse(data);
- 				 			for(var i=0;i<obj.length;i++){
- 								var eachMajor = obj[i];
- 								majorSelect.append("<option id='secondKindId_"+eachMajor.secondKindId+"' value='"+eachMajor.secondKindId+"'>"+eachMajor.secondKindName+"</option>");
- 							}
- 				 		}
- 				);
-			}
-		}
-		function getsecondKindName(){//当第二个选择框改变时
- 	 	 	var mid =  $("#secondKindid").val();//拿到选择的id
- 	 		var majorkindname = $("#secondKindId_"+mid).html();//拿到对应的二级分类名
-			 $("#secondKindName").val(majorkindname);//放进隐藏表单域中的二级分类名
- 	 	}
+		
  	 	function mysubmit(){
  	 		document.fm.submit();
  	 	}
@@ -115,11 +89,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <form id="myfm" name="fm" action="/ssm_hr/subject/subjectRegisterSubmit.do" method="post">
+  <form id="myfm" name="fm" action="/ssm_hr/subject/subjectupdateSubmit.do" method="post">
    <table width="100%">
    			<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题登记 </font>
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试题库管理--试题变更查询--试题变更 </font>
 					 
 					</td>
 				</tr>
@@ -134,38 +108,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
+				<input type="hidden"  name="subId" value="${s.subId }"/>
 				<tr>
 					<td class="TD_STYLE1">
 						试题一级分类
 					</td>
 					<td class="TD_STYLE2">  
-					<input type="hidden" id="firstKindName" name="firstKindName">
-					<select name="firstKindId" class="SELECT_STYLE1" id="firstKindId" onchange="findscondkind()">
-						<option>--请选择--</option>
-						<c:forEach items="${cqlist }" var="cq">
-							<option id="firstKindId_${cq.firstKindId }" value="${cq.firstKindId}">${cq.firstKindName }</option>
-						</c:forEach>
-					</select>		
+					<input type="text" id="firstKindName" name="firstKindName" value="${s.firstKindName }" readonly="readonly">
 					</td>
 					<td class="TD_STYLE1">
 						试题二级级分类
 					</td>
 					<td class="TD_STYLE2">  
-					<input type="hidden"  id ="secondKindName" name="secondKindName">
-					<select name="secondKindId" class="SELECT_STYLE1" id="secondKindid" onchange="getsecondKindName()">
-					<option>--请选择--</option>
-					</select>
+					<input type="text"  id ="secondKindName" name="secondKindName" value="${s.secondKindName }" readonly="readonly">
 					<td class="TD_STYLE1">
-						姓名
+						变更者
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text"  name="register"  class="INPUT_STYLE2"/>
+						 <input type="text"  name="changer"  class="INPUT_STYLE2" value=""/>
 					</td>
 					<td class="TD_STYLE1">
-						注册时间
+						变更时间
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="registTime"
+						 <input type="text" name="changeTime"
 							  id="nowTime" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
@@ -175,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						题干
 					</td>
 					<td class="TD_STYLE2" colspan="7" >
-						 <textarea name="content" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none"></textarea>
+						 <textarea name="content" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none">${s.content }</textarea>
 					</td>
 				</tr>
 				<tr >
@@ -183,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						答案a
 					</td>
 					<td class="TD_STYLE2" colspan="7" >
-						 <textarea name="keyA" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none"></textarea>
+						 <textarea name="keyA" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none" value="">${s.keyA }</textarea>
 					</td>
 				</tr>
 				<tr >
@@ -191,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						答案b
 					</td>
 					<td class="TD_STYLE2" colspan="7" >
-						 <textarea name="keyB" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none"></textarea>
+						 <textarea name="keyB" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none" >${s.keyB }</textarea>
 					</td>
 				</tr>
 				<tr >
@@ -199,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						答案c
 					</td>
 					<td class="TD_STYLE2" colspan="7" >
-						 <textarea rows="3" name="keyC" cols="3"   class="TEXTAREA_STYLE1" style="resize:none"></textarea>
+						 <textarea rows="3" name="keyC" cols="3"   class="TEXTAREA_STYLE1" style="resize:none" >${s.keyC }</textarea>
 					</td>
 				</tr>
 				<tr >
@@ -207,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						答案d
 					</td>
 					<td class="TD_STYLE2" colspan="7" >
-						 <textarea name="keyD"  rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none"></textarea>
+						 <textarea name="keyD"  rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none" >${s.keyD }</textarea>
 					</td>
 				</tr>
 				<tr >
@@ -215,7 +181,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						答案e
 					</td>
 					<td class="TD_STYLE2" colspan="7" >
-						 <textarea name="keyE" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none"></textarea>
+						 <textarea name="keyE" rows="3" cols="3"   class="TEXTAREA_STYLE1" style="resize:none">${s.keyE }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -223,13 +189,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						正确答案
 					</td>
 					<td class="TD_STYLE2">
-						 <input  type="text"  name="correctKey"  class="INPUT_STYLE2"/>
+						 <input  type="text"  name="correctKey"  class="INPUT_STYLE2" value="${s.correctKey }"/>
 					</td>
 					<td class="TD_STYLE1">
 						试题出处
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="derivation"   class="INPUT_STYLE2"/>
+						 <input type="text" name="derivation"   class="INPUT_STYLE2" value="${s.derivation }"/>
 					</td>
 					<td class="TD_STYLE1">
 						

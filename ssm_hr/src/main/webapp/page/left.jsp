@@ -679,7 +679,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/resume/register.jsp" target="mainFrame">简历登记</a>
+													<a href="/ssm_hr/resume/jlregister.do" target="mainFrame">简历登记</a>
 												</td>
 											</tr>
 											<tr>
@@ -687,7 +687,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/resume/resume-choose.jsp" target="mainFrame">简历筛选</a>
+													<a href="/ssm_hr/resume/resumeChoose.do" target="mainFrame">简历筛选</a>
 												</td>
 											</tr>
 											<tr>
@@ -695,7 +695,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/resume/valid-resume.jsp" target="mainFrame">有效简历查询</a>
+													<a href="/ssm_hr/resume/validResume.do" target="mainFrame">有效简历查询</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -723,7 +723,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/interview/interview-resume.jsp" target="mainFrame">面试结果登记</a>
+													<a href="/ssm_hr/interview/interviewResumeQuery.do" target="mainFrame">面试结果登记</a>
 												</td>
 											</tr>
 											<tr>
@@ -731,7 +731,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="recruit/interview/sift-list.jsp" target="mainFrame">面试筛选</a>
+													<a href="/ssm_hr/interview/siftInterview.do" target="mainFrame">面试筛选</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -759,7 +759,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engagesubjects.do?operate=toAdd" target="mainFrame">试题登记</a>
+													<a href="/ssm_hr/subject/toSubjectRegister.do" target="mainFrame">试题登记</a>
 												</td>
 											</tr>
 											<tr>
@@ -767,7 +767,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engagesubjects.do?operate=locate&param=query" target="mainFrame">试题查询</a>
+													<a href="/ssm_hr/subject/subjectSelect.do" target="mainFrame">试题查询</a>
 												</td>
 											</tr>
 											<tr>
@@ -775,7 +775,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="engagesubjects.do?operate=locate&param=change" target="mainFrame">试题变更</a>
+													<a href="/ssm_hr/subject/subjectbg.do" target="mainFrame">试题变更</a>
 												</td>
 											</tr>
 										</table></span>
@@ -803,7 +803,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													考试出题
+												<a href="/ssm_hr/exam/queryExamList.do" target="mainFrame">考试出题</a>
 												</td>
 											</tr>
 											<tr>
@@ -855,7 +855,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/employ/register_list.jsp" target="mainFrame">录用申请</a>
+													<a href="/ssm_hr/employ/registerList.do" target="mainFrame">录用申请</a>
 												</td>
 											</tr>
 											<tr>
@@ -863,7 +863,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/employ/check_list.jsp" target="mainFrame">录用审批</a>
+													<a href="/ssm_hr/employ/toCheckList.do" target="mainFrame">录用审批</a>
 												</td>
 											</tr>
 											<tr>
@@ -871,7 +871,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="recruit/employ/list.jsp" target="mainFrame">录用查询</a>
+													<a href="/ssm_hr/employ/toFindList.do" target="mainFrame">录用查询</a>
 												</td>
 											</tr>
 										</table> </span>
@@ -880,7 +880,6 @@ a{ CURSOR: hand}
 						</table> </span>
 				</td>
 			</tr>
-
 			<!-- 标准数据报表 -->
 			<tr>
 				<td>

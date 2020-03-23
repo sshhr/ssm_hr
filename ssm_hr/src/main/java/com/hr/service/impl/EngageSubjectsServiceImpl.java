@@ -41,6 +41,11 @@ public class EngageSubjectsServiceImpl implements EngageSubjectsService {
 	public void removeEngageSubjectsById(String id) {
 		EngageSubjectsMapper.deleteEngageSubjectsById(id);
 	}
+
+	@Override
+	public List<EngageSubjects> findchooseQuery(Map map) {
+		return EngageSubjectsMapper.findchooseQuery(map);
+	}
 	
 	
 

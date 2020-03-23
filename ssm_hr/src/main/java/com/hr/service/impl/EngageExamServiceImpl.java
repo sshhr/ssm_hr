@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hr.dto.EExam;
 import com.hr.mapper.EngageExamMapper;
 import com.hr.pojo.EngageExam;
 import com.hr.service.EngageExamService;
@@ -40,6 +41,12 @@ public class EngageExamServiceImpl implements EngageExamService {
 	@Override
 	public void removeEngageExamById(String id) {
 		EngageExamMapper.deleteEngageExamById(id);
+	}
+
+	@Override
+	public List<EExam> findEngageExamAllCategoryamount() {
+		// TODO Auto-generated method stub
+		return EngageExamMapper.findEngageExamAllCategoryamount();
 	}
 	
 	

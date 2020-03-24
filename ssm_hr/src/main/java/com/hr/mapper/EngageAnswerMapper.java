@@ -15,6 +15,8 @@ public interface EngageAnswerMapper {
 	public List<EngageAnswer> findEngageAnswerByIds(List list);
 	public void insertEngageAnswer(EngageAnswer s);
 	public void updateEngageAnswer(Map map);
+	public void updateEngageAnswerByanswerNumber(Map map);
 	public void deleteEngageAnswerById(String ansId);
 	public EngageAnswer findEngageAnswerByEngageInterviewAndEngageResume(Map map);
+	public EngageAnswer findEngageAnswerByResumeId(String resumeId);
 }

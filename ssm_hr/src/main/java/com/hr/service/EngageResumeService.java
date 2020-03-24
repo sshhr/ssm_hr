@@ -13,4 +13,5 @@ public interface EngageResumeService {
 	public void removeEngageResumeById(String id);
 	public List<EngageResume> findchooseQuery(Map map);
 	public List<EngageResume> findEngageResumeByCheckStatus(String checkStatus);
+	public List<EngageResume> findchooseQueryexamfenshu(Map map);
 }

@@ -814,6 +814,7 @@ a{ CURSOR: hand}
 													<a href="/ssm_hr/exam/toExam.do" target="mainFrame">考试答题</a>
 												</td>
 											</tr>
+											<!-- 
 											<tr>
 												<td width="2%">
 													<img src="images/jt0.gif">
@@ -822,12 +823,13 @@ a{ CURSOR: hand}
 													考试阅卷
 												</td>
 											</tr>
+											 -->
 											<tr>
 												<td width="2%">
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													成绩查询筛选
+												<a href="/ssm_hr/page/recruit/exam/exam_search.jsp" target="mainFrame">成绩查询筛选</a>
 												</td>
 											</tr>
 										</table> </span>

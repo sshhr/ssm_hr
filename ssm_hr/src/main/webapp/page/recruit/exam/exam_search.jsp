@@ -1,40 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-resume.jsp' starting page</title>
      	<link rel="stylesheet"
-			href="<%=basePath %>css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="<%=basePath %>css/cwcalendar.css"
+			href="/ssm_hr/page/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/comm/time.js">
+			src="/ssm_hr/page/javascript/comm/time.js">
 		</script>
 <script type="text/javascript">
 	function search() {
@@ -44,11 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 
 	<body>
-		<form name="examAnswerForm" method="post" action="examAnswerSearchResult" >
+		<form name="examAnswerForm" method="post" action="/ssm_hr/exam/examSearch.do" >
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试管理--成绩查询筛选</font>
+						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试管理--笔试成绩查询筛选</font>
 					</td>
 				</tr>
 				<tr>
@@ -78,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						请输入关键字
 					</td>
 					<td width="84%" >
-						<input type="text" name="primaryKey" value=""
+						<input type="text" name="primarkey" value=""
 							class="INPUT_STYLE2" />
 							(姓名，职业分类名称，职业名称)
 					</td>

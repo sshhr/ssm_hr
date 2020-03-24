@@ -52,6 +52,12 @@ public class EngageSubjectsServiceImpl implements EngageSubjectsService {
 	public List<EngageSubjectsAndAmount> findEngageSubjectsAndAmount() {
 		return EngageSubjectsMapper.findEngageSubjectsAndAmount();
 	}
+
+	@Override
+	public List<EngageSubjects> findEngageSubjectsBysuiji(Map map) {
+		// TODO Auto-generated method stub
+		return EngageSubjectsMapper.findEngageSubjectsBysuiji(map);
+	}
 	
 	
 

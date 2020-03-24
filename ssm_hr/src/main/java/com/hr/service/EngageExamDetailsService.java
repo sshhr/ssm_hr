@@ -11,4 +11,5 @@ public interface EngageExamDetailsService {
 	public void saveEngageExamDetails(EngageExamDetails s);
 	public void changeEngageExamDetails(Map map);
 	public void removeEngageExamDetailsById(String id);
+	public List<EngageExamDetails> findEngageExamDetailsByExamNumber(String examNumber);
 }

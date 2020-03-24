@@ -18,4 +18,7 @@ public interface EngageResumeMapper {
 	public void deleteEngageResumeById(String resId);
 	public List<EngageResume> findchooseQuery(Map map);
 	public List<EngageResume> findEngageResumeByCheckStatus(String checkStatus);
+	public EngageResume findEngageExamByhumanNameAndhumanIdcard(Map map);
+	public void updateEngageResumeByhumanIdcard(Map map);
+	public List<EngageResume> findchooseQueryexamfenshu(Map map);
 }

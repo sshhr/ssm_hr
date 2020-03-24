@@ -96,7 +96,8 @@ public class EmployController {
 				humanFile.setHumanId(humanId);
 				humanFile.setCheckStatus(CheckStatus.NO);
 				humanFile.setHumanFileStatus(HumanFileStatus.INIT);
-				System.out.println(resume);
+				humanFile.setRemark(null);
+				humanFile.setHumanIdCard(resume.getHumanIdcard());
 				humanFile.setHunmaMajorName(resume.getHumanMajorName());
 				resumeService.updateResumeAndSaveHumanFile(map, humanFile);
 				break;

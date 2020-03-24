@@ -3,53 +3,45 @@
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+ <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>My JSP 'problem_set_list.jsp' starting page</title>
-		<link rel="stylesheet"
+    <title>My JSP 'exam-list.jsp' starting page</title>
+	 <link rel="stylesheet"
 			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="/ssm_hr/page/css/cwcalendar.css"
-			type="text/css">
+			href="/ssm_hr/page/css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/comm/comm.js">
-	
-</script>
+		</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/comm/list.js">
-	
-</script>
+		</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/calendar-ch.js">
-	
-</script>
+		</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
-	
-</script>
+		</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/locate.js">
-	
-</script>
+		</script>
 		<script type="text/javascript"
 			src="/ssm_hr/page/javascript/select.js">
-	
-</script>
-     </head>
-
+		</script>
+	  </head>
 	<body>
-		<form method="post" action="" name="fm">
-				<input type="hidden" name="utilBean.currPage" id="page"/>
+		<form method="post" name="fm" action="/HR_Fist/recruit/recruitAction!toResumeList?a=list">
+		<input type="hidden" name="utilBean.currPage" id="page"/>
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--招聘管理--招聘考试管理--考试出题 
+						<font color="black">您正在做的业务是：人力资源--招聘管理--简历管理--简历筛选--简历筛选列表 
 						</font>
 					</td>
 				</tr>
 			  <tr>
 					<td align="right"> 
-						<input type="button" value="出题" class="BUTTON_STYLE1" onclick="setproblem();">
+						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='/ssm_hr/page/recruit/exam/exam_search.jsp'">
 					</td>
 				</tr>
 			</table> 
@@ -58,46 +50,59 @@
 				class="TABLE_STYLE1">
 				<tr>
 					<td width="15%" class="TD_STYLE1">
-						职业分类编号
+						档案编号
 					</td>
-					<td width="25%" class="TD_STYLE1">
-						职业分类名称
+					<td width="10%" class="TD_STYLE1">
+						姓名
+					</td>
+					<td width="10%" class="TD_STYLE1">
+						性别
 					</td>
 					<td width="15%" class="TD_STYLE1">
-						职位编号
+						职位分类
 					</td>
-					<td width="25%" class="TD_STYLE1">
+					<td width="5%" class="TD_STYLE1">
 						职位名称
 					</td>
-					<td width="10%" class="TD_STYLE1">
-						套题数量
+					<td width="5%" class="TD_STYLE1">
+						电话号码
 					</td>
-					<td width="10%" class="TD_STYLE1">
-						出题
+					<td width="5%" class="TD_STYLE1">
+						笔试分数
+					</td>
+					<td width="5%" class="TD_STYLE1">
+						详情 
 					</td>
 				</tr>
-				    <c:forEach items="${elist}" var="e">
+				<c:forEach items="${resultList}" var="re">
 					<tr>
 						<td class="TD_STYLE2">
-						${e.majorKindId }
+							${re.resId}
 						</td>
 						<td class="TD_STYLE2">
-						${e.majorKindName }
+							${re.humanName}
 						</td>
 						<td class="TD_STYLE2">
-						${e.majorId }
+							${re.humanSex}
 						</td>
 						<td class="TD_STYLE2">
-						${e.majorName }
+						${re.humanMajorKindName}
 						</td>
 						<td class="TD_STYLE2">
-						${e.amount }
+						${re.humanMajorName}
 						</td>
 						<td class="TD_STYLE2">
-							<a href="/ssm_hr/exam/setExamList.do">出题</a>
+						${re.humanMobilephone}
+						</td>
+						<td class="TD_STYLE2">
+						${re.totalPoints}
+						</td>
+						<td class="TD_STYLE2">
+							<a href="/ssm_hr/exam/examxq.do?resId=${re.resId }">详情</a>
 						</td>
 					</tr>
-					</c:forEach>
+				</c:forEach>
+				
 			</table>
 		</form>
 		<script type="text/javascript">
@@ -125,11 +130,6 @@
 	     }
 	     document.fm.submit();
 	 	}
-		
-		<!--上面出题-->
-		function setproblem(){
-			window.location.href="/ssm_hr/exam/setExamList.do";
-		 }
 		</script>
 	</body>
 </html>

@@ -60,6 +60,7 @@
         </foreach>
     </select>
     
+    
     <!-- 根据InterviewStatus查询数据 -->
     <select id="findEngageInterviewByInterviewStatus" resultMap="engageInterviewMap" parameterType="String">
         SELECT
@@ -262,4 +263,6 @@
         <include refid="allColumns" />
         FROM ENGAGE_INTERVIEW WHERE  RESUME_ID = #{resumeId}
     </select>
+    
+    
 </mapper>

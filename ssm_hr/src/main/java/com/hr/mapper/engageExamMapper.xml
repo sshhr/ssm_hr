@@ -65,6 +65,13 @@
         </foreach>
     </select>
     
+    <!-- 根据主键查询数据 -->
+    <select id="findEngageExamByexamNumber" resultMap="engageExamMap" parameterType="String">
+        SELECT
+        <include refid="allColumns" />
+        FROM ENGAGE_EXAM WHERE EXAM_NUMBER =#{examNumber}
+    </select>
+    
     <!-- 插入数据 -->
     <insert id="insertEngageExam" parameterType="EngageExam">
         INSERT INTO ENGAGE_EXAM (
@@ -118,5 +125,6 @@
     <delete id="deleteEngageExamById" parameterType="string">
         DELETE FROM ENGAGE_EXAM WHERE EXA_ID = #{exaId}
     </delete>
+    
     
 </mapper>

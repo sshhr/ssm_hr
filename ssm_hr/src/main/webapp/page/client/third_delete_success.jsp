@@ -5,9 +5,9 @@
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		
 	</head>
@@ -26,7 +26,7 @@
 					删除成功，请返回。
 				</td>
 				<td width="51%" align="right">
-					<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='third_kind.jsp'" />
+					<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='/ssm_hr/page/third_kind.jsp'" />
 				</td>
 			</tr>
 		</table>

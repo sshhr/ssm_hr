@@ -5,7 +5,7 @@
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<script type="text/javascript">
 function selAll(obj) {
 	var cho = document.all.choice.value;
@@ -29,10 +29,10 @@ function selAll(obj) {
  	}
 </script>
 		<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="javascript/selectAll.js">
+			src="/ssm_hr/page/javascript/selectAll.js">
 		</script>
 	</head>
 

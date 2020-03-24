@@ -33,13 +33,13 @@ public class ConfigMajorKindServiceImpl implements ConfigMajorKindService {
 	}
 
 	@Override
-	public void changeConfigMajorKind(Map map) {
-		ConfigMajorKindMapper.updateConfigMajorKind(map);
+	public void changeConfigMajorKind(ConfigMajorKind s) {
+		ConfigMajorKindMapper.updateConfigMajorKind(s);
 	}
 
 	@Override
-	public void removeConfigMajorKindById(String id) {
-		ConfigMajorKindMapper.deleteConfigMajorKindById(id);
+	public int removeConfigMajorKindById(String id) {
+		return ConfigMajorKindMapper.deleteConfigMajorKindById(id);
 	}
 	
 	

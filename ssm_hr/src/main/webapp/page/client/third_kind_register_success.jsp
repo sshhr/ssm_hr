@@ -4,7 +4,7 @@
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="css/table.css"
+		<link rel="stylesheet" href="/ssm_hr/page/css/table.css"
 			type="text/css"></link>
 	</head>
 

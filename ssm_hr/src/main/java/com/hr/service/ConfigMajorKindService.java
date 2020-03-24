@@ -9,6 +9,6 @@ public interface ConfigMajorKindService {
 	public List<ConfigMajorKind> findConfigMajorKindAll();
 	public List<ConfigMajorKind> findConfigMajorKindByIds(List list);
 	public void saveConfigMajorKind(ConfigMajorKind s);
-	public void changeConfigMajorKind(Map map);
-	public void removeConfigMajorKindById(String id);
+	public void changeConfigMajorKind(ConfigMajorKind s);
+	public int removeConfigMajorKindById(String id);
 }

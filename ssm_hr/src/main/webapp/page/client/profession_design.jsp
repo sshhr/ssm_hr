@@ -6,22 +6,25 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 			<script type="text/javascript"
-			src="javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 	<script type="text/javascript">
-		function ajax(pbcid){
-		$.ajax({
-			url:'deletepublic?pbcid='+pbcid,
-			type:'get',
-			success:function(){
-				$('#'+pbcid).remove();
-			}
-		});
+	function deletebyid(makId){
+		$.post("/ssm_hr/client/deleteProfessionDesign.do",
+					{
+					makId:makId,
+					},
+					function(data){
+						if(data=="ok"){
+							$('#'+makId).remove();
+						}
+					}
+			);
 	}
 	</script>
 	</head>
@@ -53,12 +56,12 @@
 				</tr>
 				
 				<c:forEach items="${zlist}" var="z">
-				<tr id="${z.pbcid}">
+				<tr id="${z.makId}">
 					<td class="TD_STYLE2">
-					${z.attributename}
+					${z.majorName}
 					</td>
 					<td class="TD_STYLE2" align="center">
-						<a href="javascript:ajax(${z.pbcid})">删除</a>
+						<a href="javascript:deletebyid(${z.makId})">删除</a>
 					</td>
 				</tr>
 				</c:forEach>

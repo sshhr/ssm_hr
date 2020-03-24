@@ -33,13 +33,13 @@ public class ConfigMajorServiceImpl implements ConfigMajorService {
 	}
 
 	@Override
-	public void changeConfigMajor(Map map) {
-		ConfigMajorMapper.updateConfigMajor(map);
+	public void changeConfigMajor(ConfigMajor s) {
+		ConfigMajorMapper.updateConfigMajor(s);
 	}
 
 	@Override
-	public void removeConfigMajorById(String id) {
-		ConfigMajorMapper.deleteConfigMajorById(id);
+	public int removeConfigMajorById(String id) {
+		return ConfigMajorMapper.deleteConfigMajorById(id);
 	}
 
 	@Override

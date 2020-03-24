@@ -28,7 +28,7 @@
 					else {
 						$.messager.show("消息提示","您已添加成功",2000);
 					}
-					document.questionFirstKindAdd.submit();
+					window.location.href="/ssm_hr/client/toQuestionFirstKind.do";
 				}
 			);
 		}

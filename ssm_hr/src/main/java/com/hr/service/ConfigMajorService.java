@@ -9,7 +9,7 @@ public interface ConfigMajorService {
 	public List<ConfigMajor> findConfigMajorAll();
 	public List<ConfigMajor> findConfigMajorByIds(List list);
 	public void saveConfigMajor(ConfigMajor s);
-	public void changeConfigMajor(Map map);
-	public void removeConfigMajorById(String id);
+	public void changeConfigMajor(ConfigMajor s);
+	public int removeConfigMajorById(String id);
 	public List<ConfigMajor> findConfigMajorByMajorKindId(String mkid);
 }

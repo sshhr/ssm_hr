@@ -12,14 +12,17 @@
 		</script>
 		<script type="text/javascript" src="/ssm_hr/page/javascript/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
-		function ajax(mfkid){
-			$.ajax({
-				url:'deletemajorkind?mfkid='+mfkid,
-				type:'get',
-				success:function(){
-					$('#'+mfkid).remove();
-				}
-			});
+		function deletebyid(mfkId){
+			$.post("/ssm_hr/client/deleteMajorKind.do",
+						{
+						mfkId:mfkId,
+						},
+						function(data){
+							if(data=="ok"){
+								$('#'+mfkId).remove();
+							}
+						}
+				);
 		}
 		</script>
 		
@@ -37,7 +40,7 @@
 				<tr>
 					<td align="right">
 						<input type="button" value="添加" class="BUTTON_STYLE1"
-							onclick="window.location.href='major_kind_add.jsp';">
+							onclick="window.location.href='/ssm_hr/page/client/major_kind_add.jsp';">
 					</td>
 				</tr>
 			</table>
@@ -57,15 +60,15 @@
 				</tr>
 
 				<c:forEach items="${mlist}" var="m">
-				<tr id="${m.mfkid }">
+				<tr id="${m.mfkId }">
 					<td class="TD_STYLE2">
-						${m.majorkindid}
+						${m.majorKindId}
 					</td>
 					<td class="TD_STYLE2">
-						${m.majorkindname}
+						${m.majorKindName}
 					</td>
 					<td class="TD_STYLE2">
-						<a href="javascript:ajax(${m.mfkid })">删除</a>
+						<a href="javascript:deletebyid(${m.mfkId })">删除</a>
 					</td>
 				</tr>
 				</c:forEach>

@@ -15,16 +15,33 @@
 			<script type="text/javascript" src="/ssm_hr/page/javascript/jquery.messager.js"></script>
 
 <script type="text/javascript">
+function addbyid(majorKindId,majorKindName){
+	$.post("/ssm_hr/client/majorKindAdd.do",
+		{
+		majorKindId:document.getElementById("majorKindId").value,
+			majorKindName:document.getElementById("majorKindName").value,
+		},
+		function(data){
+			if (data=="xiugai") {
+				$.messager.show("消息提示","您已修改成功",2000);
+			}
+			else {
+				$.messager.show("消息提示","您已添加成功",2000);
+			}
+			window.location.href="/ssm_hr/client/toMajorKind.do";
+		}
+	);
+}
 		function check(){
-			if (document.getElementById("majorkindid").value==""){
+			if (document.getElementById("majorKindId").value==""){
 				$.messager.show("消息提示","职位分类编号不能为空!!!",2000);
 				return ;
 			}
-			if (document.getElementById("majorkindname").value==""){
+			if (document.getElementById("majorKindName").value==""){
 				$.messager.show("消息提示","职位分类名称不能为空!!!",2000);
 				return ;
 			}
-			document.addmajorkind.submit();
+			addbyid();
 		}	
 </script>	
 	
@@ -57,7 +74,7 @@
 						职位分类编号
 					</td>
 					<td class="TD_STYLE2" width="81%">
-					<input type="text" class="INPUT_STYLE1" name="majorkindid" id="majorkindid" />
+					<input type="text" class="INPUT_STYLE1" name="majorKindId" id="majorKindId" />
 					</td>
 				</tr>
 				<tr>
@@ -65,7 +82,7 @@
 						职位分类名称
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" class="INPUT_STYLE1" name="majorkindname" id="majorkindname"/>
+						<input type="text" class="INPUT_STYLE1" name="majorKindName" id="majorKindName"/>
 					</td>
 				</tr>
 			</table>

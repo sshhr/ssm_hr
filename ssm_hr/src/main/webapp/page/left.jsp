@@ -92,7 +92,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="configfilesecondkind.do?operate=list"
+													<a href="client/second_kind.jsp"
 														target="mainFrame">II级机构设置</a>
 												</td>
 											</tr>
@@ -101,7 +101,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="configfilethirdkind.do?operate=list" target="mainFrame">III级机构设置</a>
+													<a href="client/third_kind.jsp" target="mainFrame">III级机构设置</a>
 												</td>
 											</tr>
 											<tr>
@@ -109,7 +109,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="client/profession_design.jsp" target="mainFrame">职称设置</a>
+													<a href="/ssm_hr/client/toProfessionDesign.do" target="mainFrame">职称设置</a>
 												</td>
 											</tr>
 											<tr>
@@ -117,7 +117,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="client/major_kind.jsp"
+													<a href="/ssm_hr/client/toMajorKind.do"
 														target="mainFrame">职位分类设置</a>
 												</td>
 											</tr>
@@ -126,7 +126,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													<a href="client/major.jsp"
+													<a href="/ssm_hr/client/toMajor.do"
 														target="mainFrame">职位设置</a>
 												</td>
 											</tr>
@@ -164,7 +164,9 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													薪酬项目设置
+												<a href="client/salary_item.jsp"
+														target="mainFrame">薪酬项目设置</a>
+													
 												</td>
 											</tr>
 											<tr>
@@ -172,7 +174,9 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
-													薪酬发放方式设置
+												<a href="client/salary_grant_mode.jsp"
+														target="mainFrame">薪酬发放方式设置</a>
+													
 												</td>
 											</tr>
 											<tr>
@@ -180,6 +184,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td>
+												
 													订单销售绩效计算方式
 												</td>
 											</tr>

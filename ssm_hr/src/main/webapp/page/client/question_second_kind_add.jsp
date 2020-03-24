@@ -28,7 +28,7 @@ function addbyid(firstKindId,firstKindName,secondKindId,secondKindName){
 			else {
 				$.messager.show("消息提示","您已添加成功",2000);
 			}
-			document.questionSecondKindAdd.submit();
+			window.location.href="/ssm_hr/client/toQuestionSecondKind.do";
 		}
 	);
 }

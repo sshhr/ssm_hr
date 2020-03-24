@@ -56,54 +56,61 @@ public class HumanFileController {
 	
 	@RequestMapping("humanRegist.do")
 	public String human_regist(Model model) {
-		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
-		List<ConfigMajorKind> zwlist = majorKindService.findConfigMajorKindAll();
-		humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.NO);
-		model.addAttribute("flist",list);
-		model.addAttribute("zwlist",zwlist);
-		List<String> zclist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("职称");
-		List<String> glist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("国籍");
-		List<String> mlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("民族");
-		List<String> zlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("宗教信仰");
-		List<String> zzlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("政治面貌");
-		List<String> xlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("学历");
-		List<String> jlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("教育年限");
-		List<String> xlzylist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("专业");
-		List<String> tlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("特长");
-		List<String> alist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("爱好");
-		List<SalaryStandard> xclist = salarystandardservice.findSalaryStandardAll();
-//		System.out.println(xclist);
-		model.addAttribute("zclist", zclist);
-		model.addAttribute("glist", glist);
-		model.addAttribute("mlist", mlist);
-		model.addAttribute("zlist", zlist);
-		model.addAttribute("zzlist", zzlist);
-		model.addAttribute("xlist", xlist);
-		model.addAttribute("jlist", jlist);
-		model.addAttribute("xlzylist", xlzylist);
-		model.addAttribute("tlist", tlist);
-		model.addAttribute("alist", alist);
-		model.addAttribute("xclist", xclist);
-		return "forward:/page/humanResources/human_register.jsp";
+		List<HumanFile> hlist=humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.INIT);
+		model.addAttribute("hlist",hlist);
+		model.addAttribute("count", hlist.size());
+		return "forward:/page/humanResources/regist_list.jsp";
 	}
-	//登记保存
-	@RequestMapping("saveHumanRegister.do")
-	public String saveHumanFile(@ModelAttribute HumanFile humanfile,Model model) {
-		if (humanfile!=null&&!"".equals(humanfile)) {
-			//生成唯一的ID
-			long lon=System.currentTimeMillis();
-			String humanId=String.valueOf(lon);
-			humanfile.setHumanId(humanId);
-//			humanfile.setCheckStatus(CheckStatus.NO);
-//			humanfile.setHumanFileStatus(HumanFileStatus.YES);
-			humanfileservice.saveHumanFile(humanfile);
-			//通过humanId查询出humanfile
-			humanfile = humanfileservice.findHumanFileByHumanId(humanId);
-			model.addAttribute("hufId", humanfile.getHufId());
-			return "forward:/page/humanResources/success.jsp";
-		}else {
-			return "";
+	//登记界面
+	@RequestMapping("jumpHuman.do")
+	public String jumpHuman(String humanid,Model model) {
+		System.out.println(humanid);
+		if(humanid!=null&&!"".equals(humanid)){
+			List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
+			List<ConfigMajorKind> zwlist = majorKindService.findConfigMajorKindAll();
+			model.addAttribute("flist",list);
+			model.addAttribute("zwlist",zwlist);
+			HumanFile human =humanfileservice.findHumanFileByHumanId(humanid);
+			List<String> zclist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("职称");
+			List<String> glist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("国籍");
+			List<String> mlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("民族");
+			List<String> zlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("宗教信仰");
+			List<String> zzlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("政治面貌");
+			List<String> xlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("学历");
+			List<String> jlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("教育年限");
+			List<String> xlzylist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("专业");
+			List<String> tlist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("特长");
+			List<String> alist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("爱好");
+			List<SalaryStandard> xclist = salarystandardservice.findSalaryStandardAll();
+	//		System.out.println(xclist);
+			model.addAttribute("zclist", zclist);
+			model.addAttribute("glist", glist);
+			model.addAttribute("mlist", mlist);
+			model.addAttribute("zlist", zlist);
+			model.addAttribute("zzlist", zzlist);
+			model.addAttribute("xlist", xlist);
+			model.addAttribute("jlist", jlist);
+			model.addAttribute("xlzylist", xlzylist);
+			model.addAttribute("tlist", tlist);
+			model.addAttribute("alist", alist);
+			model.addAttribute("xclist", xclist);
+			model.addAttribute("human", human);
+			return "forward:/page/humanResources/human_register.jsp";
 		}
+		return " ";
+		
+	}
+	//点击登记保存
+	@RequestMapping("saveHumanRegister.do")
+	public String saveHumanFile(@ModelAttribute HumanFile humanfile) {
+		humanfile.setHumanFileStatus(HumanFileStatus.YES);
+//		System.out.println(humanfile.toString());
+		Map<String,String> map = ProjectToMapUtil.toMap(humanfile);
+		humanfileservice.changeHumanFile(map);
+			//通过humanId查询出humanfile
+//			humanfile = humanfileservice.findHumanFileByHumanId(humanId);
+//			model.addAttribute("hufId", humanfile.getHufId());
+			return "forward:/page/humanResources/success.jsp";
 		
 	}
 	//列出待复核的所有人资档案
@@ -156,7 +163,7 @@ public class HumanFileController {
 	@RequestMapping("humanFileCheckPass.do")
 	public String humanFileCheckPass(@ModelAttribute HumanFile humanfile) {
 		humanfile.setCheckStatus(CheckStatus.YES);
-		System.out.println(humanfile.toString());
+//		System.out.println(humanfile.toString());
 		Map<String,String> map = ProjectToMapUtil.toMap(humanfile);
 		humanfileservice.changeHumanFile(map);
 		return "forward:/page/humanResources/success.jsp";

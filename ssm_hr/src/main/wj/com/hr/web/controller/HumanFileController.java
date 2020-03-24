@@ -56,7 +56,7 @@ public class HumanFileController {
 	
 	@RequestMapping("humanRegist.do")
 	public String human_regist(Model model) {
-		List<HumanFile> hlist=humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.INIT);
+		List<HumanFile> hlist=humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.INIT,CheckStatus.NO);
 		model.addAttribute("hlist",hlist);
 		model.addAttribute("count", hlist.size());
 		return "forward:/page/humanResources/regist_list.jsp";
@@ -502,7 +502,7 @@ public class HumanFileController {
 		//永久删除 列表
 		@RequestMapping("deleteForeverList.do")
 		public String deleteForeverList(@RequestParam Map map,Model model){
-			List<HumanFile> foreverlist=humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.NO);
+			List<HumanFile> foreverlist=humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.NO,CheckStatus.YES);
 			model.addAttribute("foreverlist", foreverlist);
 			model.addAttribute("count", foreverlist.size());
 			return "forward:/page/humanResources/delete_forever_list.jsp";

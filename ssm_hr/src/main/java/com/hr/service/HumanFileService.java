@@ -19,5 +19,5 @@ public interface HumanFileService {
 	public List<HumanFile> querysSearch(Map map);
 	public List<HumanFile> removeSearch(Map map);
 	public List<HumanFile> recoverySearch(Map map);
-	public List<HumanFile>  findHumanFileByHumanStatus(int humanFileStatus);
+	public List<HumanFile>  findHumanFileByHumanStatus(int humanFileStatus,int checkStatus);
 }

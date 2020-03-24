@@ -129,8 +129,37 @@
         SELECT * FROM HUMAN_FILE WHERE CHECK_STATUS=1 and HUMAN_FILE_STATUS = #{humanFileStatus}
     </select>
     
-  <!--多条件查询-->
+  <!--查询多条件查询-->
 	<select id="findLocate" parameterType="map"  resultMap="humanFileMap">
+	SELECT * FROM HUMAN_FILE
+	<where>
+	<if test="firstKindId!=null">
+	   and  FIRST_KIND_ID = #{firstKindId}
+	</if>
+	<if test="secondKindId!=null">
+	    and SECOND_KIND_ID=#{secondKindId}
+	</if>
+	<if test="thirdKindId!=null">
+	     and THIRD_KIND_ID=#{thirdKindId}
+	</if>
+	<if test="humanMajorKindId!=null">
+	     and HUMAN_MAJOR_KIND_ID = #{humanMajorKindId}
+	</if>
+	<if test="humanMajorId!=null">
+	    and  HUMAN_MAJOR_ID = #{humanMajorId}
+	</if>
+	<if test="startdate!= null">
+	     <![CDATA[and regist_Time >= str_to_date(#{startdate},'%Y-%m-%d')]]>
+	</if>
+	<if test="enddate!= null">
+		<![CDATA[and regist_Time <= str_to_date(#{enddate},'%Y-%m-%d')]]>
+	</if>
+		   and HUMAN_FILE_STATUS=1
+	</where>
+	</select>
+	
+	  <!--删除多条件查询-->
+	<select id="deleteLocate" parameterType="map"  resultMap="humanFileMap">
 	SELECT * FROM HUMAN_FILE
 	<where>
 	<if test="firstKindId!=null">
@@ -188,8 +217,19 @@
 	</select>
 	
 	
-	<!-- 查询、删除搜索 -->
+	<!-- 查询搜索 -->
   	<select id="findSearch" parameterType="map" resultMap="humanFileMap">
+  		SELECT * FROM HUMAN_FILE
+  	<where>
+  		<if test="primarkey!= null and primarkey!= ''">
+  		 and CONCAT(human_Id,human_Name,human_Sex) like "%${primarkey}%"
+  		</if>
+  		 and HUMAN_FILE_STATUS=1
+  	</where>
+  	</select>
+  	
+  	<!-- 删除搜索 -->
+  	<select id="deleteSearch" parameterType="map" resultMap="humanFileMap">
   		SELECT * FROM HUMAN_FILE
   	<where>
   		<if test="primarkey!= null and primarkey!= ''">
@@ -199,7 +239,16 @@
   	</where>
   	</select>
    
-    
+    <!-- 恢复搜索 -->
+  	<select id="recoverySearch" parameterType="map" resultMap="humanFileMap">
+  		SELECT * FROM HUMAN_FILE
+  	<where>
+  		<if test="primarkey!= null and primarkey!= ''">
+  		 and CONCAT(human_Id,human_Name,human_Sex) like "%${primarkey}%"
+  		</if>
+  		and HUMAN_FILE_STATUS=0
+  	</where>
+  	</select>
     
     <!-- 插入数据 -->
     <insert id="insertHumanFile" parameterType="map">

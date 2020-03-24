@@ -71,6 +71,21 @@ public class HumanFileServiceImpl implements HumanFileService {
 	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus) {
 		return HumanFileMapper.findHumanFileByHumanStatus(humanFileStatus);
 	}
+
+	@Override
+	public List<HumanFile> removeLocate(Map map) {
+		return HumanFileMapper.deleteLocate(map);
+	}
+
+	@Override
+	public List<HumanFile> removeSearch(Map map) {
+		return HumanFileMapper.deleteSearch(map);
+	}
+
+	@Override
+	public List<HumanFile> recoverySearch(Map map) {
+		return HumanFileMapper.recoverySearch(map);
+	}
 	
 	
 

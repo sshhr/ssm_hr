@@ -58,6 +58,7 @@ public class HumanFileController {
 	public String human_regist(Model model) {
 		List<ConfigFileFirstKind> list = firstService.findConfigFileFirstKindAll();
 		List<ConfigMajorKind> zwlist = majorKindService.findConfigMajorKindAll();
+		humanfileservice.findHumanFileByHumanStatus(HumanFileStatus.NO);
 		model.addAttribute("flist",list);
 		model.addAttribute("zwlist",zwlist);
 		List<String> zclist = configPublicCharServiceSjh.findConfigPublicCharByAttributeKind("职称");
@@ -93,7 +94,8 @@ public class HumanFileController {
 			long lon=System.currentTimeMillis();
 			String humanId=String.valueOf(lon);
 			humanfile.setHumanId(humanId);
-			humanfile.setCheckStatus(CheckStatus.NO);
+//			humanfile.setCheckStatus(CheckStatus.NO);
+//			humanfile.setHumanFileStatus(HumanFileStatus.YES);
 			humanfileservice.saveHumanFile(humanfile);
 			//通过humanId查询出humanfile
 			humanfile = humanfileservice.findHumanFileByHumanId(humanId);
@@ -154,7 +156,7 @@ public class HumanFileController {
 	@RequestMapping("humanFileCheckPass.do")
 	public String humanFileCheckPass(@ModelAttribute HumanFile humanfile) {
 		humanfile.setCheckStatus(CheckStatus.YES);
-//		System.out.println(humanfile.toString());
+		System.out.println(humanfile.toString());
 		Map<String,String> map = ProjectToMapUtil.toMap(humanfile);
 		humanfileservice.changeHumanFile(map);
 		return "forward:/page/humanResources/success.jsp";
@@ -267,7 +269,7 @@ public class HumanFileController {
 		if(enddate!=null&&!"".equals(enddate)){
 			map.put("enddate", enddate);
 		}
-		List<HumanFile> hlist=humanfileservice.querysLocate(map);
+		List<HumanFile> hlist=humanfileservice.removeLocate(map);
 		model.addAttribute("hlist", hlist);
 		model.addAttribute("count",hlist.size());//查询条数
 		return "forward:/page/humanResources/change_list.jsp";
@@ -315,7 +317,7 @@ public class HumanFileController {
 	//关键字搜索的
 	@RequestMapping("changeSearch.do")
 	public String changeSearch(@RequestParam Map map,Model model){
-		List<HumanFile> hlist=humanfileservice.querysSearch(map);
+		List<HumanFile> hlist=humanfileservice.removeSearch(map);
 		model.addAttribute("primarykey",map.get("primaryKey"));
 		model.addAttribute("hlist", hlist);
 		model.addAttribute("count",hlist.size());
@@ -368,7 +370,7 @@ public class HumanFileController {
 		if(enddate!=null&&!"".equals(enddate)){
 			map.put("enddate", enddate);
 		}
-		List<HumanFile> hlist=humanfileservice.querysLocate(map);
+		List<HumanFile> hlist=humanfileservice.removeLocate(map);
 		model.addAttribute("hlist", hlist);
 		model.addAttribute("count",hlist.size());//查询条数
 		return "forward:/page/humanResources/delete_list.jsp";
@@ -403,7 +405,7 @@ public class HumanFileController {
 		//关键字搜索的
 		@RequestMapping("deleteSearch.do")
 		public String deleteSearch(@RequestParam Map map,Model model){
-			List<HumanFile> hlist=humanfileservice.querysSearch(map);
+			List<HumanFile> hlist=humanfileservice.removeSearch(map);
 			model.addAttribute("primarykey",map.get("primaryKey"));
 			model.addAttribute("hlist", hlist);
 			model.addAttribute("count",hlist.size());
@@ -465,11 +467,11 @@ public class HumanFileController {
 			return "shibai";
 		}
 		}
-//		某个人资档案已删除
+//		某个人资档案恢复
 		@RequestMapping("humanFileRecovery.do")
 		public String humanFileRecovery(@ModelAttribute HumanFile human) {
 			human.setHumanFileStatus(HumanFileStatus.YES);
-			System.out.println(human.toString());
+//			System.out.println(human.toString());
 			Map<String,String> map = ProjectToMapUtil.toMap(human);
 			humanfileservice.changeHumanFile(map);
 			return "forward:/page/humanResources/success.jsp";
@@ -483,12 +485,13 @@ public class HumanFileController {
 		//关键字搜索的
 		@RequestMapping("recoverySearch.do")
 		public String recoverySearch(@RequestParam Map map,Model model){
-			List<HumanFile> hlist=humanfileservice.querysSearch(map);
+			List<HumanFile> hlist=humanfileservice.recoverySearch(map);
 			model.addAttribute("primarykey",map.get("primaryKey"));
 			model.addAttribute("hlist", hlist);
 			model.addAttribute("count",hlist.size());
 			return "forward:/page/humanResources/recovery_list.jsp";
 		}
+		
 		//永久删除 列表
 		@RequestMapping("deleteForeverList.do")
 		public String deleteForeverList(@RequestParam Map map,Model model){
@@ -512,8 +515,6 @@ public class HumanFileController {
 				JSONArray jsonarr = JSONArray.fromObject(0);
 				return jsonarr.toString();
 			}
-			
-			
 		}
 	
 	

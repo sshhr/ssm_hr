@@ -126,7 +126,7 @@
     </select>
      <!-- 根据人力资源档案状态码查询数据 -->
     <select id="findHumanFileByHumanStatus" resultMap="humanFileMap" parameterType="Integer">
-        SELECT * FROM HUMAN_FILE WHERE CHECK_STATUS=1 and HUMAN_FILE_STATUS = #{humanFileStatus}
+        SELECT * FROM HUMAN_FILE WHERE HUMAN_FILE_STATUS = #{0} and CHECK_STATUS=#{1}
     </select>
     
   <!--查询多条件查询-->

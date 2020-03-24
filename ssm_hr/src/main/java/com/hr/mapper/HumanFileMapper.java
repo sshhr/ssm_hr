@@ -3,8 +3,7 @@ package com.hr.mapper;
 import java.util.List;
 import java.util.Map;
 
-
-
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.hr.pojo.HumanFile;
@@ -24,5 +23,5 @@ public interface HumanFileMapper {
 	public List<HumanFile> deleteSearch(Map map);
 	public List<HumanFile> recoverySearch(Map map);
 	public List<HumanFile> recoveryLocate(Map map);
-	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus);
+	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus,int checkStatus);
 }

@@ -68,8 +68,8 @@ public class HumanFileServiceImpl implements HumanFileService {
 	}
 
 	@Override
-	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus) {
-		return HumanFileMapper.findHumanFileByHumanStatus(humanFileStatus);
+	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus,int checkStatus) {
+		return HumanFileMapper.findHumanFileByHumanStatus(humanFileStatus,checkStatus);
 	}
 
 	@Override

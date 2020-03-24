@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hr.dto.EngageSubjectsAndAmount;
 import com.hr.mapper.EngageSubjectsMapper;
 import com.hr.pojo.EngageSubjects;
 import com.hr.service.EngageSubjectsService;
@@ -45,6 +46,11 @@ public class EngageSubjectsServiceImpl implements EngageSubjectsService {
 	@Override
 	public List<EngageSubjects> findchooseQuery(Map map) {
 		return EngageSubjectsMapper.findchooseQuery(map);
+	}
+
+	@Override
+	public List<EngageSubjectsAndAmount> findEngageSubjectsAndAmount() {
+		return EngageSubjectsMapper.findEngageSubjectsAndAmount();
 	}
 	
 	

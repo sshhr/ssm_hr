@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.hr.dto.EngageSubjectsAndAmount;
 import com.hr.pojo.EngageSubjects;
 
 @Repository
@@ -17,4 +18,5 @@ public interface EngageSubjectsMapper {
 	public void updateEngageSubjects(Map map);
 	public void deleteEngageSubjectsById(String subId);
 	public List<EngageSubjects> findchooseQuery(Map map);
+	public List<EngageSubjectsAndAmount> findEngageSubjectsAndAmount();
 }

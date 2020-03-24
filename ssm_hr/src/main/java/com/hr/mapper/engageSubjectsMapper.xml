@@ -175,4 +175,30 @@
     </select>
     
     
+    <resultMap id="engageSubjectsAndAmountMap" type="com.hr.dto.EngageSubjectsAndAmount">
+        <id column="SUB_ID" property="subId" jdbcType="VARCHAR" />
+        <result column="FIRST_KIND_ID" property="firstKindId" jdbcType="VARCHAR" />
+        <result column="FIRST_KIND_NAME" property="firstKindName" jdbcType="VARCHAR" />
+        <result column="SECOND_KIND_ID" property="secondKindId" jdbcType="VARCHAR" />
+        <result column="SECOND_KIND_NAME" property="secondKindName" jdbcType="VARCHAR" />
+        <result column="REGISTER" property="register" jdbcType="VARCHAR" />
+        <result column="REGIST_TIME" property="registTime" jdbcType="TIMESTAMP" />
+        <result column="DERIVATION" property="derivation" jdbcType="VARCHAR" />
+        <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+        <result column="KEY_A" property="keyA" jdbcType="VARCHAR" />
+        <result column="KEY_B" property="keyB" jdbcType="VARCHAR" />
+        <result column="KEY_C" property="keyC" jdbcType="VARCHAR" />
+        <result column="KEY_D" property="keyD" jdbcType="VARCHAR" />
+        <result column="KEY_E" property="keyE" jdbcType="VARCHAR" />
+        <result column="CORRECT_KEY" property="correctKey" jdbcType="VARCHAR" />
+        <result column="CHANGER" property="changer" jdbcType="VARCHAR" />
+        <result column="CHANGE_TIME" property="changeTime" jdbcType="TIMESTAMP" />
+        <result column="amount" property="amount" />
+    </resultMap>
+    <!-- 查询所有数据 -->
+    <select id="findEngageSubjectsAndAmount" resultMap="engageSubjectsAndAmountMap">
+        SELECT
+        <include refid="allColumns" />,COUNT(*) amount
+        FROM ENGAGE_SUBJECTS GROUP BY first_kind_id,second_kind_id
+    </select>
 </mapper>

@@ -7,13 +7,18 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hr.dto.ResumeAndInterview;
 import com.hr.dto.ResumeAndInterviewDetails;
+import com.hr.mapper.CheckStatus;
+import com.hr.mapper.HumanFileStatus;
 import com.hr.pojo.EngageResume;
+import com.hr.pojo.HumanFile;
 import com.hr.service.EngageResumeService;
 import com.hr.service.ResumeAndInterviewService;
+import com.hr.service.ResumeService;
 import com.hr.util.ResumeState;
 
 @Controller
@@ -23,6 +28,8 @@ public class EmployController {
 	ResumeAndInterviewService resumeAndInterviewService;
 	@Autowired
 	EngageResumeService engageResumeService;
+	@Autowired
+	ResumeService resumeService;
 	//建议录用列表
 	@RequestMapping("registerList.do")
 	public String employRegisterList(Model model){
@@ -77,7 +84,7 @@ public class EmployController {
 	
 	//录用审核 还要连接人力资源
 	@RequestMapping("returnCheckList.do")
-	public String returnCheckList(String result,String resId,String passPasscomment,Model model){
+	public String returnCheckList(String result,String resId,String passPasscomment,@ModelAttribute EngageResume resume,@ModelAttribute HumanFile humanFile,Model model){
 		System.out.println(result+"="+resId+"="+passPasscomment);
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("resId", resId);
@@ -85,12 +92,20 @@ public class EmployController {
 		switch (result) {
 			case "通过":
 				map.put("checkStatus", ResumeState.RECOMMEND_PASS+"");
+				long lon = System.currentTimeMillis();
+				String humanId = String.valueOf(lon);
+				humanFile.setHumanId(humanId);
+				humanFile.setCheckStatus(CheckStatus.NO);
+				humanFile.setHumanFileStatus(HumanFileStatus.INIT);
+				System.out.println(resume);
+				humanFile.setHunmaMajorName(resume.getHumanMajorName());
+				resumeService.updateResumeAndSaveHumanFile(map, humanFile);
 				break;
 			case "不通过":
 				map.put("checkStatus", ResumeState.RECOMMEND_NOPASS+"");
+				engageResumeService.changeEngageResume(map);
 				break;
 		}
-		engageResumeService.changeEngageResume(map);
 		return "redirect:/employ/toCheckList.do";
 	}
 	

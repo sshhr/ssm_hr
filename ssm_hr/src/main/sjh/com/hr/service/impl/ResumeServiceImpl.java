@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.hr.mapper.EngageInterviewMapper;
 import com.hr.mapper.EngageResumeMapper;
+import com.hr.mapper.HumanFileMapper;
 import com.hr.pojo.EngageInterview;
 import com.hr.pojo.EngageResume;
+import com.hr.pojo.HumanFile;
 import com.hr.service.ResumeService;
 import com.hr.util.ProjectToMapUtil;
 
@@ -20,6 +22,8 @@ public class ResumeServiceImpl implements ResumeService {
 	EngageResumeMapper engageResumeMapper;
 	@Autowired
 	EngageInterviewMapper engageInterviewMapper;
+	@Autowired
+	HumanFileMapper humanFileMapper;
 	//推荐面试
 	@Override
 	public boolean updateResumeAndSaveEngageInterview(EngageResume engageResume, EngageInterview engageInterview) {
@@ -33,5 +37,14 @@ public class ResumeServiceImpl implements ResumeService {
 		}
 		return true;
 	}
+	
+	@Override
+	public boolean updateResumeAndSaveHumanFile(Map map, HumanFile humanFile) {
+		engageResumeMapper.updateEngageResume(map);
+		humanFileMapper.insertHumanFile(humanFile);
+		return true;
+	}
+	
+	
 
 }

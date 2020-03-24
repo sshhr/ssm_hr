@@ -44,9 +44,8 @@
     <!-- 插入数据 -->
     <insert id="insertEngageExamDetails" parameterType="map">
         INSERT INTO ENGAGE_EXAM_DETAILS (
-            EXD_ID, EXAM_NUMBER, FIRST_KIND_ID, FIRST_KIND_NAME, SECOND_KIND_ID, SECOND_KIND_NAME, QUESTION_AMOUNT
+            EXAM_NUMBER, FIRST_KIND_ID, FIRST_KIND_NAME, SECOND_KIND_ID, SECOND_KIND_NAME, QUESTION_AMOUNT
         ) VALUES (
-            #{exdId},
             #{examNumber},
             #{firstKindId},
             #{firstKindName},

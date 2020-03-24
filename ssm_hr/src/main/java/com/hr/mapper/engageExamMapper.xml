@@ -44,7 +44,7 @@
     <!-- 查询所有数据 -->
     <select id="findEngageExamAllCategoryamount" resultMap="eExamMap">
         SELECT *,COUNT(*) amount FROM engage_exam
-		GROUP BY major_id
+		GROUP BY major_id,major_kind_id
     </select>
     
     <!-- 查询所有数据 -->
@@ -67,10 +67,9 @@
     <!-- 插入数据 -->
     <insert id="insertEngageExam" parameterType="map">
         INSERT INTO ENGAGE_EXAM (
-            EXA_ID, EXAM_NUMBER, MAJOR_KIND_ID, MAJOR_KIND_NAME, MAJOR_ID, MAJOR_NAME, REGISTER, REGIST_TIME, 
+            EXAM_NUMBER, MAJOR_KIND_ID, MAJOR_KIND_NAME, MAJOR_ID, MAJOR_NAME, REGISTER, REGIST_TIME, 
             LIMITE_TIME
         ) VALUES (
-            #{exaId},
             #{examNumber},
             #{majorKindId},
             #{majorKindName},

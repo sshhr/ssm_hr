@@ -49,7 +49,7 @@
 				</tr>
 			  <tr>
 					<td align="right"> 
-						<input type="button" value="出题" class="BUTTON_STYLE1" onclick="history.back();">
+						<input type="button" value="出题" class="BUTTON_STYLE1" onclick="setproblem();">
 					</td>
 				</tr>
 			</table> 
@@ -125,6 +125,11 @@
 	     }
 	     document.fm.submit();
 	 	}
+		
+		<!--上面出题-->
+		function setproblem(){
+			window.location.href="/ssm_hr/exam/setExamList.do";
+		 }
 		</script>
 	</body>
 </html>

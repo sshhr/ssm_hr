@@ -3,6 +3,7 @@ package com.hr.web.controller;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,12 +22,14 @@ import com.hr.dto.EngageSubjectsAndAmount;
 import com.hr.pojo.ConfigMajorKind;
 import com.hr.pojo.ConfigQuestionFirstKind;
 import com.hr.pojo.ConfigQuestionSecondKind;
+import com.hr.pojo.EngageAnswer;
 import com.hr.pojo.EngageExam;
 import com.hr.pojo.EngageExamDetails;
 import com.hr.service.ConfigMajorKindService;
 import com.hr.service.ConfigMajorService;
 import com.hr.service.ConfigQuestionFirstKindService;
 import com.hr.service.ConfigQuestionSecondKindService;
+import com.hr.service.EngageAnswerService;
 import com.hr.service.EngageExamService;
 import com.hr.service.EngageSubjectsService;
 import com.hr.service.SetExamService;
@@ -51,6 +54,8 @@ public class ExamController {
 	ConfigQuestionSecondKindService configQuestionSecondKindService;
 	@Autowired
 	SetExamService setExamService;
+	@Autowired
+	EngageAnswerService engageAnswerService;
 	
 	@RequestMapping("queryExamList.do")
 	public String queryExamList(Model model){
@@ -91,7 +96,7 @@ public class ExamController {
 		return flag;
 	}
 	
-	
+	//保存套题
 	@RequestMapping("saveExam.do")
 	@ResponseBody
 	public String saveExam(@RequestBody EngageExamAndDetails engageExamAndDetails){
@@ -118,4 +123,27 @@ public class ExamController {
 		json.put("flag", true);
 		return json.toString();
 	}
+	
+	@RequestMapping("toExam.do")
+	public String setExam(Model model){
+		List<ConfigMajorKind> list = majorKindService.findConfigMajorKindAll();
+		model.addAttribute("mklist", list);
+		return "forward:/page/recruit/exam/answer_exam.jsp";
+	}
+	
+	
+	@RequestMapping("toexam.do")
+	public String toexam(String humanName,String humanIdcard,String humanMajorKindName,String humanMajorName,Model model){
+		System.out.println(humanName+"="+humanIdcard+"="+humanMajorKindName+"="+humanMajorName);
+		Map map = new HashMap<>();
+		map.put("humanName", humanName);
+		map.put("humanIdcard", humanIdcard);
+		map.put("humanMajorKindName", humanMajorKindName);
+		map.put("humanMajorName", humanMajorName);
+		EngageAnswer ea = engageAnswerService.findEngageAnswerByEngageInterviewAndEngageResume(map);
+		ea.setAnswerNumber(Get16UUID.getUUID());
+		System.out.println(ea);
+		return "forward:/page/recruit/exam/answer_exam.jsp";
+	}
+	
 }

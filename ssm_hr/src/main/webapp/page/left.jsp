@@ -811,7 +811,7 @@ a{ CURSOR: hand}
 													<img src="images/jt0.gif">
 												</td>
 												<td width="98%">
-													<a href="/ssm_hr/page/recruit/exam/answer_exam.jsp" target="mainFrame">考试答题</a>
+													<a href="/ssm_hr/exam/toExam.do" target="mainFrame">考试答题</a>
 												</td>
 											</tr>
 											<tr>

@@ -13,7 +13,7 @@
 	</head>
 
 	<body>
-		<form name="salary" method="post" action="myexam">
+		<form name="salary" method="post" action="/ssm_hr/exam/toexam.do">
 			<table width="100%">
 				<tr>
 					<td>
@@ -33,16 +33,16 @@
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="74" class="TD_STYLE1">
+					<td width="20%" class="TD_STYLE1">
 						姓名
 					</td>
-					<td width="100" class="TD_STYLE2">
+					<td width="30%" class="TD_STYLE2">
 						<input type="text" name="humanName" class="INPUT_STYLE2">
 					</td>
-					<td width="74" class="TD_STYLE1">
+					<td width="20%" class="TD_STYLE1">
 						身份证
 					</td>
-					<td width="100" class="TD_STYLE2">
+					<td width="30%" class="TD_STYLE2">
 						<input type="text" name="humanIdcard"  class="INPUT_STYLE2">
 					</td>
 					
@@ -52,12 +52,12 @@
 						请选择职位分类
 					</td>
 					<td width="74" class="TD_STYLE2">
-						<select name="humanMajorKindId" style="width:153px"  id="majorKind"
-							class="SELECT_STYLE2" onchange="ByIdQueryMajor()">
-							<option value="0" selected="selected">请选择</option>
-						<c:forEach items="${rlist}" var="r">
-						<option id="kind_${r.majorKindId}" value="${r.majorKindId}" aa="${r.majorKindName}">${r.majorKindName}</option>
-						</c:forEach>
+						<select onchange="queryMajor()"  id="humanMajorKind"
+						 style="width: 153px" class="SELECT_STYLE2"> 
+							<option value="0">--请选择--</option>
+							<c:forEach items="${mklist}" var="m">
+								<option  value="${m.majorKindId }" id="humanMajorKind${m.majorKindId }">${m.majorKindName }</option>
+							</c:forEach>
 						</select>
 						<input type="hidden" id="majorKindId" name="humanMajorKindName">
 					</td>
@@ -66,10 +66,10 @@
 						请选择职位名称
 					</td>
 					<td width="120" class="TD_STYLE2">
-						<select name="humanMajorId" style="width:153px"  class="SELECT_STYLE2" id="majorName" onchange="getMajorid()">
-							<option value="0" selected="selected">请选择</option>
+						<select name="humanMajorName"  id="humanMajorId"
+						 style="width:153px" class="SELECT_STYLE2">
+							<option>--请选择--</option>
 						</select>
-						<input type="hidden" id="majorId" name="humanMajorName" >
 					</td>
 				
 				</tr>
@@ -83,33 +83,33 @@
 	</body>
 </html>
 <script type="text/javascript">
-
 		//获取职位
-		function ByIdQueryMajor(){
-		    var mid = $("#majorKind").val();
-		 	var majorSelect = $("#majorName");
-		 	var kindid=$("#kind_"+mid).val();
-		 	$("#majorKindId").val($("#kind_"+mid).attr("aa"));
-		 	majorSelect.empty();
-		 	majorSelect.append("<option value=''>--请选择--</option>");
-		 	if(mid != 0){
-			 	$.ajax({
-					url:'ByIdQueryMajor?mid='+mid,
-					type:'get',
-					success:function(data){
-			 			for(var i=0;i<data.length;i++){
-							var eachMajor = data[i];
-							majorSelect.append("<option id='major_"+eachMajor.majorId+"' yy="+eachMajor.majorName+" value="+eachMajor.majorId+">"+eachMajor.majorName+"</option>");
-						}
-			 			}
-				 	});
-		 	}
+		function queryMajor(){
+		var mid = $("#humanMajorKind").val();
+		var humanmajorkindname = $("#humanMajorKind"+mid).html();
+		$("#majorKindId").val(humanmajorkindname);
+		var majorSelect = $("#humanMajorId");
+		majorSelect.empty();
+		majorSelect.append("<option value=''>--请选择--</option>");
+		if(mid != 0){
+			$.ajax({
+				url:'/ssm_hr/position/ByIdQueryMajor.do?mid='+mid,
+				type:'get',
+				success:function(data){
+					var obj=JSON.parse(data);
+		 			for(var i=0;i<obj.length;i++){
+						var eachMajor = obj[i];
+						majorSelect.append("<option value="+eachMajor.majorName+" id=humanMajor"+eachMajor.majorId+">"+eachMajor.majorName+"</option>");
+					}
+		 		}
+			});
+		}
 	 	}
 	 	//获取职位
 	 	function getMajorid(){
  	 		var sid=$("#majorName").val();
  			var majorid=$("#major_"+sid).val();
  			$("#majorId").val($("#major_"+sid).attr("yy"));
- 	 		}
+ 	 	}
  		
 </script>

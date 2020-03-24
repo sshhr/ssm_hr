@@ -100,9 +100,6 @@
 			});
 		}
 	 	}
-	function cchange() {
-		
-	}
 </script>
 	</head>
 

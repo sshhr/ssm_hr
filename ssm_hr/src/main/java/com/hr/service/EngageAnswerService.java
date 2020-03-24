@@ -11,4 +11,5 @@ public interface EngageAnswerService {
 	public void saveEngageAnswer(EngageAnswer s);
 	public void changeEngageAnswer(Map map);
 	public void removeEngageAnswerById(String id);
+	public EngageAnswer findEngageAnswerByEngageInterviewAndEngageResume(Map map);
 }

@@ -47,7 +47,6 @@ public class EmployController {
 	
 	@RequestMapping("registerOk.do")
 	public String registerOk(String result,String resId,String passchecker,String passchecktime,String passCheckcomment,Model model){
-		System.out.println(result+"="+resId+"="+passchecker+"="+passchecktime+"="+passCheckcomment);
 		Map<String,String> map = new HashMap<String, String>();
 		map.put("resId", resId);
 		map.put("passChecker", passchecker);

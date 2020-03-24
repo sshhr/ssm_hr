@@ -41,7 +41,10 @@ public class EngageAnswerServiceImpl implements EngageAnswerService {
 	public void removeEngageAnswerById(String id) {
 		EngageAnswerMapper.deleteEngageAnswerById(id);
 	}
-	
-	
+
+	@Override
+	public EngageAnswer findEngageAnswerByEngageInterviewAndEngageResume(Map map) {
+		return EngageAnswerMapper.findEngageAnswerByEngageInterviewAndEngageResume(map);
+	}
 
 }

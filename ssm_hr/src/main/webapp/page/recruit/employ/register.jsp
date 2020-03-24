@@ -337,8 +337,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="humanHistoryRecords" rows="4"  
-						class="TEXTAREA_STYLE1" readonly="readonly"> ${vi.humanHistoryRecords }
-						</textarea>
+						class="TEXTAREA_STYLE1" readonly="readonly">${vi.humanHistoryRecords }</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -346,8 +345,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="remark" rows="4"   class="TEXTAREA_STYLE1"  readonly="readonly"> ${vi.remark }
-						</textarea>
+						<textarea name="remark" rows="4"   class="TEXTAREA_STYLE1"  readonly="readonly">${vi.remark }</textarea>
 					</td>
 				</tr>
 				

@@ -52,10 +52,9 @@
     <!-- 插入数据 -->
     <insert id="insertEngageAnswer" parameterType="map">
         INSERT INTO ENGAGE_ANSWER (
-            ANS_ID, ANSWER_NUMBER, EXAM_NUMBER, RESUME_ID, INTERVIEW_ID, HUMAN_NAME, HUMAN_IDCARD, MAJOR_KIND_ID, 
+            ANSWER_NUMBER, EXAM_NUMBER, RESUME_ID, INTERVIEW_ID, HUMAN_NAME, HUMAN_IDCARD, MAJOR_KIND_ID, 
             MAJOR_KIND_NAME, MAJOR_ID, MAJOR_NAME, TEST_TIME, USE_TIME, TOTAL_POINT
         ) VALUES (
-            #{ansId},
             #{answerNumber},
             #{examNumber},
             #{resumeId},
@@ -119,9 +118,70 @@
         WHERE ANS_ID = #{ansId}
     </update>
     
+    <!-- 修改数据 -->
+    <update id="updateEngageAnswerByanswerNumber" parameterType="map">
+        UPDATE ENGAGE_ANSWER
+        <set>
+            <if test="examNumber != null">
+                EXAM_NUMBER = #{examNumber},
+            </if>
+            <if test="resumeId != null">
+                RESUME_ID = #{resumeId},
+            </if>
+            <if test="interviewId != null">
+                INTERVIEW_ID = #{interviewId},
+            </if>
+            <if test="humanName != null">
+                HUMAN_NAME = #{humanName},
+            </if>
+            <if test="humanIdcard != null">
+                HUMAN_IDCARD = #{humanIdcard},
+            </if>
+            <if test="majorKindId != null">
+                MAJOR_KIND_ID = #{majorKindId},
+            </if>
+            <if test="majorKindName != null">
+                MAJOR_KIND_NAME = #{majorKindName},
+            </if>
+            <if test="majorId != null">
+                MAJOR_ID = #{majorId},
+            </if>
+            <if test="majorName != null">
+                MAJOR_NAME = #{majorName},
+            </if>
+            <if test="testTime != null">
+                TEST_TIME = #{testTime},
+            </if>
+            <if test="useTime != null">
+                USE_TIME = #{useTime},
+            </if>
+            <if test="totalPoint != null">
+                TOTAL_POINT = #{totalPoint}
+            </if>
+        </set>
+        WHERE ANSWER_NUMBER = #{answerNumber}
+    </update>
+    
     <!-- 根据主键删除数据 -->
     <delete id="deleteEngageAnswerById" parameterType="string">
         DELETE FROM ENGAGE_ANSWER WHERE ANS_ID = #{ansId}
     </delete>
+    
+    <select id="findEngageAnswerByEngageInterviewAndEngageResume" resultMap="engageAnswerMap" parameterType="map">
+        SELECT a.RESUME_ID, a.ein_id INTERVIEW_ID, b.HUMAN_NAME, b.HUMAN_IDCARD, b.HUMAN_MAJOR_KIND_ID MAJOR_KIND_ID,
+		b.HUMAN_MAJOR_KIND_NAME MAJOR_KIND_NAME, b.HUMAN_MAJOR_ID MAJOR_ID, b.HUMAN_MAJOR_NAME MAJOR_NAME
+		FROM engage_interview a,engage_resume b
+		WHERE a.`resume_id`=b.`res_id` 
+		AND b.`human_name`=#{humanName} 
+		AND b.`human_idcard`=#{humanIdcard} 
+		AND b.`human_major_kind_name`=#{humanMajorKindName}  
+		AND b.`human_major_name`=#{humanMajorName}
+    </select>
+    
+    <select id="findEngageAnswerByResumeId" resultMap="engageAnswerMap" parameterType="map">
+        SELECT *
+        from ENGAGE_ANSWER
+		WHERE `resume_id`=#{resumeId}
+    </select>
     
 </mapper>

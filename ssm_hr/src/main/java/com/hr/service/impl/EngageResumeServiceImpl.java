@@ -51,6 +51,12 @@ public class EngageResumeServiceImpl implements EngageResumeService {
 	public List<EngageResume> findEngageResumeByCheckStatus(String checkStatus) {
 		return EngageResumeMapper.findEngageResumeByCheckStatus(checkStatus);
 	}
+
+	@Override
+	public List<EngageResume> findchooseQueryexamfenshu(Map map) {
+		// TODO Auto-generated method stub
+		return EngageResumeMapper.findchooseQueryexamfenshu(map);
+	}
 	
 	
 

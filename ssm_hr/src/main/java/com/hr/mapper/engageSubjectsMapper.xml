@@ -43,6 +43,13 @@
         FROM ENGAGE_SUBJECTS
     </select>
     
+    <!-- 随机查询n条数据 -->
+    <select id="findEngageSubjectsBysuiji" resultMap="engageSubjectsMap" parameterType="map">
+        SELECT * 
+        FROM engage_subjects 
+        WHERE first_kind_name=#{firstKindName} AND second_kind_name=#{secondKindName} ORDER BY RAND() LIMIT #{tiaoshu}
+    </select>
+    
     <!-- 根据主键查询数据 -->
     <select id="findEngageSubjectsByIds" resultMap="engageSubjectsMap" parameterType="list">
         SELECT

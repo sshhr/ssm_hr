@@ -7,11 +7,11 @@
 		<link rel="stylesheet" href="/ssm_hr/page/css/table.css" type="text/css" />
 		<script type="text/javascript" src="/ssm_hr/page/javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="/ssm_hr/page/javascript/jquery-1.7.2.js"></script>
-		<title>无标题文档</title>
+		<title>my_exam</title>
 	</head>
 
 	<body onload="time_fun()">
-		<form name="salary" method="post" id="myform" action="myexam">
+		<form name="salary" method="post" id="myform" action="/ssm_hr/exam/examResult.do">
 			<table width="100%">
 				<tr>
 					<td>
@@ -22,12 +22,12 @@
 				</tr>
 				<tr>
 				    <td align="right">
-					    答题限时时间60分钟
+					    答题限时时间${ee.limiteTime }分钟
 					</td>
 				</tr>
 				<tr>
 				    <td align="right">
-					 已用时间: <input type="text" id="time" readonly="readonly" >
+					 已用时间: <input type="text" id="time" name="testTime" readonly="readonly" >
 					</td>
 				</tr>
 				<tr>
@@ -46,13 +46,14 @@
 						考试编码
 					</td>
 					<td width="100" class="TD_STYLE2">
-						<input type="text" name="" value="${subid}" readonly="readonly"  class="INPUT_STYLE2">
+						<input type="text" name="examNumber" value="${ee.examNumber}" readonly="readonly"  class="INPUT_STYLE2">
+						<input type="hidden" name="answerNumber" value="${answerNumber}" readonly="readonly">
 					</td>
 					<td width="74" class="TD_STYLE1">
 						试题数量
 					</td>
 					<td width="100" class="TD_STYLE2">
-						<input type="text" name="standardName" value="${size}" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="standardName" value="${subjects.size()}" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					
 				</tr>
@@ -61,13 +62,13 @@
 						姓名
 					</td>
 					<td width="100" class="TD_STYLE2">
-						<input type="text" name="item.standardId" value="${resume.humanName}" readonly="readonly"  class="INPUT_STYLE2">
+						<input type="text" name="humanName" value="${humanName}" readonly="readonly"  class="INPUT_STYLE2">
 					</td>
 					<td width="74" class="TD_STYLE1">
 						身份证
 					</td>
 					<td width="100" class="TD_STYLE2">
-						<input type="text" name="item.standardName" value="${resume.humanIdcard }" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="humanIdcard" value="${humanIdcard }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					
 				</tr>
@@ -79,12 +80,12 @@
 			<c:forEach items="${subjects }" var="i"  varStatus="j">
 			<div>
 			  <h3>${j.count}.题目：${i.content}<h3>
-			  <p><input type="radio" name="${i.subId}" value="" >A:${i.keyA}</p>
-			  <p><input type="radio" name="${i.subId}" >B:${i.keyB}</p>
-			  <p><input type="radio" name="${i.subId}" >C:${i.keyC}</p>
-			  <p><input type="radio" name="${i.subId}" >D:${i.keyD}</p>
+			  <p><input type="radio" name="${i.subId}" value="A" >A:${i.keyA}</p>
+			  <p><input type="radio" name="${i.subId}" value="B">B:${i.keyB}</p>
+			  <p><input type="radio" name="${i.subId}" value="C">C:${i.keyC}</p>
+			  <p><input type="radio" name="${i.subId}" value="D">D:${i.keyD}</p>
 			  <c:if test="${i.keyE ne null }">
-			    <p><input type="radio" name="${i.subId}" >E:${i.keyE}</p>
+			    <p><input type="radio" name="${i.subId}" value="E">E:${i.keyE}</p>
 			  </c:if>
 			</div>
 			</c:forEach>

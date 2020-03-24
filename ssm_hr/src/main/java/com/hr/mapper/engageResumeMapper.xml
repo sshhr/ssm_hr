@@ -311,6 +311,161 @@
         WHERE RES_ID = #{resId}
     </update>
     
+    <!-- 修改数据 -->
+    <update id="updateEngageResumeByhumanIdcard" parameterType="map">
+        UPDATE ENGAGE_RESUME
+        <set>
+            <if test="humanName != null">
+                HUMAN_NAME = #{humanName},
+            </if>
+            <if test="engageType != null">
+                ENGAGE_TYPE = #{engageType},
+            </if>
+            <if test="humanAddress != null">
+                HUMAN_ADDRESS = #{humanAddress},
+            </if>
+            <if test="humanPostcode != null">
+                HUMAN_POSTCODE = #{humanPostcode},
+            </if>
+            <if test="humanMajorKindId != null">
+                HUMAN_MAJOR_KIND_ID = #{humanMajorKindId},
+            </if>
+            <if test="humanMajorKindName != null">
+                HUMAN_MAJOR_KIND_NAME = #{humanMajorKindName},
+            </if>
+            <if test="humanMajorId != null">
+                HUMAN_MAJOR_ID = #{humanMajorId},
+            </if>
+            <if test="humanMajorName != null">
+                HUMAN_MAJOR_NAME = #{humanMajorName},
+            </if>
+            <if test="humanTelephone != null">
+                HUMAN_TELEPHONE = #{humanTelephone},
+            </if>
+            <if test="humanHomephone != null">
+                HUMAN_HOMEPHONE = #{humanHomephone},
+            </if>
+            <if test="humanMobilephone != null">
+                HUMAN_MOBILEPHONE = #{humanMobilephone},
+            </if>
+            <if test="humanEmail != null">
+                HUMAN_EMAIL = #{humanEmail},
+            </if>
+            <if test="humanHobby != null">
+                HUMAN_HOBBY = #{humanHobby},
+            </if>
+            <if test="humanSpecility != null">
+                HUMAN_SPECILITY = #{humanSpecility},
+            </if>
+            <if test="humanSex != null">
+                HUMAN_SEX = #{humanSex},
+            </if>
+            <if test="humanReligion != null">
+                HUMAN_RELIGION = #{humanReligion},
+            </if>
+            <if test="humanParty != null">
+                HUMAN_PARTY = #{humanParty},
+            </if>
+            <if test="humanNationality != null">
+                HUMAN_NATIONALITY = #{humanNationality},
+            </if>
+            <if test="humanRace != null">
+                HUMAN_RACE = #{humanRace},
+            </if>
+            <if test="humanBirthday != null">
+                HUMAN_BIRTHDAY = #{humanBirthday},
+            </if>
+            <if test="humanAge != null">
+                HUMAN_AGE = #{humanAge},
+            </if>
+            <if test="humanEducatedDegree != null">
+                HUMAN_EDUCATED_DEGREE = #{humanEducatedDegree},
+            </if>
+            <if test="humanEducatedYears != null">
+                HUMAN_EDUCATED_YEARS = #{humanEducatedYears},
+            </if>
+            <if test="humanEducatedMajor != null">
+                HUMAN_EDUCATED_MAJOR = #{humanEducatedMajor},
+            </if>
+            <if test="humanCollege != null">
+                HUMAN_COLLEGE = #{humanCollege},
+            </if>
+            <if test="humanBirthplace != null">
+                HUMAN_BIRTHPLACE = #{humanBirthplace},
+            </if>
+            <if test="demandSalaryStandard != null">
+                DEMAND_SALARY_STANDARD = #{demandSalaryStandard},
+            </if>
+            <if test="humanHistoryRecords != null">
+                HUMAN_HISTORY_RECORDS = #{humanHistoryRecords},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark},
+            </if>
+            <if test="recomandation != null">
+                RECOMANDATION = #{recomandation},
+            </if>
+            <if test="humanPicture != null">
+                HUMAN_PICTURE = #{humanPicture},
+            </if>
+            <if test="attachmentName != null">
+                ATTACHMENT_NAME = #{attachmentName},
+            </if>
+            <if test="checkStatus != null">
+                CHECK_STATUS = #{checkStatus},
+            </if>
+            <if test="register != null">
+                REGISTER = #{register},
+            </if>
+            <if test="registTime != null">
+                REGIST_TIME = #{registTime},
+            </if>
+            <if test="checker != null">
+                CHECKER = #{checker},
+            </if>
+            <if test="checkTime != null">
+                CHECK_TIME = #{checkTime},
+            </if>
+            <if test="interviewStatus != null">
+                INTERVIEW_STATUS = #{interviewStatus},
+            </if>
+            <if test="totalPoints != null">
+                TOTAL_POINTS = #{totalPoints},
+            </if>
+            <if test="testAmount != null">
+                TEST_AMOUNT = #{testAmount},
+            </if>
+            <if test="testChecker != null">
+                TEST_CHECKER = #{testChecker},
+            </if>
+            <if test="testCheckTime != null">
+                TEST_CHECK_TIME = #{testCheckTime},
+            </if>
+            <if test="passRegister != null">
+                PASS_REGISTER = #{passRegister},
+            </if>
+            <if test="passRegistTime != null">
+                PASS_REGIST_TIME = #{passRegistTime},
+            </if>
+            <if test="passChecker != null">
+                PASS_CHECKER = #{passChecker},
+            </if>
+            <if test="passCheckTime != null">
+                PASS_CHECK_TIME = #{passCheckTime},
+            </if>
+            <if test="passCheckStatus != null">
+                PASS_CHECK_STATUS = #{passCheckStatus},
+            </if>
+            <if test="passCheckcomment != null">
+                PASS_CHECKCOMMENT = #{passCheckcomment},
+            </if>
+            <if test="passPasscomment != null">
+                PASS_PASSCOMMENT = #{passPasscomment}
+            </if>
+        </set>
+        WHERE  HUMAN_IDCARD = #{humanIdcard}
+    </update>
+    
     <!-- 根据主键删除数据 -->
     <delete id="deleteEngageResumeById" parameterType="string">
         DELETE FROM ENGAGE_RESUME WHERE RES_ID = #{resId}
@@ -354,6 +509,45 @@
           	</where>
     </select>
     
+    <!-- 动态条件查询 -->
+    <select id="findchooseQueryexamfenshu" resultMap="engageResumeMap" parameterType="map">
+          	select <include refid="allColumns" />
+            FROM
+	        (select <include refid="allColumns" />
+	         FROM ENGAGE_RESUME
+	        <where>
+	            <if test="humanIdcard != null">
+	                and HUMAN_IDCARD = #{humanIdcard}
+	            </if>
+	            <if test="checkstatus != null">
+	               and check_status = #{checkstatus}
+	            </if>
+	            <if test="startdate != null">
+	            	<![CDATA[
+	              	 and regist_time >= #{startdate}
+	              	]]>
+	            </if>
+	            <if test="enddate != null">
+	               <![CDATA[
+	              	 and regist_time <= #{enddate}
+	               ]]>
+	            </if>
+	        </where>) a
+	        <where>
+	   		 	<if test="primarkey != null">
+	             <bind name="pattern" value="'%' + primarkey + '%'" />
+		          or a.human_name like #{pattern}
+	       		</if>
+	       		<if test="primarkey != null">
+	             <bind name="pattern" value="'%' + primarkey + '%'" />
+		          or a.human_major_kind_name like #{pattern}
+	       		</if>
+	       		<if test="primarkey != null">
+	             <bind name="pattern" value="'%' + primarkey + '%'" />
+		          or a.human_major_name like #{pattern}
+	       		</if>
+       		</where>
+    </select>
     
     <!-- 通过checkStatus查询数据 -->
     <select id="findEngageResumeByCheckStatus" resultMap="engageResumeMap" parameterType="String">
@@ -362,4 +556,12 @@
         FROM ENGAGE_RESUME WHERE check_status = #{checkStatus}
     </select>
     
+    
+    <select id="findEngageExamByhumanNameAndhumanIdcard" resultMap="engageResumeMap" parameterType="map">
+        SELECT
+        <include refid="allColumns" />
+        FROM ENGAGE_RESUME
+        where `human_name`=#{humanName} 
+		AND `human_idcard`=#{humanIdcard} 
+    </select>
 </mapper>

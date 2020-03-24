@@ -1,37 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-sift.jsp' starting page</title>
     	<link rel="stylesheet"
-			href="<%=basePath %>css/table.css" type="text/css">
+			href="/ssm_hr/page/css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="<%=basePath %>css/cwcalendar.css"
+			href="/ssm_hr/page/css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/comm/comm.js">
+			src="/ssm_hr/page/javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/comm/list.js">
+			src="/ssm_hr/page/javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/calendar-ch.js">
+			src="/ssm_hr/page/javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/jquery-1.7.2.js">
+			src="/ssm_hr/page/javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/locate.js">
+			src="/ssm_hr/page/javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="<%=basePath %>javascript/select.js">
+			src="/ssm_hr/page/javascript/select.js">
 		</script>
 		
 	 
@@ -178,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 
 	<body onload="check(),luy()">
-		<form id="recruitAction!returnSiftList" name="fm" action="examResultSiftSubmit" method="post">
+		<form id="recruitAction!returnSiftList" name="fm" action="/ssm_hr/exam/examResultSiftSubmit.do" method="post">
 			<table width="100%">
 				<tr>
 					<td>
@@ -187,7 +183,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="radio" name="result"  value="建议面试" onclick="mians()">建议面试
 						<input type="radio" name="result"   value="建议笔试" onclick="bis()">建议笔试
 						<input type="radio" name="result"   value="建议录用"  checked="checked" onclick="luy()">建议录用
 						<input type="radio" name="result"  value="删除简历" onclick="del()">删除简历
@@ -229,7 +224,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 					
 					<td width="10%" rowspan="6" colspan="2"  align="center">
-						 <img id="imgphoto"  src="<%=basePath %>uploads${resume.humanPicture}"   style="width:90px;height:90px;"/>
 					</td>
 					
 				</tr>
@@ -239,7 +233,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="humanName" value="${resume.humanName }" readonly="readonly" class="INPUT_STYLE2">
-						
 					</td>
 					<td class="TD_STYLE1">
 						性别

@@ -41,6 +41,12 @@ public class EngageExamDetailsServiceImpl implements EngageExamDetailsService {
 	public void removeEngageExamDetailsById(String id) {
 		EngageExamDetailsMapper.deleteEngageExamDetailsById(id);
 	}
+
+	@Override
+	public List<EngageExamDetails> findEngageExamDetailsByExamNumber(String examNumber) {
+		// TODO Auto-generated method stub
+		return EngageExamDetailsMapper.findEngageExamDetailsByExamNumber(examNumber);
+	}
 	
 	
 

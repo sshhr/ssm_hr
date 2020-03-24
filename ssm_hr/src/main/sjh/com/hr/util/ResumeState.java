@@ -41,4 +41,8 @@ public interface ResumeState {
 	 * 录用不通过
 	 */
 	public static int RECOMMEND_NOPASS = 7;
+	/**
+	 * 已考试未审核
+	 */
+	public static int RECOMMEND_TESTED = 8;
 }

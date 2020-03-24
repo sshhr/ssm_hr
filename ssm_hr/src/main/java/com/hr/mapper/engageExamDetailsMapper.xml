@@ -41,6 +41,7 @@
         </foreach>
     </select>
     
+    
     <!-- 插入数据 -->
     <insert id="insertEngageExamDetails" parameterType="map">
         INSERT INTO ENGAGE_EXAM_DETAILS (
@@ -86,4 +87,9 @@
         DELETE FROM ENGAGE_EXAM_DETAILS WHERE EXD_ID = #{exdId}
     </delete>
     
+    <!-- 根据examNumber查询数据 -->
+    <select id="findEngageExamDetailsByExamNumber" resultMap="engageExamDetailsMap" parameterType="String">
+        SELECT * FROM engage_exam_details
+		WHERE exam_number=#{examNumber}
+    </select>
 </mapper>

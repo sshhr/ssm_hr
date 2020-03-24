@@ -12,7 +12,7 @@
 		</script>
 		<script type="text/javascript">
 			function doDelete(humanid) {
-				if(window.confirm("确认删除该项纪录？")){
+				if(window.confirm("确认永久删除？")){
 					$.ajax({
 						url:'/ssm_hr/humanresources/deleteForever.do?humanid=' + humanid,
 						type:'get',

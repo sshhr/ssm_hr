@@ -19,7 +19,10 @@ public interface HumanFileMapper {
 	public HumanFile findHumanFileByHumanId(String humanid);
 	public List<HumanFile> findHumanFileByStatus(int checkStatus);
 	public List<HumanFile> findLocate(Map map);
+	public List<HumanFile> deleteLocate(Map map);
 	public List<HumanFile> findSearch(Map map);
+	public List<HumanFile> deleteSearch(Map map);
+	public List<HumanFile> recoverySearch(Map map);
 	public List<HumanFile> recoveryLocate(Map map);
 	public List<HumanFile> findHumanFileByHumanStatus(int humanFileStatus);
 }

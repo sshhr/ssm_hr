@@ -14,7 +14,10 @@ public interface HumanFileService {
 	public HumanFile findHumanFileByHumanId(String humanid);
 	public List<HumanFile>  findHumanFileByStatus(int checkStatus);
 	public List<HumanFile> querysLocate(Map map);
-	public List<HumanFile> querysSearch(Map map);
+	public List<HumanFile> removeLocate(Map map);
 	public List<HumanFile> recoveryLocate(Map map);
+	public List<HumanFile> querysSearch(Map map);
+	public List<HumanFile> removeSearch(Map map);
+	public List<HumanFile> recoverySearch(Map map);
 	public List<HumanFile>  findHumanFileByHumanStatus(int humanFileStatus);
 }

@@ -91,7 +91,7 @@
 			humanMobilephone[0].select();
 			return ;
 		}
-		if(document.getElementById("humanaddress").value==""){
+		<%--if(document.getElementById("humanaddress").value==""){
 			$.messager.show("消息提示","请填写住址",2000);
 	 		return ;
 	 	}
@@ -156,7 +156,7 @@
 	 	if(document.getElementById("humanhobby").value==""){
 			$.messager.show("消息提示","请填写爱好",2000);
 	 		return ;
-	 	}
+	 	}--%>
 		document.fm.submit();
 	};
 
@@ -298,7 +298,8 @@
 		<input  name="humanMajorKindName" type="hidden" id="majorKindName">
 		<input  name="hunmaMajorName" type="hidden" id="humanmajorName">
 		<input  name="salaryStandardName" type="hidden" id="salarystandardName">
-		<input  name="humanId" type="hidden" value="${time}">
+		<input  name="humanId" type="hidden" value="${human.humanId}">
+		<input  name="hufId" type="hidden" value="${human.hufId}">
 		
 <table width="100%">
 	<tr>
@@ -365,137 +366,191 @@
 	<tr>
 		<td class="TD_STYLE1">姓名</td>
 		<td class="TD_STYLE2"><input type="text" id="humanName"
-			name="humanName" class="INPUT_STYLE2" /></td>
+			name="humanName" class="INPUT_STYLE2" value="${human.humanName }"/></td>
 		<td class="TD_STYLE1">身份证</td>
 		<td class="TD_STYLE2">
 		<input type="text"
-		 name="humanIdCard" id="humanidcardid" class="INPUT_STYLE2" onkeyup="checksfz()">
+		 name="humanIdCard" id="humanidcardid" class="INPUT_STYLE2" onkeyup="checksfz()" value="${human.humanIdCard }" >
 		</td>
 		<td class="TD_STYLE1">EMAIL</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"
-			name="humanEmail" id="humanEmail" class="INPUT_STYLE2">
+			name="humanEmail" id="humanEmail" class="INPUT_STYLE2" value="${human.humanEmail }">
 		</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">电话</td>
 		<td class="TD_STYLE2"><input type="text"
 			name="humanTelephone" id="humanTelephone"
-			class="INPUT_STYLE2"></td>
+			class="INPUT_STYLE2" value="${human.humanTelephone}"></td>
 		<td class="TD_STYLE1">QQ</td>
 		<td class="TD_STYLE2"><input type="text" name="humanQq"
-			id="humanQq" class="INPUT_STYLE2"></td>
+			id="humanQq" class="INPUT_STYLE2" value="${human.humanQq }"></td>
 		<td class="TD_STYLE1">手机</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"
 			name="humanMobilephone" id="humanMobilephone"
-			class="INPUT_STYLE2"></td>
+			class="INPUT_STYLE2" value="${human.humanMobilephone }" ></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">住址</td>
 		<td colspan="3" class="TD_STYLE2"><input type="text"
-			name="humanAddress" class="INPUT_STYLE2" id="humanaddress"></td>
+			name="humanAddress" class="INPUT_STYLE2" id="humanaddress" value="${human.humanAddress }"></td>
 		<td class="TD_STYLE1">邮编</td>
 		<td colspan="2" class="TD_STYLE2"><input type="text"
-			name="humanPostcode" class="INPUT_STYLE2" id="humanpostcodeid"></td>
+			name="humanPostcode" class="INPUT_STYLE2" id="humanpostcodeid" value="${human.humanPostcode }"></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">国籍</td>
-		<td class="TD_STYLE2"><select name="humanNationality"
-			class="SELECT_STYLE1" id="humannationality">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${glist}" var="g">
-			<option>${g}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanNationality" class="SELECT_STYLE1" id="humannationality">
+						<c:forEach items="${glist}" var="g">
+							<c:if test="${g == human.humanNationality }">
+								<option value="${g}" selected="selected">
+									${g}
+								</option>
+							</c:if>
+							<c:if test="${g != human.humanNationality }">
+								<option value="${g}">
+									${g}
+								</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">出生地</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanBirthplace" class="INPUT_STYLE2" id="humanbirthplace"></td>
+			name="humanBirthplace" class="INPUT_STYLE2" id="humanbirthplace" value="${human.humanBirthplace }"></td>
 		<td class="TD_STYLE1">生日</td>
 		<td width="13%" class="TD_STYLE2">
 		<input type="text" name="humanBirthday" 
-			class="INPUT_STYLE2" id="birthday" readonly="readonly"></td>
+			class="INPUT_STYLE2" id="birthday" readonly="readonly" value="${human.humanBirthday }"></td>
 		<td width="11%" class="TD_STYLE1">民族</td>
-		<td class="TD_STYLE2" width="14%"><select
-			name="humanRace" class="SELECT_STYLE1" id="humanrace">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${mlist}" var="m1">
-			<option>${m1}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2" width="14%">
+						<select name="humanRace" class="SELECT_STYLE1" id="humanrace">
+						<c:forEach items="${mlist}" var="m1">
+							<c:if test="${m1 == human.humanRace }">
+								<option value="${m1}" selected="selected">
+								${m1}
+							</option>
+							</c:if>
+							<c:if test="${m1 != human.humanRace }">
+								<option value="${m1}" >
+								${m1}
+							</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">宗教信仰</td>
-		<td class="TD_STYLE2"><select name="humanReligion"
-			class="SELECT_STYLE1" id="humanreligion">
-			<option value="0">--请选择--</option>
-		       <c:forEach items="${zlist}" var="z1">
-			<option>${z1}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanReligion" class="SELECT_STYLE1" id="humanreligion">
+						<c:forEach items="${zlist}" var="z1">
+							<c:if test="${z1 == human.humanReligion }">
+								<option value="${z1}" selected="selected">${z1}</option>
+							</c:if>
+							<c:if test="${z1 != human.humanReligion }">
+								<option value="${z1}">${z1}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">政治面貌</td>
-		<td class="TD_STYLE2"><select name="humanParty"
-			class="SELECT_STYLE1" id="humanparty">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${zzlist}" var="z">
-			<option>${z}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanParty" class="SELECT_STYLE1" id="humanparty">
+						<c:forEach items="${zzlist}" var="z">
+							<c:if test="${z == human.humanParty }">
+								<option value="${z}" selected="selected">${z}</option>
+							</c:if>
+							<c:if test="${z != human.humanParty }">
+								<option value="${z}" >${z}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">性别</td>
 		<td class="TD_STYLE2">
-		 <input type="text" name="humanSex" class="INPUT_STYLE2" id="humansex">
+			<select class="SELECT_STYLE1" name="humanSex" id="humansex">
+			<c:if test="${human.humanSex == '男'}">
+				<option value="男"selected="selected">男</option>  
+			</c:if>
+			<c:if test="${human.humanSex == '女'}">
+				<option value="男"selected="selected">女</option>  
+			</c:if>
+			</select>
 		</td>
 		
 		<td class="TD_STYLE1">社会保障号码</td>
 		<td class="TD_STYLE2">
-		<input type="text" name="humanSocietySecurityId" class="INPUT_STYLE2" id="humansocietysecurityid">
+		<input type="text" name="humanSocietySecurityId" class="INPUT_STYLE2" id="humansocietysecurityid" value="${human.humanSocietySecurityId }">
 		</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">年龄</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanAge" id="humanage" class="INPUT_STYLE2" readonly="readonly">
+			name="humanAge" id="humanage" class="INPUT_STYLE2" readonly="readonly" value="${human.humanAge }">
 		</td>
 		<td class="TD_STYLE1">学历</td>
-		<td class="TD_STYLE2"><select
-			name="humanEducatedDegree" class="SELECT_STYLE1" id="humaneducateddegree">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${xlist}" var="x">
-			<option >${x}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanEducatedDegree" class="SELECT_STYLE1" id="humaneducateddegree">
+						<c:forEach items="${xlist}" var="x">
+							<c:if test="${x == human.humanEducatedDegree }">
+								<option value="${x}" selected="selected">${x}</option>
+							</c:if>
+							<c:if test="${x != human.humanEducatedDegree }">
+								<option value="${x}" >${x}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">教育年限</td>
-		<td class="TD_STYLE2"><select name="humanEducatedYears"
-			class="SELECT_STYLE1" id="humaneducatedyears">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${jlist}" var="j">
-			<option >${j}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanEducatedYears" class="SELECT_STYLE1" id="humaneducatedyears">
+						<c:forEach items="${jlist}" var="j">
+							<c:if test="${j == human.humanEducatedYears }">
+								<option value="${j}"  selected="selected">${j}</option>
+							</c:if>
+							<c:if test="${j != human.humanEducatedYears }">
+								<option value="${j}" >${j}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">学历专业</td>
-		<td class="TD_STYLE2"><select name="humanEducatedMajor"
-			class="SELECT_STYLE1" id="humaneducatedmajor">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${xlzylist}" var="x1">
-			<option>${x1}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanEducatedMajor" class="SELECT_STYLE1" id="humaneducatedmajor">
+						<c:forEach items="${xlzylist}" var="x1">
+							<c:if test="${x1 == human.humanEducatedMajor }">
+								<option value="${x1}" selected="selected">${x1}</option>
+							</c:if>
+							<c:if test="${x1 != human.humanEducatedMajor }">
+								<option value="${x1}" >${x1}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">薪酬标准</td>
-		<td class="TD_STYLE2">
-		<select name="salaryStandardId" id="salarystandardid" class="SELECT_STYLE1" onchange="getsalaryname()" id="salarystandard">
-		<option value="0">--请选择--</option>
-			<c:forEach items="${xclist}" var="s">
-			<option id="salary_${s.ssdId}" value="${s.ssdId}">${s.standardName}</option>
-			</c:forEach>
-		</select>
-		
-		</td>
+		<td class="TD_STYLE2" >
+					
+						<select name="salaryStandardId" class="SELECT_STYLE1" onchange="getsalaryname()" id="salarystandard">
+						<c:forEach items="${xclist}" var="s">
+							<c:if test="${s.ssdId == human.salaryStandardId }">
+								<option id="salary_${s.ssdId}"  value="${s.ssdId}" selected="selected">${s.standardName}</option>
+							</c:if>
+							<c:if test="${s.ssdId != human.salaryStandardId }">
+								<option id="salary_${s.ssdId}"  value="${s.ssdId}" >${s.standardName}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">开户银行</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanBank" id="humanbank" class="INPUT_STYLE2"></td>
+			name="humanBank" id="humanbank" class="INPUT_STYLE2" value="${human.humanBank }"></td>
 		<td class="TD_STYLE1">银行账户</td>
 		<td class="TD_STYLE2"><input type="text"
-			name="humanAccount" id="humanaccount" class="INPUT_STYLE2"></td>
+			name="humanAccount" id="humanaccount" class="INPUT_STYLE2" value="${human.humanAccount }"></td>
 		<td class="TD_STYLE1">登记人</td>
 		<td class="TD_STYLE2"><input type="text"
 			name="register" value="${userlogin.user_true_name}" readonly="readonly"
@@ -507,40 +562,50 @@
 			name="registTime" readonly="readonly"
 			class="INPUT_STYLE2" id="create_time"></td>
 		<td class="TD_STYLE1">特长</td>
-		<td class="TD_STYLE2"><select name="humanSpeciality"
-			class="SELECT_STYLE1" id="humanspeciality">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${tlist}" var="t">
-			<option >${t}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanSpeciality" class="SELECT_STYLE1" id="humanspeciality">
+						<c:forEach items="${tlist}" var="t">
+							<c:if test="${t == human.humanSpeciality}">
+								<option value="${t}" selected="selected">${t} </option>
+							</c:if>
+							<c:if test="${t != human.humanSpeciality}">
+								<option value="${t}"  >${t} </option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">爱好</td>
-		<td class="TD_STYLE2"><select name="humanHobby"
-			class="SELECT_STYLE1" id="humanhobby">
-			<option value="0">--请选择--</option>
-			<c:forEach items="${alist}" var="a">
-			<option>${a}</option>
-			</c:forEach>
-		</select></td>
+		<td class="TD_STYLE2">
+						<select name="humanHobby" class="SELECT_STYLE1" id="humanhobby">
+						<c:forEach items="${alist}" var="a">
+							<c:if test="${a == human.humanHobby}">
+								<option value="${a}" selected="selected">${a}</option>
+							</c:if>
+							<c:if test="${a != human.humanHobby}">
+								<option value="${a}" >${a}</option>
+							</c:if>
+						</c:forEach>
+						</select>
+					</td>
 		<td class="TD_STYLE1">&nbsp;</td>
 		<td class="TD_STYLE2">&nbsp;</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">个人履历</td>
 		<td colspan="7" class="TD_STYLE2"><textarea
-			name="humanHistroyRecords" rows="4" class="TEXTAREA_STYLE1"></textarea>
+			name="humanHistroyRecords" rows="4" class="TEXTAREA_STYLE1" >${human.humanHistroyRecords }</textarea>
 		</td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">家庭关系信息</td>
 		<td colspan="7" class="TD_STYLE2"><textarea
 			name="humanFamilyMembership" rows="4"
-			class="TEXTAREA_STYLE1"></textarea></td>
+			class="TEXTAREA_STYLE1" >${human.humanFamilyMembership }</textarea></td>
 	</tr>
 	<tr>
 		<td class="TD_STYLE1">备注</td>
 		<td colspan="7" class="TD_STYLE2"><textarea
-			name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+			name="remark" rows="4" class="TEXTAREA_STYLE1" >${human.remark }</textarea>
 		</td>
 	</tr>
 </table>

@@ -31,9 +31,11 @@ import com.hr.service.ConfigQuestionFirstKindService;
 import com.hr.service.ConfigQuestionSecondKindService;
 import com.hr.service.EngageAnswerService;
 import com.hr.service.EngageExamService;
+import com.hr.service.EngageInterviewService;
 import com.hr.service.EngageSubjectsService;
 import com.hr.service.SetExamService;
 import com.hr.util.Get16UUID;
+import com.hr.util.RandomOfInt;
 
 import net.sf.json.JSONObject;
 
@@ -56,7 +58,8 @@ public class ExamController {
 	SetExamService setExamService;
 	@Autowired
 	EngageAnswerService engageAnswerService;
-	
+	@Autowired
+	EngageInterviewService engageInterviewService;
 	@RequestMapping("queryExamList.do")
 	public String queryExamList(Model model){
 		List<EExam> list = engageExamService.findEngageExamAllCategoryamount();
@@ -135,14 +138,7 @@ public class ExamController {
 	@RequestMapping("toexam.do")
 	public String toexam(String humanName,String humanIdcard,String humanMajorKindName,String humanMajorName,Model model){
 		System.out.println(humanName+"="+humanIdcard+"="+humanMajorKindName+"="+humanMajorName);
-		Map map = new HashMap<>();
-		map.put("humanName", humanName);
-		map.put("humanIdcard", humanIdcard);
-		map.put("humanMajorKindName", humanMajorKindName);
-		map.put("humanMajorName", humanMajorName);
-		EngageAnswer ea = engageAnswerService.findEngageAnswerByEngageInterviewAndEngageResume(map);
-		ea.setAnswerNumber(Get16UUID.getUUID());
-		System.out.println(ea);
+		
 		return "forward:/page/recruit/exam/answer_exam.jsp";
 	}
 	

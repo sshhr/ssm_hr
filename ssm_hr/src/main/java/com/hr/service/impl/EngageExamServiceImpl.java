@@ -45,8 +45,12 @@ public class EngageExamServiceImpl implements EngageExamService {
 
 	@Override
 	public List<EExam> findEngageExamAllCategoryamount() {
-		// TODO Auto-generated method stub
 		return EngageExamMapper.findEngageExamAllCategoryamount();
+	}
+
+	@Override
+	public List<EngageExam> findEngageExamBymajorkindnameAndmajorname(Map map) {
+		return EngageExamMapper.findEngageExamBymajorkindnameAndmajorname(map);
 	}
 	
 	

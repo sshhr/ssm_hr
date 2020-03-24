@@ -18,4 +18,6 @@ public interface EngageExamMapper {
 	public void updateEngageExam(Map map);
 	public void deleteEngageExamById(String exaId);
 	public List<EExam> findEngageExamAllCategoryamount();
+	public List<EngageExam> findEngageExamBymajorkindnameAndmajorname(Map map);
+	
 }

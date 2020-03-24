@@ -13,4 +13,5 @@ public interface EngageExamService {
 	public void changeEngageExam(Map map);
 	public void removeEngageExamById(String id);
 	public List<EExam> findEngageExamAllCategoryamount();
+	public List<EngageExam> findEngageExamBymajorkindnameAndmajorname(Map map);
 }
